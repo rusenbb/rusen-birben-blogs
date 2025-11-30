@@ -14,6 +14,13 @@ export default function LanguageSwitcher({ currentLocale }: Props) {
   
   const getLocalizedPath = (locale: Locale) => {
     const segments = pathname.split('/');
+    
+    // If on a blog post page (e.g., /en/blog/some-post), redirect to blog listing
+    // because post slugs are different per language
+    if (segments.length > 3 && segments[2] === 'blog') {
+      return `/${locale}/blog`;
+    }
+    
     segments[1] = locale;
     return segments.join('/');
   };

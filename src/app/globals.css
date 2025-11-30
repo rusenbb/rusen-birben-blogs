@@ -81,3 +81,75 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
 }
+
+/* Syntax Highlighting (highlight.js) */
+.hljs {
+  background: var(--bg-card) !important;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name,
+.hljs-tag {
+  color: #c678dd;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-section,
+.hljs-attribute,
+.hljs-literal,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-addition {
+  color: #98c379;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion,
+.hljs-meta {
+  color: #5c6370;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-doctag,
+.hljs-title,
+.hljs-section,
+.hljs-type,
+.hljs-selector-id {
+  font-weight: normal;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link {
+  color: #61aeee;
+}
+
+.hljs-number,
+.hljs-regexp {
+  color: #d19a66;
+}
+
+.hljs-variable,
+.hljs-template-variable,
+.hljs-attr {
+  color: #e06c75;
+}
+
+.hljs-function {
+  color: #61afef;
+}
+
+.hljs-params {
+  color: #abb2bf;
+}
+
+.hljs-class .hljs-title {
+  color: #e6c07b;
+}
