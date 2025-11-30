@@ -1,6 +1,17 @@
 import styles from './page.module.css';
-import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaExternalLinkAlt, FaYoutube } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaExternalLinkAlt, FaYoutube, FaPen } from 'react-icons/fa';
 import { SiHuggingface } from 'react-icons/si';
+
+const blogPosts: { title: string; date: string; description: string; url: string }[] = [
+  // Add your blog posts here
+  // Example:
+  // {
+  //   title: 'Building an AI-Powered Recommendation System',
+  //   date: '2024-03-15',
+  //   description: 'A deep dive into collaborative filtering and content-based approaches.',
+  //   url: '/blog/recommendation-system',
+  // },
+];
 
 const projects = [
   {
@@ -97,10 +108,10 @@ export default function Home() {
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <p className={styles.greeting}>Hi, I&apos;m</p>
-          <h1 className={styles.name}>Rüşen Birben</h1>
+          <h1 className={styles.name}>Ruşen Birben</h1>
           <p className={styles.title}>AI & Data Engineer</p>
           <p className={styles.bio}>
-            Final year student at Istanbul Technical University, passionate about NLP, LLMs, 
+            AI & Data Engineering graduate from Istanbul Technical University, passionate about NLP, LLMs, 
             and building intelligent systems. Currently working on agentic AI applications.
           </p>
           <div className={styles.location}>
@@ -170,6 +181,30 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Blog Section */}
+      <section className={styles.section} id="blog">
+        <h2 className={styles.sectionTitle}>Blog</h2>
+        {blogPosts.length > 0 ? (
+          <div className={styles.blogGrid}>
+            {blogPosts.map((post, index) => (
+              <a key={index} href={post.url} className={styles.blogCard}>
+                <div className={styles.blogHeader}>
+                  <FaPen className={styles.blogIcon} />
+                  <span className={styles.blogDate}>{post.date}</span>
+                </div>
+                <h3 className={styles.blogTitle}>{post.title}</h3>
+                <p className={styles.blogDescription}>{post.description}</p>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div className={styles.blogEmpty}>
+            <FaPen className={styles.blogEmptyIcon} />
+            <p>Blog posts coming soon...</p>
+          </div>
+        )}
+      </section>
+
       {/* Education Section */}
       <section className={styles.section} id="education">
         <h2 className={styles.sectionTitle}>Education</h2>
@@ -201,7 +236,7 @@ export default function Home() {
           <div className={styles.interestCard}>
             <span className={styles.interestEmoji}>📚</span>
             <h3>Books</h3>
-            <p>Philosophy and AI/CS related topics</p>
+            <p>Philosophy, AI/CS, and finance</p>
           </div>
           <div className={styles.interestCard}>
             <span className={styles.interestEmoji}>🇯🇵</span>
@@ -224,7 +259,7 @@ export default function Home() {
             <FaEnvelope /> Email
           </a>
         </div>
-        <p className={styles.copyright}>© 2025 Rüşen Birben</p>
+        <p className={styles.copyright}>© 2025 Ruşen Birben</p>
       </footer>
     </main>
   );

@@ -13,8 +13,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Rüşen Birben | AI & Data Engineer',
-  description: 'AI & Data Engineering student at Istanbul Technical University. Passionate about NLP, LLMs, and building intelligent systems.',
+  title: 'Ruşen Birben | AI & Data Engineer',
+  description: 'AI & Data Engineering graduate from Istanbul Technical University. Passionate about NLP, LLMs, and building intelligent systems.',
   keywords: ['AI Engineer', 'Data Engineer', 'NLP', 'Machine Learning', 'Istanbul Technical University'],
 };
 
