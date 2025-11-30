@@ -3,11 +3,13 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import { Locale, defaultLocale, locales } from './i18n';
 
-const postsDirectory = path.join(process.cwd(), 'content/blog');
+const contentDirectory = path.join(process.cwd(), 'content/blog');
 
 export interface BlogPost {
   slug: string;
+  locale: Locale;
   title: string;
   date: string;
   description: string;
@@ -17,21 +19,33 @@ export interface BlogPost {
 
 export interface BlogPostMeta {
   slug: string;
+  locale: Locale;
   title: string;
   date: string;
   description: string;
   tags?: string[];
 }
 
-function ensureDirectoryExists() {
-  if (!fs.existsSync(postsDirectory)) {
-    fs.mkdirSync(postsDirectory, { recursive: true });
+function getLocaleDirectory(locale: Locale): string {
+  return path.join(contentDirectory, locale);
+}
+
+function ensureDirectoryExists(locale: Locale) {
+  const dir = getLocaleDirectory(locale);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
   }
 }
 
-export function getAllPosts(): BlogPostMeta[] {
-  ensureDirectoryExists();
+export function getAllPosts(locale: Locale): BlogPostMeta[] {
+  ensureDirectoryExists(locale);
   
+  const postsDirectory = getLocaleDirectory(locale);
+  
+  if (!fs.existsSync(postsDirectory)) {
+    return [];
+  }
+
   const fileNames = fs.readdirSync(postsDirectory);
   const posts = fileNames
     .filter((fileName) => fileName.endsWith('.md'))
@@ -43,6 +57,7 @@ export function getAllPosts(): BlogPostMeta[] {
 
       return {
         slug,
+        locale,
         title: data.title,
         date: data.date,
         description: data.description,
@@ -53,15 +68,15 @@ export function getAllPosts(): BlogPostMeta[] {
   return posts.sort((a, b) => (a.date > b.date ? -1 : 1));
 }
 
-export function getLatestPosts(count: number): BlogPostMeta[] {
-  const posts = getAllPosts();
+export function getLatestPosts(locale: Locale, count: number): BlogPostMeta[] {
+  const posts = getAllPosts(locale);
   return posts.slice(0, count);
 }
 
-export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
-  ensureDirectoryExists();
+export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogPost | null> {
+  ensureDirectoryExists(locale);
   
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  const fullPath = path.join(getLocaleDirectory(locale), `${slug}.md`);
   
   if (!fs.existsSync(fullPath)) {
     return null;
@@ -77,6 +92,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
 
   return {
     slug,
+    locale,
     title: data.title,
     date: data.date,
     description: data.description,
@@ -85,12 +101,25 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   };
 }
 
-export function getAllPostSlugs(): string[] {
-  ensureDirectoryExists();
-  
-  const fileNames = fs.readdirSync(postsDirectory);
-  return fileNames
-    .filter((fileName) => fileName.endsWith('.md'))
-    .map((fileName) => fileName.replace(/\.md$/, ''));
-}
+export function getAllPostSlugs(): { locale: Locale; slug: string }[] {
+  const slugs: { locale: Locale; slug: string }[] = [];
 
+  for (const locale of locales) {
+    ensureDirectoryExists(locale);
+    const postsDirectory = getLocaleDirectory(locale);
+    
+    if (fs.existsSync(postsDirectory)) {
+      const fileNames = fs.readdirSync(postsDirectory);
+      fileNames
+        .filter((fileName) => fileName.endsWith('.md'))
+        .forEach((fileName) => {
+          slugs.push({
+            locale,
+            slug: fileName.replace(/\.md$/, ''),
+          });
+        });
+    }
+  }
+
+  return slugs;
+}

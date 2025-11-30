@@ -1,0 +1,133 @@
+{
+  "hero": {
+    "greeting": "Merhaba, ben",
+    "name": "Ruşen Birben",
+    "title": "Yapay Zeka & Veri Mühendisi",
+    "bio": "İstanbul Teknik Üniversitesi Yapay Zeka ve Veri Mühendisliği mezunuyum. Doğal dil işleme, büyük dil modelleri ve akıllı sistemler geliştirme konularında tutkulu bir mühendisim. Şu anda agentic yapay zeka uygulamaları üzerinde çalışıyorum.",
+    "location": "İstanbul, Türkiye"
+  },
+  "sections": {
+    "experience": "Deneyim",
+    "projects": "Projeler",
+    "blog": "Blog",
+    "education": "Eğitim",
+    "interests": "İlgi Alanları",
+    "viewAll": "Tümünü gör"
+  },
+  "experience": {
+    "items": [
+      {
+        "role": "Junior Yapay Zeka Mühendisi",
+        "company": "CyberQuote",
+        "period": "03/2025 – 07/2025",
+        "location": "İstanbul, Türkiye",
+        "description": "Phillip Capital iştiraki için yapay zeka otomasyonları ve agentic LLM uygulamaları geliştirdim. İç operasyonlar ve müşteri odaklı web siteleri için akıllı sistemler inşa ettim."
+      },
+      {
+        "role": "NLP Araştırma Stajyeri",
+        "company": "İTÜ NLP Laboratuvarı",
+        "period": "07/2024 – 08/2024",
+        "location": "İstanbul, Türkiye",
+        "description": "Finansal uygulamalar için LLM'ler üzerine araştırmalar yaptım: tahminleme, duygu analizi, araç kullanımı, finansal muhakeme ve RAG uygulamaları."
+      },
+      {
+        "role": "AIOps Araştırma Stajyeri",
+        "company": "Havelsan",
+        "period": "08/2024 – 09/2024",
+        "location": "İstanbul, Türkiye",
+        "description": "Yazılım log verilerini kullanarak öngörücü bakım için AIOps projesi araştırması yaptım. HDFS logları üzerinde demolar oluşturdum."
+      }
+    ]
+  },
+  "projects": {
+    "items": [
+      {
+        "title": "Tobor - Amazon Depo Robotu",
+        "period": "09/2024 – 01/2025",
+        "description": "Amazon'un lojistik operasyonlarını simüle eden otonom bir depo robot sistemi geliştirdim. Yol bulma, engelden kaçınma ve görev planlama algoritmaları tasarladım. Robot, özel eğitilmiş bir YOLO modeli ile insanları ve kargo kutularını tespit edebiliyor.",
+        "tags": ["Python", "ROS2", "YOLO", "Robotik"],
+        "links": [
+          { "label": "GitHub", "url": "https://github.com/rusenbb/Amazon-Warehouse-Robot", "icon": "github" },
+          { "label": "Video", "url": "https://youtu.be/h-Jxs_y9kNA", "icon": "youtube" }
+        ]
+      },
+      {
+        "title": "Biting The Bytes - Türkçe Aksan İşaretleri Restorasyonu",
+        "period": "03/2024 – 06/2024",
+        "description": "Google'ın geliştirdiği T5 transformer modeli kullanarak eksik aksan işaretlerini ve özel karakterleri otomatik olarak ekleyen bir sistem geliştirdim. Sistem, okunabilirliği artırmak için doğru diyakritik işaretleri geri yükler.",
+        "tags": ["NLP", "T5", "Transformers", "Türkçe"],
+        "links": [
+          { "label": "GitHub", "url": "https://github.com/rusenbb/Biting-The-Bytes", "icon": "github" },
+          { "label": "Demo", "url": "https://huggingface.co/spaces/emircanerol/diacritizeTR", "icon": "huggingface" }
+        ]
+      },
+      {
+        "title": "AIZheimer - Stable Diffusion'da Makine Unutması",
+        "period": "03/2024 – 06/2024",
+        "description": "Stable Diffusion 2.1'den belirli kavramları seçici olarak kaldırırken diğer yetenekleri koruyan bir sistem geliştirdim. İçerik moderasyonu ve yapay zeka çıktısını özelleştirmek için kullanışlı.",
+        "tags": ["Stable Diffusion", "Makine Unutması", "Bilgisayarlı Görü"],
+        "links": [
+          { "label": "GitHub", "url": "https://github.com/rusenbb/AIzheimer", "icon": "github" }
+        ]
+      },
+      {
+        "title": "To-AI-or-Not-to-AI - GPT Dedektörü",
+        "period": "03/2023 – 06/2023",
+        "description": "Üç ince ayarlı model kullanarak yapay zeka tarafından üretilen metni tespit eden bir ensemble yöntemi geliştirdim. Akademik dürüstlük ve yanlış bilgi konusundaki endişeleri ele alır.",
+        "tags": ["NLP", "Ensemble Öğrenme", "Sınıflandırma"],
+        "links": [
+          { "label": "GitHub", "url": "https://github.com/rusenbb/To-AI-or-Not-to-AI", "icon": "github" },
+          { "label": "Demo", "url": "https://huggingface.co/spaces/rusen/gpt_detector", "icon": "huggingface" }
+        ]
+      },
+      {
+        "title": "Anime Öneri Sistemi",
+        "period": "09/2022 – 02/2023",
+        "description": "İşbirlikçi filtreleme ve içerik tabanlı yaklaşımları birleştiren kişiselleştirilmiş bir anime öneri sistemi oluşturdum. Test setinde RMSE 0.289, MAE 0.213 değerlerine ulaştım.",
+        "tags": ["Öneri Sistemleri", "Matris Faktörizasyonu", "Python"],
+        "links": [
+          { "label": "GitHub", "url": "https://github.com/rusenbb/Anime-Recommender", "icon": "github" }
+        ]
+      }
+    ]
+  },
+  "education": {
+    "degree": "Yapay Zeka ve Veri Mühendisliği Lisans",
+    "school": "İstanbul Teknik Üniversitesi",
+    "period": "09/2022 – 07/2025",
+    "gpa": "3.61",
+    "gpaLabel": "GNO",
+    "note": "2022'de Elektronik ve Haberleşme Mühendisliği programından transfer oldum."
+  },
+  "interests": {
+    "items": [
+      {
+        "emoji": "☕",
+        "title": "Kahve",
+        "description": "V60 ve Aeropress ekipmanlarıyla specialty kahve meraklısı"
+      },
+      {
+        "emoji": "📚",
+        "title": "Kitaplar",
+        "description": "Felsefe, yapay zeka/bilgisayar bilimleri ve finans"
+      },
+      {
+        "emoji": "🇯🇵",
+        "title": "Anime & Manga",
+        "description": "Tutkulu bir izleyici ve okuyucu"
+      }
+    ]
+  },
+  "blog": {
+    "empty": "Blog yazıları çok yakında...",
+    "readMore": "Devamını oku →",
+    "backToHome": "Ana sayfaya dön",
+    "backToBlog": "Blog'a dön",
+    "backToAll": "← Tüm yazılara dön",
+    "subtitle": "Yapay zeka, mühendislik ve daha fazlası üzerine düşünceler."
+  },
+  "footer": {
+    "copyright": "© 2025 Ruşen Birben"
+  }
+}
+

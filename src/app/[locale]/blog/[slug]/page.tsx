@@ -1,33 +1,36 @@
 import { getPostBySlug, getAllPostSlugs } from '@/lib/blog';
+import { Locale, getDictionary, locales } from '@/lib/i18n';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { FaArrowLeft } from 'react-icons/fa';
 import styles from './post.module.css';
 
 interface Props {
-  params: { slug: string };
+  params: { locale: Locale; slug: string };
 }
 
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs();
-  return slugs.map((slug) => ({ slug }));
+  return slugs.map(({ locale, slug }) => ({ locale, slug }));
 }
 
 export async function generateMetadata({ params }: Props) {
-  const post = await getPostBySlug(params.slug);
+  const post = await getPostBySlug(params.locale, params.slug);
+  const dict = getDictionary(params.locale);
   
   if (!post) {
     return { title: 'Post Not Found' };
   }
 
   return {
-    title: `${post.title} | Ruşen Birben`,
+    title: `${post.title} | ${dict.hero.name}`,
     description: post.description,
   };
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const post = await getPostBySlug(params.slug);
+  const dict = getDictionary(params.locale);
+  const post = await getPostBySlug(params.locale, params.slug);
 
   if (!post) {
     notFound();
@@ -36,9 +39,9 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <main className={styles.main}>
       <article className={styles.article}>
-        <Link href="/blog" className={styles.backLink}>
+        <Link href={`/${params.locale}/blog`} className={styles.backLink}>
           <FaArrowLeft />
-          <span>Back to blog</span>
+          <span>{dict.blog.backToBlog}</span>
         </Link>
 
         <header className={styles.header}>
@@ -60,8 +63,8 @@ export default async function BlogPostPage({ params }: Props) {
         />
 
         <footer className={styles.footer}>
-          <Link href="/blog" className={styles.footerLink}>
-            ← Back to all posts
+          <Link href={`/${params.locale}/blog`} className={styles.footerLink}>
+            {dict.blog.backToAll}
           </Link>
         </footer>
       </article>

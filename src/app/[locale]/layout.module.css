@@ -1,0 +1,14 @@
+.langSwitcherContainer {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+}
+
+@media (max-width: 600px) {
+  .langSwitcherContainer {
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
