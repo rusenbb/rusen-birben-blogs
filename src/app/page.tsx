@@ -1,17 +1,8 @@
 import styles from './page.module.css';
-import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaExternalLinkAlt, FaYoutube, FaPen } from 'react-icons/fa';
+import Link from 'next/link';
+import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaExternalLinkAlt, FaYoutube, FaPen, FaArrowRight } from 'react-icons/fa';
 import { SiHuggingface } from 'react-icons/si';
-
-const blogPosts: { title: string; date: string; description: string; url: string }[] = [
-  // Add your blog posts here
-  // Example:
-  // {
-  //   title: 'Building an AI-Powered Recommendation System',
-  //   date: '2024-03-15',
-  //   description: 'A deep dive into collaborative filtering and content-based approaches.',
-  //   url: '/blog/recommendation-system',
-  // },
-];
+import { getLatestPosts } from '@/lib/blog';
 
 const projects = [
   {
@@ -101,6 +92,42 @@ function getLinkIcon(icon: string) {
   }
 }
 
+function BlogSection() {
+  const latestPosts = getLatestPosts(3);
+
+  return (
+    <section className={styles.section} id="blog">
+      <div className={styles.sectionHeader}>
+        <h2 className={styles.sectionTitle}>Blog</h2>
+        {latestPosts.length > 0 && (
+          <Link href="/blog" className={styles.viewAllLink}>
+            View all <FaArrowRight />
+          </Link>
+        )}
+      </div>
+      {latestPosts.length > 0 ? (
+        <div className={styles.blogGrid}>
+          {latestPosts.map((post) => (
+            <Link key={post.slug} href={`/blog/${post.slug}`} className={styles.blogCard}>
+              <div className={styles.blogHeader}>
+                <FaPen className={styles.blogIcon} />
+                <span className={styles.blogDate}>{post.date}</span>
+              </div>
+              <h3 className={styles.blogTitle}>{post.title}</h3>
+              <p className={styles.blogDescription}>{post.description}</p>
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <div className={styles.blogEmpty}>
+          <FaPen className={styles.blogEmptyIcon} />
+          <p>Blog posts coming soon...</p>
+        </div>
+      )}
+    </section>
+  );
+}
+
 export default function Home() {
   return (
     <main className={styles.main}>
@@ -182,28 +209,7 @@ export default function Home() {
       </section>
 
       {/* Blog Section */}
-      <section className={styles.section} id="blog">
-        <h2 className={styles.sectionTitle}>Blog</h2>
-        {blogPosts.length > 0 ? (
-          <div className={styles.blogGrid}>
-            {blogPosts.map((post, index) => (
-              <a key={index} href={post.url} className={styles.blogCard}>
-                <div className={styles.blogHeader}>
-                  <FaPen className={styles.blogIcon} />
-                  <span className={styles.blogDate}>{post.date}</span>
-                </div>
-                <h3 className={styles.blogTitle}>{post.title}</h3>
-                <p className={styles.blogDescription}>{post.description}</p>
-              </a>
-            ))}
-          </div>
-        ) : (
-          <div className={styles.blogEmpty}>
-            <FaPen className={styles.blogEmptyIcon} />
-            <p>Blog posts coming soon...</p>
-          </div>
-        )}
-      </section>
+      <BlogSection />
 
       {/* Education Section */}
       <section className={styles.section} id="education">

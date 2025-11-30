@@ -94,13 +94,20 @@
   border-top: 1px solid var(--border);
 }
 
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+}
+
 .sectionTitle {
   font-size: 1.75rem;
   font-weight: 600;
-  margin-bottom: 2.5rem;
   color: var(--text-primary);
   position: relative;
   display: inline-block;
+  margin-bottom: 0;
 }
 
 .sectionTitle::after {
@@ -112,6 +119,20 @@
   height: 3px;
   background: var(--gradient-accent);
   border-radius: 2px;
+}
+
+.viewAllLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.viewAllLink:hover {
+  color: var(--accent);
 }
 
 /* Timeline / Experience */
