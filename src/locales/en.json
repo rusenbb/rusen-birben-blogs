@@ -4,7 +4,7 @@
     "name": "Ruşen Birben",
     "title": "AI & Data Engineer",
     "bio": "AI & Data Engineering graduate from Istanbul Technical University, passionate about NLP, LLMs, and building intelligent systems. Currently working on agentic AI applications.",
-    "location": "İstanbul, Türkiye"
+    "location": "Ankara, Türkiye"
   },
   "sections": {
     "experience": "Experience",
@@ -17,11 +17,19 @@
   "experience": {
     "items": [
       {
+        "role": "Founder",
+        "company": "Fiction Studios",
+        "period": "10/2025 – Present",
+        "location": "Ankara, Türkiye",
+        "description": "Founded an AI labs working on natural language, speech and LLM technologies to democratize the use of AI systems for all humanity.",
+        "link": "https://fictionstudios.ai"
+      },
+      {
         "role": "Junior AI Engineer",
         "company": "CyberQuote",
         "period": "03/2025 – 07/2025",
         "location": "Istanbul, Türkiye",
-        "description": "Working on AI automations and agentic LLM implementations for Phillip Capital subsidiary. Building intelligent systems for internal operations and customer-facing websites."
+        "description": "Worked on AI automations and agentic LLM implementations for Phillip Capital subsidiary. Built intelligent systems for internal operations and customer-facing websites."
       },
       {
         "role": "NLP Research Intern",
@@ -92,12 +100,21 @@
     ]
   },
   "education": {
-    "degree": "B.Sc. in AI and Data Engineering",
-    "school": "Istanbul Technical University",
-    "period": "09/2022 – 07/2025",
-    "gpa": "3.61",
-    "gpaLabel": "GPA",
-    "note": "Transferred from Electronics and Communication Engineering program in 2022."
+    "items": [
+      {
+        "degree": "B.Sc. in AI and Data Engineering",
+        "school": "Istanbul Technical University",
+        "period": "09/2022 – 07/2025",
+        "gpa": "3.61",
+        "gpaLabel": "GPA"
+      },
+      {
+        "degree": "B.Sc. in Electronics and Communication Engineering",
+        "school": "Istanbul Technical University",
+        "period": "09/2020 – 09/2022",
+        "note": "Transferred to AI and Data Engineering"
+      }
+    ]
   },
   "interests": {
     "items": [

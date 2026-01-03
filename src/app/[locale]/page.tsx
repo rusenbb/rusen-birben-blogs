@@ -65,7 +65,13 @@ export default function Home({ params }: Props) {
                   <h3 className={styles.expRole}>{exp.role}</h3>
                   <span className={styles.expPeriod}>{exp.period}</span>
                 </div>
-                <p className={styles.expCompany}>{exp.company} · {exp.location}</p>
+                <p className={styles.expCompany}>
+                  {exp.link ? (
+                    <a href={exp.link} target="_blank" rel="noopener noreferrer">{exp.company}</a>
+                  ) : (
+                    exp.company
+                  )} · {exp.location}
+                </p>
                 <p className={styles.expDescription}>{exp.description}</p>
               </div>
             </div>
@@ -136,18 +142,22 @@ export default function Home({ params }: Props) {
       {/* Education Section */}
       <section className={styles.section} id="education">
         <h2 className={styles.sectionTitle}>{dict.sections.education}</h2>
-        <div className={styles.educationCard}>
-          <div className={styles.eduMain}>
-            <h3 className={styles.eduDegree}>{dict.education.degree}</h3>
-            <p className={styles.eduSchool}>{dict.education.school}</p>
-            <p className={styles.eduPeriod}>{dict.education.period}</p>
+        {dict.education.items.map((edu, index) => (
+          <div key={index} className={styles.educationCard}>
+            <div className={styles.eduMain}>
+              <h3 className={styles.eduDegree}>{edu.degree}</h3>
+              <p className={styles.eduSchool}>{edu.school}</p>
+              <p className={styles.eduPeriod}>{edu.period}</p>
+              {edu.note && <p className={styles.eduNote}>{edu.note}</p>}
+            </div>
+            {edu.gpa && (
+              <div className={styles.eduGpa}>
+                <span className={styles.gpaValue}>{edu.gpa}</span>
+                <span className={styles.gpaLabel}>{edu.gpaLabel}</span>
+              </div>
+            )}
           </div>
-          <div className={styles.eduGpa}>
-            <span className={styles.gpaValue}>{dict.education.gpa}</span>
-            <span className={styles.gpaLabel}>{dict.education.gpaLabel}</span>
-          </div>
-        </div>
-        <p className={styles.eduNote}>{dict.education.note}</p>
+        ))}
       </section>
 
       {/* Interests Section */}

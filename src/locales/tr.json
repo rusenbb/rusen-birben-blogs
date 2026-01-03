@@ -4,7 +4,7 @@
     "name": "Ruşen Birben",
     "title": "Yapay Zeka & Veri Mühendisi",
     "bio": "İstanbul Teknik Üniversitesi Yapay Zeka ve Veri Mühendisliği mezunuyum. Doğal dil işleme, büyük dil modelleri ve akıllı sistemler geliştirme konularında tutkulu bir mühendisim. Şu anda agentic yapay zeka uygulamaları üzerinde çalışıyorum.",
-    "location": "İstanbul, Türkiye"
+    "location": "Ankara, Türkiye"
   },
   "sections": {
     "experience": "Deneyim",
@@ -16,6 +16,14 @@
   },
   "experience": {
     "items": [
+      {
+        "role": "Kurucu",
+        "company": "Fiction Studios",
+        "period": "10/2025 – Günümüz",
+        "location": "Ankara, Türkiye",
+        "description": "Yapay zeka sistemlerinin tüm insanlık için demokratikleştirilmesi amacıyla doğal dil, konuşma ve LLM teknolojileri üzerine çalışan bir yapay zeka laboratuvarı kurdum.",
+        "link": "https://fictionstudios.ai"
+      },
       {
         "role": "Junior Yapay Zeka Mühendisi",
         "company": "CyberQuote",
@@ -92,12 +100,21 @@
     ]
   },
   "education": {
-    "degree": "Yapay Zeka ve Veri Mühendisliği Lisans",
-    "school": "İstanbul Teknik Üniversitesi",
-    "period": "09/2022 – 07/2025",
-    "gpa": "3.61",
-    "gpaLabel": "GNO",
-    "note": "2022'de Elektronik ve Haberleşme Mühendisliği programından transfer oldum."
+    "items": [
+      {
+        "degree": "Yapay Zeka ve Veri Mühendisliği Lisans",
+        "school": "İstanbul Teknik Üniversitesi",
+        "period": "09/2022 – 07/2025",
+        "gpa": "3.61",
+        "gpaLabel": "GNO"
+      },
+      {
+        "degree": "Elektronik ve Haberleşme Mühendisliği Lisans",
+        "school": "İstanbul Teknik Üniversitesi",
+        "period": "09/2020 – 09/2022",
+        "note": "Yapay Zeka ve Veri Mühendisliği'ne transfer oldum"
+      }
+    ]
   },
   "interests": {
     "items": [
