@@ -8,6 +8,11 @@ interface Props {
   params: { locale: Locale };
 }
 
+// Helper to create URL-safe tag slug
+function slugifyTag(tag: string): string {
+  return tag.toLowerCase().replace(/\s+/g, '-');
+}
+
 export async function generateMetadata({ params }: Props) {
   const dict = getDictionary(params.locale);
   return {
@@ -36,7 +41,7 @@ export default function TagsPage({ params }: Props) {
           {tags.map(({ tag, count }) => (
             <Link
               key={tag}
-              href={`/${params.locale}/tags/${encodeURIComponent(tag)}`}
+              href={`/${params.locale}/tags/${slugifyTag(tag)}`}
               className={styles.tagCard}
             >
               <FaTag className={styles.tagIcon} />

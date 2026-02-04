@@ -1,4 +1,4 @@
-import { getPostsByTag, getAllTagSlugs } from '@/lib/blog';
+import { getPostsByTag, getAllTags } from '@/lib/blog';
 import { Locale, getDictionary, locales } from '@/lib/i18n';
 import styles from '../tags.module.css';
 import Link from 'next/link';
@@ -8,26 +8,44 @@ interface Props {
   params: { locale: Locale; tag: string };
 }
 
+// Helper to create URL-safe tag slug
+function slugifyTag(tag: string): string {
+  return tag.toLowerCase().replace(/\s+/g, '-');
+}
+
 export async function generateStaticParams() {
-  const tagSlugs = getAllTagSlugs();
-  return tagSlugs.map(({ locale, tag }) => ({
-    locale,
-    tag: encodeURIComponent(tag),
-  }));
+  const params: { locale: Locale; tag: string }[] = [];
+  
+  for (const locale of locales) {
+    const tags = getAllTags(locale);
+    for (const { tag } of tags) {
+      params.push({
+        locale,
+        tag: slugifyTag(tag),
+      });
+    }
+  }
+  
+  return params;
 }
 
 export async function generateMetadata({ params }: Props) {
   const dict = getDictionary(params.locale);
-  const tag = decodeURIComponent(params.tag);
+  // Find the original tag name from the slug
+  const allTags = getAllTags(params.locale);
+  const originalTag = allTags.find(({ tag }) => slugifyTag(tag) === params.tag)?.tag || params.tag;
+  
   return {
-    title: `${dict.sections.postsTagged} "${tag}" | ${dict.hero.name}`,
-    description: `${dict.sections.postsTagged} ${tag}`,
+    title: `${dict.sections.postsTagged} "${originalTag}" | ${dict.hero.name}`,
+    description: `${dict.sections.postsTagged} ${originalTag}`,
   };
 }
 
 export default function TagPage({ params }: Props) {
   const dict = getDictionary(params.locale);
-  const tag = decodeURIComponent(params.tag);
+  // Find the original tag name from the slug
+  const allTags = getAllTags(params.locale);
+  const tag = allTags.find(({ tag }) => slugifyTag(tag) === params.tag)?.tag || params.tag;
   const posts = getPostsByTag(params.locale, tag);
 
   return (
@@ -38,7 +56,7 @@ export default function TagPage({ params }: Props) {
           <span>{dict.blog.backToTags}</span>
         </Link>
         <div className={styles.postsHeader}>
-          <FaTag style={{ color: 'var(--accent)' }} />
+          <FaTag />
           <h1 className={styles.postsTitle}>{tag}</h1>
           <span className={styles.postsCount}>
             ({posts.length} {dict.tags.postsCount})
