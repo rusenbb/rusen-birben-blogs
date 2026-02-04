@@ -113,7 +113,7 @@ export function getAllPostSlugs(): { locale: Locale; slug: string }[] {
   for (const locale of locales) {
     ensureDirectoryExists(locale);
     const postsDirectory = getLocaleDirectory(locale);
-    
+
     if (fs.existsSync(postsDirectory)) {
       const fileNames = fs.readdirSync(postsDirectory);
       fileNames
@@ -128,4 +128,39 @@ export function getAllPostSlugs(): { locale: Locale; slug: string }[] {
   }
 
   return slugs;
+}
+
+export function getAllTags(locale: Locale): { tag: string; count: number }[] {
+  const posts = getAllPosts(locale);
+  const tagCounts = new Map<string, number>();
+
+  for (const post of posts) {
+    if (post.tags) {
+      for (const tag of post.tags) {
+        tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+      }
+    }
+  }
+
+  return Array.from(tagCounts.entries())
+    .map(([tag, count]) => ({ tag, count }))
+    .sort((a, b) => b.count - a.count);
+}
+
+export function getPostsByTag(locale: Locale, tag: string): BlogPostMeta[] {
+  const posts = getAllPosts(locale);
+  return posts.filter((post) => post.tags?.includes(tag));
+}
+
+export function getAllTagSlugs(): { locale: Locale; tag: string }[] {
+  const tagSlugs: { locale: Locale; tag: string }[] = [];
+
+  for (const locale of locales) {
+    const tags = getAllTags(locale);
+    for (const { tag } of tags) {
+      tagSlugs.push({ locale, tag });
+    }
+  }
+
+  return tagSlugs;
 }

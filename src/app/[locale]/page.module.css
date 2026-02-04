@@ -6,7 +6,7 @@
 
 /* Hero Section */
 .hero {
-  min-height: 100vh;
+  min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,20 +45,10 @@
 
 .bio {
   max-width: 500px;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 2rem;
   color: var(--text-secondary);
   font-size: 1.1rem;
   line-height: 1.7;
-}
-
-.location {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  color: var(--text-muted);
-  margin-bottom: 2rem;
-  font-size: 0.95rem;
 }
 
 .heroLinks {
@@ -90,7 +80,7 @@
 
 /* Sections */
 .section {
-  padding: 5rem 0;
+  padding: 3rem 0;
   border-top: 1px solid var(--border);
 }
 
@@ -98,7 +88,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .sectionTitle {
@@ -107,12 +97,7 @@
   color: var(--text-primary);
   position: relative;
   display: inline-block;
-  margin-bottom: 2rem;
   padding-bottom: 0.75rem;
-}
-
-.sectionHeader .sectionTitle {
-  margin-bottom: 0;
 }
 
 .sectionTitle::after {
@@ -140,168 +125,36 @@
   color: var(--accent);
 }
 
-/* Timeline / Experience */
-.timeline {
-  position: relative;
-  padding-left: 2rem;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 6px;
-  top: 8px;
-  bottom: 8px;
-  width: 2px;
-  background: var(--border);
-}
-
-.timelineItem {
-  position: relative;
-  margin-bottom: 2.5rem;
-}
-
-.timelineItem:last-child {
-  margin-bottom: 0;
-}
-
-.timelineDot {
-  position: absolute;
-  left: -2rem;
-  top: 8px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--bg-primary);
-  border: 3px solid var(--accent);
-  z-index: 1;
-}
-
-.timelineContent {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  transition: border-color 0.2s ease;
-}
-
-.timelineContent:hover {
-  border-color: var(--border-hover);
-}
-
-.expHeader {
+/* Tags */
+.tagsContainer {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 0.25rem;
+  gap: 0.75rem;
 }
 
-.expRole {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.expPeriod {
+.tagChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.expCompany {
-  color: var(--accent);
-  font-size: 0.95rem;
-  margin-bottom: 0.75rem;
-}
-
-.expDescription {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-/* Projects Grid */
-.projectsGrid {
-  display: grid;
-  gap: 1.5rem;
-}
-
-.projectCard {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: 20px;
+  color: var(--text-secondary);
   transition: all 0.2s ease;
 }
 
-.projectCard:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-2px);
-}
-
-.projectHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-
-.projectTitle {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.projectPeriod {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-.projectDescription {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.projectTags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.tag {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  padding: 0.25rem 0.75rem;
+.tagChip:hover {
   background: var(--accent-glow);
+  border-color: var(--accent);
   color: var(--accent);
-  border-radius: 20px;
-  border: 1px solid rgba(34, 211, 238, 0.2);
 }
 
-.projectLinks {
-  display: flex;
-  gap: 1rem;
-}
-
-.projectLink {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  transition: color 0.2s ease;
-}
-
-.projectLink:hover {
-  color: var(--accent);
+.tagCount {
+  font-size: 0.75rem;
+  color: var(--text-muted);
 }
 
 /* Blog */
@@ -354,6 +207,23 @@
   color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.blogTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  background: var(--accent-glow);
+  color: var(--accent);
+  border-radius: 20px;
+  border: 1px solid rgba(34, 211, 238, 0.2);
 }
 
 .blogEmpty {
@@ -376,110 +246,6 @@
 
 .blogEmpty p {
   font-size: 1rem;
-}
-
-/* Education */
-.educationCard {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.eduMain {
-  flex: 1;
-}
-
-.eduDegree {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.25rem;
-}
-
-.eduSchool {
-  color: var(--accent);
-  font-size: 0.95rem;
-  margin-bottom: 0.25rem;
-}
-
-.eduPeriod {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.eduGpa {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  background: var(--accent-glow);
-  border-radius: 12px;
-  border: 1px solid rgba(34, 211, 238, 0.2);
-}
-
-.gpaValue {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--accent);
-  line-height: 1;
-}
-
-.gpaLabel {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-top: 0.25rem;
-}
-
-.eduNote {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  font-style: italic;
-}
-
-/* Interests */
-.interestsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-.interestCard {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
-  transition: border-color 0.2s ease;
-}
-
-.interestCard:hover {
-  border-color: var(--border-hover);
-}
-
-.interestEmoji {
-  font-size: 2rem;
-  display: block;
-  margin-bottom: 0.75rem;
-}
-
-.interestCard h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-}
-
-.interestCard p {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
 }
 
 /* Footer */
@@ -517,16 +283,12 @@
 
 /* Responsive */
 @media (max-width: 600px) {
-  .educationCard {
-    flex-direction: column;
-    gap: 1.5rem;
-    text-align: center;
+  .hero {
+    min-height: 50vh;
   }
 
-  .expHeader,
-  .projectHeader {
-    flex-direction: column;
-    align-items: flex-start;
+  .heroLinks {
+    flex-wrap: wrap;
   }
 
   .footerLinks {

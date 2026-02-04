@@ -1,30 +1,17 @@
 import styles from './page.module.css';
 import Link from 'next/link';
-import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaExternalLinkAlt, FaYoutube, FaPen, FaArrowRight } from 'react-icons/fa';
-import { SiHuggingface } from 'react-icons/si';
+import { FaGithub, FaLinkedin, FaEnvelope, FaPen, FaArrowRight, FaRss, FaExternalLinkAlt } from 'react-icons/fa';
 import { Locale, getDictionary } from '@/lib/i18n';
-import { getLatestPosts } from '@/lib/blog';
+import { getAllPosts, getAllTags } from '@/lib/blog';
 
 interface Props {
   params: { locale: Locale };
 }
 
-function getLinkIcon(icon: string) {
-  switch (icon) {
-    case 'github':
-      return <FaGithub />;
-    case 'youtube':
-      return <FaYoutube />;
-    case 'huggingface':
-      return <SiHuggingface />;
-    default:
-      return <FaExternalLinkAlt />;
-  }
-}
-
 export default function Home({ params }: Props) {
   const dict = getDictionary(params.locale);
-  const latestPosts = getLatestPosts(params.locale, 3);
+  const allPosts = getAllPosts(params.locale);
+  const allTags = getAllTags(params.locale);
 
   return (
     <main className={styles.main}>
@@ -35,10 +22,6 @@ export default function Home({ params }: Props) {
           <h1 className={styles.name}>{dict.hero.name}</h1>
           <p className={styles.title}>{dict.hero.title}</p>
           <p className={styles.bio}>{dict.hero.bio}</p>
-          <div className={styles.location}>
-            <FaMapMarkerAlt />
-            <span>{dict.hero.location}</span>
-          </div>
           <div className={styles.heroLinks}>
             <a href="https://github.com/rusenbb" target="_blank" rel="noopener noreferrer" className={styles.iconLink}>
               <FaGithub />
@@ -49,78 +32,40 @@ export default function Home({ params }: Props) {
             <a href="mailto:rusenbirben@gmail.com" className={styles.iconLink}>
               <FaEnvelope />
             </a>
+            <Link href={`/${params.locale}/feed.xml`} className={styles.iconLink} title={dict.blog.rss}>
+              <FaRss />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Experience Section */}
-      <section className={styles.section} id="experience">
-        <h2 className={styles.sectionTitle}>{dict.sections.experience}</h2>
-        <div className={styles.timeline}>
-          {dict.experience.items.map((exp, index) => (
-            <div key={index} className={styles.timelineItem}>
-              <div className={styles.timelineDot} />
-              <div className={styles.timelineContent}>
-                <div className={styles.expHeader}>
-                  <h3 className={styles.expRole}>{exp.role}</h3>
-                  <span className={styles.expPeriod}>{exp.period}</span>
-                </div>
-                <p className={styles.expCompany}>
-                  {exp.link ? (
-                    <a href={exp.link} target="_blank" rel="noopener noreferrer">{exp.company}</a>
-                  ) : (
-                    exp.company
-                  )} · {exp.location}
-                </p>
-                <p className={styles.expDescription}>{exp.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section className={styles.section} id="projects">
-        <h2 className={styles.sectionTitle}>{dict.sections.projects}</h2>
-        <div className={styles.projectsGrid}>
-          {dict.projects.items.map((project, index) => (
-            <article key={index} className={styles.projectCard}>
-              <div className={styles.projectHeader}>
-                <h3 className={styles.projectTitle}>{project.title}</h3>
-                <span className={styles.projectPeriod}>{project.period}</span>
-              </div>
-              <p className={styles.projectDescription}>{project.description}</p>
-              <div className={styles.projectTags}>
-                {project.tags.map((tag, i) => (
-                  <span key={i} className={styles.tag}>{tag}</span>
-                ))}
-              </div>
-              <div className={styles.projectLinks}>
-                {project.links.map((link, i) => (
-                  <a key={i} href={link.url} target="_blank" rel="noopener noreferrer" className={styles.projectLink}>
-                    {getLinkIcon(link.icon)}
-                    <span>{link.label}</span>
-                  </a>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+      {/* Tags Section */}
+      {allTags.length > 0 && (
+        <section className={styles.section} id="tags">
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>{dict.sections.tags}</h2>
+            <Link href={`/${params.locale}/tags`} className={styles.viewAllLink}>
+              {dict.sections.viewAll} <FaArrowRight />
+            </Link>
+          </div>
+          <div className={styles.tagsContainer}>
+            {allTags.slice(0, 8).map(({ tag, count }) => (
+              <Link key={tag} href={`/${params.locale}/tags/${encodeURIComponent(tag)}`} className={styles.tagChip}>
+                {tag} <span className={styles.tagCount}>({count})</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Blog Section */}
       <section className={styles.section} id="blog">
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>{dict.sections.blog}</h2>
-          {latestPosts.length > 0 && (
-            <Link href={`/${params.locale}/blog`} className={styles.viewAllLink}>
-              {dict.sections.viewAll} <FaArrowRight />
-            </Link>
-          )}
         </div>
-        {latestPosts.length > 0 ? (
+        {allPosts.length > 0 ? (
           <div className={styles.blogGrid}>
-            {latestPosts.map((post) => (
+            {allPosts.map((post) => (
               <Link key={post.slug} href={`/${params.locale}/blog/${post.slug}`} className={styles.blogCard}>
                 <div className={styles.blogHeader}>
                   <FaPen className={styles.blogIcon} />
@@ -128,6 +73,13 @@ export default function Home({ params }: Props) {
                 </div>
                 <h3 className={styles.blogTitle}>{post.title}</h3>
                 <p className={styles.blogDescription}>{post.description}</p>
+                {post.tags && post.tags.length > 0 && (
+                  <div className={styles.blogTags}>
+                    {post.tags.map((tag) => (
+                      <span key={tag} className={styles.tag}>{tag}</span>
+                    ))}
+                  </div>
+                )}
               </Link>
             ))}
           </div>
@@ -137,41 +89,6 @@ export default function Home({ params }: Props) {
             <p>{dict.blog.empty}</p>
           </div>
         )}
-      </section>
-
-      {/* Education Section */}
-      <section className={styles.section} id="education">
-        <h2 className={styles.sectionTitle}>{dict.sections.education}</h2>
-        {dict.education.items.map((edu, index) => (
-          <div key={index} className={styles.educationCard}>
-            <div className={styles.eduMain}>
-              <h3 className={styles.eduDegree}>{edu.degree}</h3>
-              <p className={styles.eduSchool}>{edu.school}</p>
-              <p className={styles.eduPeriod}>{edu.period}</p>
-              {edu.note && <p className={styles.eduNote}>{edu.note}</p>}
-            </div>
-            {edu.gpa && (
-              <div className={styles.eduGpa}>
-                <span className={styles.gpaValue}>{edu.gpa}</span>
-                <span className={styles.gpaLabel}>{edu.gpaLabel}</span>
-              </div>
-            )}
-          </div>
-        ))}
-      </section>
-
-      {/* Interests Section */}
-      <section className={styles.section} id="interests">
-        <h2 className={styles.sectionTitle}>{dict.sections.interests}</h2>
-        <div className={styles.interestsGrid}>
-          {dict.interests.items.map((interest, index) => (
-            <div key={index} className={styles.interestCard}>
-              <span className={styles.interestEmoji}>{interest.emoji}</span>
-              <h3>{interest.title}</h3>
-              <p>{interest.description}</p>
-            </div>
-          ))}
-        </div>
       </section>
 
       {/* Footer */}
@@ -186,10 +103,12 @@ export default function Home({ params }: Props) {
           <a href="mailto:rusenbirben@gmail.com">
             <FaEnvelope /> Email
           </a>
+          <a href="https://rusen.ai" target="_blank" rel="noopener noreferrer">
+            <FaExternalLinkAlt /> {dict.footer.visitPortfolio}
+          </a>
         </div>
-        <p className={styles.copyright}>{dict.footer.copyright}</p>
+        <p className={styles.copyright}>&copy; {new Date().getFullYear()} {dict.footer.copyright}</p>
       </footer>
     </main>
   );
 }
-

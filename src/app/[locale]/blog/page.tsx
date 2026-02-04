@@ -1,8 +1,8 @@
-import { getAllPosts } from '@/lib/blog';
+import { getAllPosts, getAllTags } from '@/lib/blog';
 import { Locale, getDictionary } from '@/lib/i18n';
 import styles from './blog.module.css';
 import Link from 'next/link';
-import { FaArrowLeft, FaPen } from 'react-icons/fa';
+import { FaArrowLeft, FaPen, FaRss } from 'react-icons/fa';
 
 interface Props {
   params: { locale: Locale };
@@ -19,17 +19,42 @@ export async function generateMetadata({ params }: Props) {
 export default function BlogPage({ params }: Props) {
   const dict = getDictionary(params.locale);
   const posts = getAllPosts(params.locale);
+  const tags = getAllTags(params.locale);
 
   return (
     <main className={styles.main}>
       <div className={styles.header}>
-        <Link href={`/${params.locale}`} className={styles.backLink}>
-          <FaArrowLeft />
-          <span>{dict.blog.backToHome}</span>
-        </Link>
+        <div className={styles.headerTop}>
+          <Link href={`/${params.locale}`} className={styles.backLink}>
+            <FaArrowLeft />
+            <span>{dict.blog.backToHome}</span>
+          </Link>
+          <Link href={`/${params.locale}/feed.xml`} className={styles.rssLink} title={dict.blog.rss}>
+            <FaRss />
+            <span>{dict.blog.rss}</span>
+          </Link>
+        </div>
         <h1 className={styles.title}>Blog</h1>
         <p className={styles.subtitle}>{dict.blog.subtitle}</p>
       </div>
+
+      {/* Tag Filters */}
+      {tags.length > 0 && (
+        <div className={styles.tagFilters}>
+          <span className={styles.filterLabel}>{dict.blog.filterByTag}:</span>
+          <div className={styles.tagChips}>
+            {tags.map(({ tag, count }) => (
+              <Link
+                key={tag}
+                href={`/${params.locale}/tags/${encodeURIComponent(tag)}`}
+                className={styles.tagChip}
+              >
+                {tag} <span className={styles.tagCount}>({count})</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {posts.length > 0 ? (
         <div className={styles.postsGrid}>
@@ -47,7 +72,7 @@ export default function BlogPage({ params }: Props) {
               </div>
               <h2 className={styles.postTitle}>{post.title}</h2>
               <p className={styles.postDescription}>{post.description}</p>
-              <span className={styles.readMore}>{dict.blog.readMore}</span>
+              <span className={styles.readMore}>{dict.blog.readMore} &rarr;</span>
             </Link>
           ))}
         </div>
@@ -60,4 +85,3 @@ export default function BlogPage({ params }: Props) {
     </main>
   );
 }
-

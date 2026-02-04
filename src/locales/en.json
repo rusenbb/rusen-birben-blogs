@@ -1,150 +1,37 @@
 {
   "hero": {
-    "greeting": "Hi, I'm",
-    "name": "Ruşen Birben",
-    "title": "AI & Data Engineer",
-    "bio": "AI & Data Engineering graduate from Istanbul Technical University, passionate about NLP, LLMs, and building intelligent systems. Currently working on agentic AI applications.",
-    "location": "Ankara, Türkiye"
+    "greeting": "Welcome to",
+    "name": "Rusen's Blog",
+    "title": "Thoughts & Writings",
+    "bio": "Exploring AI, engineering, philosophy, and everything in between. Join me on this journey of learning and discovery.",
+    "location": "Ankara, Turkiye"
   },
   "sections": {
-    "experience": "Experience",
-    "projects": "Projects",
-    "blog": "Blog",
-    "education": "Education",
-    "interests": "Interests",
-    "viewAll": "View all"
-  },
-  "experience": {
-    "items": [
-      {
-        "role": "Founder",
-        "company": "Fiction Studios",
-        "period": "10/2025 – Present",
-        "location": "Ankara, Türkiye",
-        "description": "Founded an AI labs working on natural language, speech and LLM technologies to democratize the use of AI systems for all humanity.",
-        "link": "https://fictionstudios.ai"
-      },
-      {
-        "role": "Junior AI Engineer",
-        "company": "CyberQuote",
-        "period": "03/2025 – 07/2025",
-        "location": "Istanbul, Türkiye",
-        "description": "Worked on AI automations and agentic LLM implementations for Phillip Capital subsidiary. Built intelligent systems for internal operations and customer-facing websites."
-      },
-      {
-        "role": "NLP Research Intern",
-        "company": "ITU NLP Lab",
-        "period": "07/2024 – 08/2024",
-        "location": "Istanbul, Türkiye",
-        "description": "Researched LLMs for financial applications including forecasting, sentiment analysis, tool usage, financial reasoning, and RAG implementations."
-      },
-      {
-        "role": "AIOps Research Intern",
-        "company": "Havelsan",
-        "period": "08/2024 – 09/2024",
-        "location": "Istanbul, Türkiye",
-        "description": "Conducted research for AIOps project using software log data for predictive maintenance. Generated demos on HDFS logs."
-      }
-    ]
-  },
-  "projects": {
-    "items": [
-      {
-        "title": "Tobor - Amazon Warehouse Robot",
-        "period": "09/2024 – 01/2025",
-        "description": "Developed an autonomous warehouse robot system simulating Amazon's logistics operations. Designed pathfinding, obstacle avoidance, and task scheduling algorithms. The robot detects humans and cargo boxes with a custom-trained YOLO model.",
-        "tags": ["Python", "ROS2", "YOLO", "Robotics"],
-        "links": [
-          { "label": "GitHub", "url": "https://github.com/rusenbb/Amazon-Warehouse-Robot", "icon": "github" },
-          { "label": "Video", "url": "https://youtu.be/h-Jxs_y9kNA", "icon": "youtube" }
-        ]
-      },
-      {
-        "title": "Biting The Bytes - Turkish Diacritic Restoration",
-        "period": "03/2024 – 06/2024",
-        "description": "Improved Turkish text by automatically adding missing accent marks and special characters using T5, a transformer model by Google. The system restores proper diacritics for enhanced readability.",
-        "tags": ["NLP", "T5", "Transformers", "Turkish"],
-        "links": [
-          { "label": "GitHub", "url": "https://github.com/rusenbb/Biting-The-Bytes", "icon": "github" },
-          { "label": "Demo", "url": "https://huggingface.co/spaces/rusen/diacritizeTR", "icon": "huggingface" }
-        ]
-      },
-      {
-        "title": "AIZheimer - Machine Unlearning on Stable Diffusion",
-        "period": "03/2024 – 06/2024",
-        "description": "Selectively removed specific concepts from Stable Diffusion 2.1 while keeping other capabilities intact. Useful for content moderation and customizing AI output.",
-        "tags": ["Stable Diffusion", "Machine Unlearning", "Computer Vision"],
-        "links": [
-          { "label": "GitHub", "url": "https://github.com/rusenbb/AIzheimer", "icon": "github" }
-        ]
-      },
-      {
-        "title": "To-AI-or-Not-to-AI - GPT Detector",
-        "period": "03/2023 – 06/2023",
-        "description": "Developed an ensemble method to detect AI-generated text using three fine-tuned models. Addresses concerns about academic integrity and misinformation.",
-        "tags": ["NLP", "Ensemble Learning", "Classification"],
-        "links": [
-          { "label": "GitHub", "url": "https://github.com/rusenbb/To-AI-or-Not-to-AI", "icon": "github" },
-          { "label": "Demo", "url": "https://huggingface.co/spaces/rusen/gpt_detector", "icon": "huggingface" }
-        ]
-      },
-      {
-        "title": "Anime Recommender",
-        "period": "09/2022 – 02/2023",
-        "description": "Created a personalized anime recommendation system combining collaborative filtering and content-based approaches. Achieved RMSE of 0.289, MAE of 0.213 on the test set.",
-        "tags": ["Recommender Systems", "Matrix Factorization", "Python"],
-        "links": [
-          { "label": "GitHub", "url": "https://github.com/rusenbb/Anime-Recommender", "icon": "github" }
-        ]
-      }
-    ]
-  },
-  "education": {
-    "items": [
-      {
-        "degree": "B.Sc. in AI and Data Engineering",
-        "school": "Istanbul Technical University",
-        "period": "09/2022 – 07/2025",
-        "gpa": "3.61",
-        "gpaLabel": "GPA"
-      },
-      {
-        "degree": "B.Sc. in Electronics and Communication Engineering",
-        "school": "Istanbul Technical University",
-        "period": "09/2020 – 09/2022",
-        "note": "Transferred to AI and Data Engineering"
-      }
-    ]
-  },
-  "interests": {
-    "items": [
-      {
-        "emoji": "☕",
-        "title": "Coffee",
-        "description": "Specialty coffee enthusiast with V60, Aeropress, and Moka Pot setup"
-      },
-      {
-        "emoji": "📚",
-        "title": "Books",
-        "description": "Philosophy, AI/CS, and finance"
-      },
-      {
-        "emoji": "🇯🇵",
-        "title": "Anime & Manga",
-        "description": "Avid watcher and reader"
-      }
-    ]
+    "blog": "Latest Posts",
+    "viewAll": "View all",
+    "tags": "Tags",
+    "allTags": "All Tags",
+    "postsTagged": "Posts tagged"
   },
   "blog": {
     "empty": "Blog posts coming soon...",
-    "readMore": "Read more →",
+    "readMore": "Read more",
     "backToHome": "Back to home",
     "backToBlog": "Back to blog",
-    "backToAll": "← Back to all posts",
-    "subtitle": "Thoughts on AI, engineering, and more."
+    "backToAll": "Back to all posts",
+    "backToTags": "Back to all tags",
+    "subtitle": "Thoughts on AI, engineering, and more.",
+    "rss": "RSS Feed",
+    "filterByTag": "Filter by tag"
+  },
+  "tags": {
+    "title": "Tags",
+    "subtitle": "Browse posts by topic",
+    "postsCount": "posts",
+    "noTags": "No tags yet..."
   },
   "footer": {
-    "copyright": "© 2025 Ruşen Birben"
+    "copyright": "Rusen Birben",
+    "visitPortfolio": "Visit my portfolio"
   }
 }
-
