@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import styles from './LanguageSwitcher.module.css';
 import { Locale, locales } from '@/lib/i18n';
 
@@ -11,6 +12,11 @@ interface Props {
 
 export default function LanguageSwitcher({ currentLocale }: Props) {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   
   const getLocalizedPath = (locale: Locale) => {
     const segments = pathname.split('/');
@@ -24,6 +30,22 @@ export default function LanguageSwitcher({ currentLocale }: Props) {
     segments[1] = locale;
     return segments.join('/');
   };
+
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!mounted) {
+    return (
+      <div className={styles.switcher}>
+        {locales.map((locale) => (
+          <span
+            key={locale}
+            className={`${styles.option} ${locale === currentLocale ? styles.active : ''}`}
+          >
+            {locale === 'en' ? 'EN' : 'TR'}
+          </span>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className={styles.switcher}>
@@ -39,4 +61,3 @@ export default function LanguageSwitcher({ currentLocale }: Props) {
     </div>
   );
 }
-
