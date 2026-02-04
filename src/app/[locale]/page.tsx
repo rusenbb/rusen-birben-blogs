@@ -8,9 +8,20 @@ interface Props {
   params: { locale: Locale };
 }
 
-// Helper to create URL-safe tag slug
+// Helper to create URL-safe tag slug (handles Turkish chars)
 function slugifyTag(tag: string): string {
-  return tag.toLowerCase().replace(/\s+/g, '-');
+  const turkishMap: Record<string, string> = {
+    'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u',
+    'Ç': 'C', 'Ğ': 'G', 'I': 'I', 'Ö': 'O', 'Ş': 'S', 'Ü': 'U',
+  };
+  
+  return tag
+    .toLowerCase()
+    .split('')
+    .map(char => turkishMap[char] || char)
+    .join('')
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
 }
 
 export default function Home({ params }: Props) {

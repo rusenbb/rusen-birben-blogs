@@ -1,34 +1,34 @@
 {
   "hero": {
-    "greeting": "Hosgeldiniz",
+    "greeting": "Hoşgeldiniz",
     "name": "Rusen'in Blogu",
-    "title": "Dusunceler & Yazilar",
-    "bio": "Yapay zeka, muhendislik, felsefe ve daha fazlasini kesfediyorum. Bu ogrenme ve kesif yolculugunda bana katilmaya davetlisiniz.",
-    "location": "Ankara, Turkiye"
+    "title": "Düşünceler & Yazılar",
+    "bio": "Yapay zeka, mühendislik, felsefe ve daha fazlasını keşfediyorum. Bu öğrenme ve keşif yolculuğunda bana katılmaya davetlisiniz.",
+    "location": "Ankara, Türkiye"
   },
   "sections": {
-    "blog": "Son Yazilar",
-    "viewAll": "Tumunu gor",
+    "blog": "Son Yazılar",
+    "viewAll": "Tümünü gör",
     "tags": "Etiketler",
-    "allTags": "Tum Etiketler",
-    "postsTagged": "Etiketli yazilar"
+    "allTags": "Tüm Etiketler",
+    "postsTagged": "Etiketli yazılar"
   },
   "blog": {
-    "empty": "Blog yazilari cok yakinda...",
-    "readMore": "Devamini oku",
-    "backToHome": "Ana sayfaya don",
-    "backToBlog": "Blog'a don",
-    "backToAll": "Tum yazilara don",
-    "backToTags": "Tum etiketlere don",
-    "subtitle": "Yapay zeka, muhendislik ve daha fazlasi uzerine dusunceler.",
-    "rss": "RSS Akisi",
-    "filterByTag": "Etikete gore filtrele"
+    "empty": "Blog yazıları çok yakında...",
+    "readMore": "Devamını oku",
+    "backToHome": "Ana sayfaya dön",
+    "backToBlog": "Blog'a dön",
+    "backToAll": "Tüm yazılara dön",
+    "backToTags": "Tüm etiketlere dön",
+    "subtitle": "Yapay zeka, mühendislik ve daha fazlası üzerine düşünceler.",
+    "rss": "RSS Akışı",
+    "filterByTag": "Etikete göre filtrele"
   },
   "tags": {
     "title": "Etiketler",
-    "subtitle": "Konuya gore yazilara gozatin",
-    "postsCount": "yazi",
-    "noTags": "Henuz etiket yok..."
+    "subtitle": "Konuya göre yazılara göz atın",
+    "postsCount": "yazı",
+    "noTags": "Henüz etiket yok..."
   },
   "footer": {
     "copyright": "Rusen Birben",
