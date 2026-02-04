@@ -1,24 +1,30 @@
+/* Editorial/Print Magazine Theme */
+
 :root {
-  --font-primary: var(--font-outfit), system-ui, sans-serif;
-  --font-mono: var(--font-mono), 'Courier New', monospace;
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
   
-  --bg-primary: #0c0c0c;
-  --bg-secondary: #141414;
-  --bg-card: #1a1a1a;
-  --bg-card-hover: #222222;
+  /* Colors - Warm Editorial */
+  --bg-primary: #faf8f5;
+  --bg-secondary: #f5f3f0;
+  --bg-card: #ffffff;
   
-  --text-primary: #f5f5f5;
-  --text-secondary: #a0a0a0;
-  --text-muted: #666666;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #7a7a7a;
   
-  --accent: #22d3ee;
-  --accent-secondary: #a78bfa;
-  --accent-glow: rgba(34, 211, 238, 0.15);
+  --accent: #1a1a1a;
+  --border: #1a1a1a;
+  --border-light: #d4d4d4;
   
-  --border: #2a2a2a;
-  --border-hover: #3a3a3a;
-  
-  --gradient-accent: linear-gradient(135deg, #22d3ee 0%, #a78bfa 100%);
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 3rem;
+  --space-xl: 6rem;
 }
 
 * {
@@ -32,41 +38,31 @@ html {
 }
 
 body {
-  font-family: var(--font-primary);
+  font-family: var(--font-sans);
   background: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
-  line-height: 1.6;
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Background pattern */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(circle at 25% 25%, rgba(34, 211, 238, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(167, 139, 250, 0.03) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: -1;
+/* Selection */
+::selection {
+  background: var(--text-primary);
+  color: var(--bg-primary);
 }
 
+/* Links */
 a {
   color: inherit;
   text-decoration: none;
 }
 
-::selection {
-  background: var(--accent);
-  color: var(--bg-primary);
-}
-
-/* Scrollbar */
+/* Scrollbar - minimal */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -74,17 +70,41 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-hover);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
 }
 
-/* Syntax Highlighting (highlight.js) */
+/* Typography Utilities */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+/* Drop Cap for Article Openings */
+.dropCap::first-letter {
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  float: left;
+  line-height: 0.8;
+  padding-right: 0.5rem;
+  padding-top: 0.2rem;
+  font-weight: 600;
+}
+
+/* Horizontal Rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: var(--space-lg) 0;
+}
+
+/* Syntax Highlighting - Monochrome */
 .hljs {
-  background: var(--bg-card) !important;
+  background: var(--bg-secondary) !important;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 .hljs-keyword,
@@ -92,7 +112,8 @@ a {
 .hljs-built_in,
 .hljs-name,
 .hljs-tag {
-  color: #c678dd;
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 .hljs-string,
@@ -104,14 +125,15 @@ a {
 .hljs-template-variable,
 .hljs-type,
 .hljs-addition {
-  color: #98c379;
+  color: var(--text-secondary);
 }
 
 .hljs-comment,
 .hljs-quote,
 .hljs-deletion,
 .hljs-meta {
-  color: #5c6370;
+  color: var(--text-muted);
+  font-style: italic;
 }
 
 .hljs-keyword,
@@ -122,34 +144,36 @@ a {
 .hljs-section,
 .hljs-type,
 .hljs-selector-id {
-  font-weight: normal;
+  font-weight: 600;
 }
 
 .hljs-symbol,
 .hljs-bullet,
 .hljs-link {
-  color: #61aeee;
+  color: var(--text-primary);
 }
 
 .hljs-number,
 .hljs-regexp {
-  color: #d19a66;
+  color: var(--text-primary);
 }
 
 .hljs-variable,
 .hljs-template-variable,
 .hljs-attr {
-  color: #e06c75;
+  color: var(--text-secondary);
 }
 
 .hljs-function {
-  color: #61afef;
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 .hljs-params {
-  color: #abb2bf;
+  color: var(--text-secondary);
 }
 
 .hljs-class .hljs-title {
-  color: #e6c07b;
+  color: var(--text-primary);
+  font-weight: 600;
 }

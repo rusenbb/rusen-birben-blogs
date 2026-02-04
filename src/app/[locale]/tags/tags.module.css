@@ -1,35 +1,37 @@
 .main {
-  max-width: 900px;
+  max-width: 720px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: var(--space-lg) var(--space-md) var(--space-xl);
+  min-height: 100vh;
 }
 
 .header {
-  margin-bottom: 3rem;
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border);
 }
 
 .backLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  margin-bottom: 1.5rem;
-  transition: color 0.2s ease;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-sm);
+  display: inline-block;
+  transition: color 0.15s ease;
 }
 
 .backLink:hover {
-  color: var(--accent);
+  color: var(--text-primary);
 }
 
 .title {
+  font-family: var(--font-serif);
   font-size: 2.5rem;
-  font-weight: 700;
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-weight: 600;
   margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
 }
 
 .subtitle {
@@ -37,141 +39,136 @@
   font-size: 1.1rem;
 }
 
-.tagsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
+/* Tags List */
+.tagsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
 }
 
 .tagCard {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1.5rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  text-align: center;
-  transition: all 0.2s ease;
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--border-light);
+  transition: all 0.15s ease;
 }
 
 .tagCard:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
+  padding-left: var(--space-xs);
 }
 
-.tagIcon {
-  font-size: 1.5rem;
-  color: var(--accent);
+.tagCard:hover .tagName {
+  color: var(--text-muted);
 }
 
 .tagName {
-  font-size: 1.1rem;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
   font-weight: 600;
-  color: var(--text-primary);
+  transition: color 0.15s ease;
+}
+
+.tagName::before {
+  content: '#';
+  color: var(--text-muted);
+  margin-right: 0.25rem;
 }
 
 .tagCount {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem;
-  background: var(--bg-card);
-  border: 1px dashed var(--border);
-  border-radius: 12px;
-  color: var(--text-muted);
-}
-
-.emptyIcon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  opacity: 0.5;
-}
-
-.empty p {
-  font-size: 1rem;
-}
-
-/* Posts List Styles (for [tag] page) */
-.postsHeader {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-}
-
-.postsTitle {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.postsCount {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.postsGrid {
-  display: grid;
-  gap: 1.5rem;
-}
-
-.postCard {
-  display: block;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  transition: all 0.2s ease;
-}
-
-.postCard:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
-}
-
-.postHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
-}
-
-.postDate {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--text-muted);
 }
 
+/* Empty */
+.empty {
+  padding: var(--space-xl) 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+  border: 1px dashed var(--border-light);
+}
+
+/* Posts List Styles (for [tag] page) */
+.postsHeader {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.postsTitle {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.postsCount {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.postsList {
+  display: flex;
+  flex-direction: column;
+}
+
+.postCard {
+  display: block;
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--border-light);
+  transition: all 0.15s ease;
+}
+
+.postCard:hover {
+  padding-left: var(--space-xs);
+}
+
+.postCard:hover .postTitle {
+  color: var(--text-muted);
+}
+
+.postMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.postDate {
+  white-space: nowrap;
+}
+
 .postTags {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .tag {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  padding: 0.2rem 0.5rem;
-  background: var(--accent-glow);
-  color: var(--accent);
-  border-radius: 12px;
-  border: 1px solid rgba(34, 211, 238, 0.2);
+  color: var(--text-muted);
+}
+
+.tag::before {
+  content: '#';
 }
 
 .postTitle {
-  font-size: 1.1rem;
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
   font-weight: 600;
-  color: var(--text-primary);
+  line-height: 1.3;
   margin-bottom: 0.5rem;
+  transition: color 0.15s ease;
 }
 
 .postDescription {
@@ -181,8 +178,31 @@
 }
 
 .readMore {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   display: inline-block;
-  margin-top: 0.75rem;
-  font-size: 0.9rem;
-  color: var(--accent);
+  margin-top: var(--space-xs);
+  transition: color 0.15s ease;
+}
+
+.readMore:hover {
+  color: var(--text-primary);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .title {
+    font-size: 2rem;
+  }
+  
+  .tagName {
+    font-size: 1.1rem;
+  }
+  
+  .postTitle {
+    font-size: 1.25rem;
+  }
 }
