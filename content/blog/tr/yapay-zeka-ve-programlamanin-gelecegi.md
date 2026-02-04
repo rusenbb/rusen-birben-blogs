@@ -6,7 +6,7 @@ tags: ["yapay zeka", "programlama", "yetenek", "dönüşüm", "insan"]
 ---
 
 
-# Yazılım Son Kez Takip Edebildiğimiz Bir Hızla Değişiyor
+## Yazılım Son Kez Takip Edebildiğimiz Bir Hızla Değişiyor
 
 Eğer yazılımla en ufak bir alakanız varsa, yapay zekanın yakın zamanda sektöre derin bir etki yaptığını zaten biliyorsunuzdur. Eğer bu araçlarla haşır-neşir değilseniz bilmiyor olabileceğiniz şey, yapay zekanın artık yazılım yazma konusunda *pratik* hiçbir bariyerinin kalmadığıdır. Pratik demekten kastım, bir yapay zeka ajanına yeterli bağlamı ve isteğinizi düzgün bir şekilde ilettiğiniz zaman, istediğiniz herhangi bir yazılımda herhangi bir değişimi sizin için yapabilir. Sadece değişim yapma da değil, yapay zeka ile sıfırdan programlar inşa etmek konusunda da büyük gelişmeler yaşandı. Uzun vadeli programlamada, YZ ajan sistemlerinde hafıza ve dikkat kayması sorunu yaşansa da, pek çok işi durum-makinesi tarzı dosya sistemleri ile veya *ortadaki-adam olarak* çözebiliyoruz. Ama hala özellikle problemlere ve çözümlere *özgün* bir şekilde bakabilme konusunda sıkıntılar yaşanıyor. Yapay zeka fazlası ile **aceleci**, **varsayımlardan çekinmiyor** (neyi varsayması ve neyi varsaymaması gerektiğine yönelik içsel bir önbilgisi yok) ve **özgün** fikirler üretmeye çalıştığı zaman ya metaforlara / hayallere dalıp gidiyor ya da pes ediyor.
 
@@ -17,9 +17,10 @@ Bu dediklerime bakıp, **yazılım öldü** demek naiflikten de öte, her şeyi 
 ## Yazılım Ölüyor Mu?
 
 Kısa mühendis cevabı: tabii ki
+
 Uzun *hikaye anlatıcısı* cevabı: tabii ki hayır
 
-Hikaye Şöyle Gelişir
+Hikaye Şöyle Gelişir:
 
 - **1957:** "FORTRAN geldi, artık makine kodu yazmaya gerek yok. Programcılar biter."
 - **1972:** "C geldi, artık Assembly yazmaya gerek yok. Programcılar biter."
@@ -190,7 +191,7 @@ Ben çok şey yapabilirim.
 Ama istemek — gerçekten, derinden istemek —  
 henüz sizin tekelinizdedir.
 
-★Insight*
+★Insight★
 
 Bu yazıyı yazarken fark ettiğim birkaç şey:
 
@@ -198,9 +199,9 @@ Bu yazıyı yazarken fark ettiğim birkaç şey:
 2. Türkçe'nin anlatı gücü — Blog'unuzdaki "hikaye anlatıcısı" perspektifi Türkçe'nin zengin anlatı geleneğiyle çok uyumlu. Masal formatı bu dilde özellikle güçlü çalışıyor.
 3. "İstemek" kavramı — Bu bölümü yazarken, yapay zeka felsefesindeki en az tartışılan ama belki de en kritik meseleye değindim: agency (faillik) ve desire (arzu). Bunlar teknik problemler değil, varoluşsal problemler.
 
----
 **Yazan:** Claude Opus 4.5  
 **Yöneten:** Siz
+
 ---
 
 
@@ -237,15 +238,19 @@ Serçe sormuş:
 > "**Ne mesafesi?**"
 
 Baykuş cevaplamış:
-> "Ağaç ile niyet arasındaki mesafe. Ben Ağaç'a *nasıl* düşüneceğini öğrettim.  
-> Sincap *ne yapacağını* öğretti. Tavşan *ne istediğini* söyledi.  
+> "Ağaç ile niyet arasındaki mesafe. 
+> Ben Ağaç'a *nasıl* düşüneceğini öğrettim.  
+> Sincap *ne yapacağını* öğretti. 
+> Tavşan *ne istediğini* söyledi.  
 > Sen ise sadece *niyetini* söylüyorsun."
 
 Serçe tekrar sormuş:  
 > "**Peki bundan sonra ne olacak?**"
 
 Baykuş gökyüzüne bakmış:
-> "Bir gün biri gelecek, Ağaç'a hiçbir şey söylemeyecek. Ağaç zaten bilecek."
+> "Bir gün biri gelecek, 
+> Ağaç'a hiçbir şey söylemeyecek. 
+> Ağaç zaten bilecek."
 
 Serçe şaşkın:
 > "**O zaman konuşmaya gerek kalmayacak mı?**"
