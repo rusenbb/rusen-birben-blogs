@@ -6,9 +6,17 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeStringify from 'rehype-stringify';
+import rehypeSlug from 'rehype-slug';
+import { visit } from 'unist-util-visit';
 import { Locale, defaultLocale, locales } from './i18n';
 
 const contentDirectory = path.join(process.cwd(), 'content/blog');
+
+export interface Heading {
+  level: number;
+  text: string;
+  id: string;
+}
 
 export interface BlogPost {
   slug: string;
@@ -18,6 +26,7 @@ export interface BlogPost {
   description: string;
   tags?: string[];
   content: string;
+  headings: Heading[];
 }
 
 export interface BlogPostMeta {
@@ -88,12 +97,34 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogP
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
+  // Extract headings for table of contents
+  const headings: Heading[] = [];
+  
   const processedContent = await unified()
     .use(remarkParse)
     .use(remarkRehype)
+    .use(rehypeSlug)
+    .use(() => (tree: any) => {
+      // Extract headings after slug is added
+      visit(tree, 'element', (node: any) => {
+        if (node.tagName === 'h2' || node.tagName === 'h3') {
+          const level = parseInt(node.tagName[1]);
+          const text = node.children
+            ?.filter((child: any) => child.type === 'text')
+            .map((child: any) => child.value)
+            .join('') || '';
+          const id = node.properties?.id || '';
+          
+          if (text && id) {
+            headings.push({ level, text, id });
+          }
+        }
+      });
+    })
     .use(rehypeHighlight)
     .use(rehypeStringify)
     .process(content);
+  
   const contentHtml = processedContent.toString();
 
   return {
@@ -104,6 +135,7 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogP
     description: data.description,
     tags: data.tags,
     content: contentHtml,
+    headings,
   };
 }
 
