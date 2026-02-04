@@ -6,7 +6,7 @@ tags: ["yapay zeka", "programlama", "yetenek", "dönüşüm", "insan"]
 ---
 
 
-## Yazılım Son Kez Takip Edebildiğimiz Bir Hızla Değişiyor
+# Yazılım Son Kez Takip Edebildiğimiz Bir Hızla Değişiyor
 
 Eğer yazılımla en ufak bir alakanız varsa, yapay zekanın yakın zamanda sektöre derin bir etki yaptığını zaten biliyorsunuzdur. Eğer bu araçlarla haşır-neşir değilseniz bilmiyor olabileceğiniz şey, yapay zekanın artık yazılım yazma konusunda *pratik* hiçbir bariyerinin kalmadığıdır. Pratik demekten kastım, bir yapay zeka ajanına yeterli bağlamı ve isteğinizi düzgün bir şekilde ilettiğiniz zaman, istediğiniz herhangi bir yazılımda herhangi bir değişimi sizin için yapabilir. Sadece değişim yapma da değil, yapay zeka ile sıfırdan programlar inşa etmek konusunda da büyük gelişmeler yaşandı. Uzun vadeli programlamada, YZ ajan sistemlerinde hafıza ve dikkat kayması sorunu yaşansa da, pek çok işi durum-makinesi tarzı dosya sistemleri ile veya *ortadaki-adam olarak* çözebiliyoruz. Ama hala özellikle problemlere ve çözümlere *özgün* bir şekilde bakabilme konusunda sıkıntılar yaşanıyor. Yapay zeka fazlası ile **aceleci**, **varsayımlardan çekinmiyor** (neyi varsayması ve neyi varsaymaması gerektiğine yönelik içsel bir önbilgisi yok) ve **özgün** fikirler üretmeye çalıştığı zaman ya metaforlara / hayallere dalıp gidiyor ya da pes ediyor.
 
@@ -238,7 +238,7 @@ Serçe sormuş:
 > "**Ne mesafesi?**"
 
 Baykuş cevaplamış:
-> "Ağaç ile niyet arasındaki mesafe. 
+> "Ağaç ile niyet arasındaki mesafe.  
 > Ben Ağaç'a *nasıl* düşüneceğini öğrettim.  
 > Sincap *ne yapacağını* öğretti.  
 > Tavşan *ne istediğini* söyledi.  
