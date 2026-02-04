@@ -48,7 +48,11 @@ export default async function BlogPostPage({ params }: Props) {
                 {post.headings.map((heading) => (
                   <li 
                     key={heading.id} 
-                    className={`${styles.tocItem} ${heading.level === 3 ? styles.tocItemSub : ''}`}
+                    className={`
+                      ${styles.tocItem} 
+                      ${heading.level === 1 ? styles.tocItemLevel1 : ''}
+                      ${heading.level === 3 ? styles.tocItemSub : ''}
+                    `}
                   >
                     <a href={`#${heading.id}`} className={styles.tocLink}>
                       {heading.text}

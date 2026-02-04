@@ -105,9 +105,9 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogP
     .use(remarkRehype)
     .use(rehypeSlug)
     .use(() => (tree: any) => {
-      // Extract headings after slug is added
+      // Extract headings after slug is added (h1, h2, h3)
       visit(tree, 'element', (node: any) => {
-        if (node.tagName === 'h2' || node.tagName === 'h3') {
+        if (node.tagName === 'h1' || node.tagName === 'h2' || node.tagName === 'h3') {
           const level = parseInt(node.tagName[1]);
           const text = node.children
             ?.filter((child: any) => child.type === 'text')
