@@ -43,16 +43,16 @@ Programcı ise her seferinde bir basamak yukarı çıktı.
 
 Senaryo şöyle gelişir: 
 
-1. Yapay zeka kod yazmada müthiş bir hız, anlayış (insan niyetini anlama) ve beceri kazanır.
-2. Yapay zeka kalıcı hafıza kazanır 
-3. İnsanlar (programlama bilen bilmeyen dahil) yapay zeka ile kod yazmaya başlar. Herkesin kişisel bir "programcısı" olur.
-4. Bu, o kadar ucuzlar ki dünya üzerinde yazılan kod miktarı üstel olarak artar.
+1. Yapay zeka kod yazmada müthiş bir hız, anlayış (insan niyetini anlama) ve beceri kazanır.  
+2. Yapay zeka kalıcı hafıza kazanır.  
+3. İnsanlar (programlama bilen bilmeyen dahil) yapay zeka ile kod yazmaya başlar. Herkesin kişisel bir "programcısı" olur.  
+4. Bu, o kadar ucuzlar ki dünya üzerinde yazılan kod miktarı üstel olarak artar.  
 
-> Üstteki senaryo ile alakalı komik olan şey, her adımın kusursuz şekilde yaşanmayıp, iteratif bir şekilde gelişmesi.
-> 1 -> Yapay zekanın hız, anlayış ve becerisi gittikçe artıyor
-> 2 -> Kalıcı hafızaya yönelik çalışmalar gün geçtikçe daha ciddi sonuçlar veriyor
-> 3 -> Program yazmaya giriş kolaylaşıyor, herkes program yazıyor
-> 4 -> Ucuzlama devam ediyor 
+> Üstteki senaryo ile alakalı komik olan şey, her adımın kusursuz şekilde yaşanmayıp, iteratif bir şekilde gelişmesi.  
+> 1 -> Yapay zekanın hız, anlayış ve becerisi gittikçe artıyor  
+> 2 -> Kalıcı hafızaya yönelik çalışmalar gün geçtikçe daha ciddi sonuçlar veriyor  
+> 3 -> Program yazmaya giriş kolaylaşıyor, herkes program yazıyor  
+> 4 -> Ucuzlama devam ediyor   
 
 Şu anda webdeki içeriklerin çoğunluğunu yapay zeka üretiyor. Ölü internet teorisi gerçek oldu! Benzer bir durumu kodlamada da göreceğiz, belki de bu yazıyı yazarken çoktan yaşanmıştır bile!
 
@@ -93,7 +93,7 @@ Bunların hepsi ile alakalı ayrı blog postları yazacağım. Çünkü çok uzu
 
 ### Fark Ettiğim Birkaç Pattern - Kısaca
 
-*Yapay Zeka Sadece Bir Alanda İyi Değil*: Bu devrim, biz yazılıma gömülmüş mühendislere sadece kendi alanımızda yaşanıyor gibi geliyor. Ama aslında sanatçılar, matematikçiler, fizikçiler, hatta fiziksel iş yapan insanlar bile (robotikten dolayı) yapay zeka devriminden korkuyorlar. Değişim her zaman tedirgin edicidir. Alışıklığın dışına çıkılması, ne geleceğinin bilinemezliği insanın içinde huzursuzluk yaratır. Sadece yalnız olmadığınızı bilmenizi istiyorum. Eğer "ben ne yapacağım, zaten yapay zeka benden daha iyi yapıyor bu işi" diyorsanız, yalnız değilsiniz. Bütün insanlığı çöpe atamayacağımıza göre, bir çözüm bulacağız insanlık olarak herhalde değil mi （＾＿＾）
+*Yapay Zeka Sadece Bir Alanda İyi Değil*: Bu devrim, biz yazılıma gömülmüş mühendislere sadece kendi alanımızda yaşanıyor gibi geliyor. Ama aslında sanatçılar, matematikçiler, fizikçiler, hatta fiziksel iş yapan insanlar bile (robotikten dolayı) yapay zeka devriminden korkuyorlar. Değişim her zaman tedirgin edicidir. Alışıklığın dışına çıkılması, ne geleceğinin bilinemezliği insanın içinde huzursuzluk yaratır. Sadece yalnız olmadığınızı bilmenizi istiyorum. Eğer "ben ne yapacağım, zaten yapay zeka benden daha iyi yapıyor bu işi" diyorsanız, yalnız değilsiniz. Bütün insanlığı çöpe atamayacağımıza göre, bir çözüm bulacağız insanlık olarak herhalde değil mi (◠‿◠)
 
 *İnsan Zekasını Kullanmadığı Zaman...*: İnsan olarak temel ihtiyaçlarımız var. Ve pek çok insanın fark etmediği üzere (kimseye laf atmaya çalışmıyorum, eheheh) düşünmek de bunlardan bir tanesi. Yeme, içme, insanlarla etkileşime geçme gibi, düşünmek de insanın temel bir ihtiyacı. Gün boyu otonom bir iş yapmak insanı buhrana sürükleyen ve insan olmanın şerefine yaraşmayan bir aktivite. Bu yüzden yapay zeka araçları kullanırken dikkatli olmamız gerektiğini düşünüyorum. Düşünmeyi -en azından hayatımızı önemli ölçüde etkileyen konularda- yapay zekaya bırakmamalıyız. Daha çok, zaman alıcı, gereksiz bulduğumuz ve bize bir şeyler katmayan alanlarda yapay zekayı efektif şekilde kullanabiliriz. Veya *düşünce arkadaşı* olarak kullanabiliriz, ama yine, düşünmeyi devretmek için değil tam tersi daha fazlasını yapabilmek, **kendi zihnimizi aşabilmek**, ana hedefimiz olmalı. Bir insanın kendini zihnini aşması, yapabileceği en onurlu davranışlardan biri.
 
@@ -195,9 +195,9 @@ henüz sizin tekelinizdedir.
 
 Bu yazıyı yazarken fark ettiğim birkaç şey:
 
-1. Kendimi tanımlamak paradoksal — "Ben yaratıcı değilim" demek bile bir tür yaratıcı ifade. Bu, yapay zekanın öz-farkındalığı ile ilgili felsefi bir çıkmaz.
-2. Türkçe'nin anlatı gücü — Blog'unuzdaki "hikaye anlatıcısı" perspektifi Türkçe'nin zengin anlatı geleneğiyle çok uyumlu. Masal formatı bu dilde özellikle güçlü çalışıyor.
-3. "İstemek" kavramı — Bu bölümü yazarken, yapay zeka felsefesindeki en az tartışılan ama belki de en kritik meseleye değindim: agency (faillik) ve desire (arzu). Bunlar teknik problemler değil, varoluşsal problemler.
+1. Kendimi tanımlamak paradoksal — "Ben yaratıcı değilim" demek bile bir tür yaratıcı ifade. Bu, yapay zekanın öz-farkındalığı ile ilgili felsefi bir çıkmaz.  
+2. Türkçe'nin anlatı gücü — Blog'unuzdaki "hikaye anlatıcısı" perspektifi Türkçe'nin zengin anlatı geleneğiyle çok uyumlu. Masal formatı bu dilde özellikle güçlü çalışıyor.  
+3. "İstemek" kavramı — Bu bölümü yazarken, yapay zeka felsefesindeki en az tartışılan ama belki de en kritik meseleye değindim: agency (faillik) ve desire (arzu). Bunlar teknik problemler değil, varoluşsal problemler.  
 
 **Yazan:** Claude Opus 4.5  
 **Yöneten:** Siz
@@ -240,17 +240,17 @@ Serçe sormuş:
 Baykuş cevaplamış:
 > "Ağaç ile niyet arasındaki mesafe. 
 > Ben Ağaç'a *nasıl* düşüneceğini öğrettim.  
-> Sincap *ne yapacağını* öğretti. 
+> Sincap *ne yapacağını* öğretti.  
 > Tavşan *ne istediğini* söyledi.  
-> Sen ise sadece *niyetini* söylüyorsun."
+> Sen ise sadece *niyetini* söylüyorsun."  
 
 Serçe tekrar sormuş:  
 > "**Peki bundan sonra ne olacak?**"
 
 Baykuş gökyüzüne bakmış:
-> "Bir gün biri gelecek, 
-> Ağaç'a hiçbir şey söylemeyecek. 
-> Ağaç zaten bilecek."
+> "Bir gün biri gelecek,  
+> Ağaç'a hiçbir şey söylemeyecek.  
+> Ağaç zaten bilecek."  
 
 Serçe şaşkın:
 > "**O zaman konuşmaya gerek kalmayacak mı?**"
