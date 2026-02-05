@@ -27,4 +27,7 @@
 .placeholder {
   width: 2.5rem;
   height: 2.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
 }
