@@ -1,0 +1,329 @@
+---
+title: "MDX Features Example (NOT FOR PUBLICATION)"
+date: "2099-01-01"
+description: "This is an example file showing all available MDX components. DO NOT PUBLISH - FOR REFERENCE ONLY!"
+draft: true
+---
+
+# 🎨 MDX Features Showcase
+
+This file demonstrates all the available MDX components for your blog.
+**⚠️ DO NOT PUBLISH THIS FILE - It's just for reference!**
+
+---
+
+## 1. Callout Boxes
+
+Use callouts to highlight important information:
+
+### Info Callout
+<Callout type="info">
+  This is an informational callout. Use it for general tips and helpful context.
+</Callout>
+
+### Tip Callout
+<Callout type="tip" title="Pro Tip">
+  Here's a helpful tip! You can customize the title too.
+</Callout>
+
+### Warning Callout
+<Callout type="warning">
+  Be careful! This warns users about potential issues.
+</Callout>
+
+### Error Callout
+<Callout type="error">
+  Something went wrong. Use this for critical errors or important caveats.
+</Callout>
+
+### Success Callout
+<Callout type="success">
+  Great job! Use this for positive reinforcement or success states.
+</Callout>
+
+---
+
+## 2. Code Blocks
+
+### Basic Code Block
+
+<CodeBlock>
+{`console.log("Hello World");`}
+</CodeBlock>
+
+### With Filename
+
+<CodeBlock filename="hello.js">
+{`function greet(name) {
+  return \`Hello, \${name}!\`;
+}
+
+console.log(greet("World"));`}
+</CodeBlock>
+
+### With Line Highlighting
+
+<CodeBlock filename="example.py" highlightLines="2,4-6">
+{`def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+# Usage
+print(fibonacci(10))`}
+</CodeBlock>
+
+### Different Languages
+
+<CodeBlock filename="styles.css">
+{`.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}`}
+</CodeBlock>
+
+---
+
+## 3. YouTube Videos
+
+### Standard Embed
+
+<YouTube videoId="dQw4w9WgXcQ" />
+
+### With Custom Title
+
+<YouTube videoId="jNQXAC9IVRw" title="Me at the zoo - The first YouTube video" />
+
+### Starting at Specific Time
+
+<YouTube videoId="dQw4w9WgXcQ" start="30" />
+
+---
+
+## 4. Mermaid Diagrams
+
+### Flowchart
+
+<Mermaid chart={`
+graph TD
+    A[Start] --> B{Is it working?}
+    B -->|Yes| C[Great! Deploy it]
+    B -->|No| D[Debug]
+    D --> E[Fix bugs]
+    E --> B
+    C --> F[Celebrate]
+`} />
+
+### Sequence Diagram
+
+<Mermaid chart={`
+sequenceDiagram
+    participant User
+    participant Browser
+    participant Server
+    
+    User->>Browser: Click link
+    Browser->>Server: HTTP GET /page
+    Server-->>Browser: HTML Response
+    Browser->>Browser: Render page
+    Browser-->>User: Display content
+`} />
+
+### Class Diagram
+
+<Mermaid chart={`
+classDiagram
+    class Animal {
+        +String name
+        +makeSound()
+    }
+    class Dog {
+        +fetch()
+    }
+    class Cat {
+        +climb()
+    }
+    Animal <|-- Dog
+    Animal <|-- Cat
+`} />
+
+### Gantt Chart
+
+<Mermaid chart={`
+gantt
+    title Project Timeline
+    dateFormat  YYYY-MM-DD
+    section Planning
+    Research           :done, a1, 2024-01-01, 7d
+    Design             :active, a2, after a1, 5d
+    section Development
+    Implementation     :a3, after a2, 14d
+    Testing            :a4, after a3, 7d
+`} />
+
+### State Diagram
+
+<Mermaid chart={`
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Loading: fetch data
+    Loading --> Success: data received
+    Loading --> Error: network error
+    Success --> Idle: reset
+    Error --> Loading: retry
+`} />
+
+---
+
+## 5. Images with Lightbox
+
+### Standard Image
+
+<Image 
+  src="/images/example.png" 
+  alt="Example image with description" 
+  width={800} 
+  height={400} 
+/>
+
+### With Priority Loading (Above the fold)
+
+<Image 
+  src="/images/hero.png" 
+  alt="Hero image" 
+  width={1200} 
+  height={600}
+  priority 
+/>
+
+### Click to zoom! Try clicking any image above ☝️
+
+---
+
+## 6. Regular Markdown (Styled)
+
+### Typography
+
+# Heading 1
+## Heading 2
+### Heading 3
+
+**Bold text** and *italic text* and ~~strikethrough~~
+
+### Lists
+
+**Unordered list:**
+- Item 1
+- Item 2
+  - Nested item 2.1
+  - Nested item 2.2
+- Item 3
+
+**Ordered list:**
+1. First step
+2. Second step
+3. Third step
+
+### Blockquote
+
+> "The only way to do great work is to love what you do." - Steve Jobs
+
+### Horizontal Rule
+
+---
+
+### Tables
+
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Dark Mode | ✅ | Toggle in settings |
+| i18n | ✅ | EN/TR supported |
+| RSS | ✅ | Auto-generated |
+| Series | ✅ | Group related posts |
+
+### Inline Code
+
+Use `const` for constants and `let` for variables in JavaScript.
+
+---
+
+## 7. Math (KaTeX)
+
+Inline math: $E = mc^2$
+
+Display math:
+
+$$
+\sum_{i=1}^{n} x_i = x_1 + x_2 + \cdots + x_n
+$$
+
+$$
+\frac{d}{dx}[f(g(x))] = f'(g(x)) \cdot g'(x)
+$$
+
+---
+
+## 8. Combined Example
+
+Here's a real-world example combining multiple components:
+
+<Callout type="info">
+  In this tutorial, we'll build a simple React component. Make sure you have Node.js installed!
+</Callout>
+
+First, create a new file:
+
+<CodeBlock filename="Hello.jsx" highlightLines="4-6">
+{`import React from 'react';
+
+function Hello({ name }) {
+  return (
+    <div className="hello">
+      <h1>Hello, {name}!</h1>
+    </div>
+  );
+}
+
+export default Hello;`}
+</CodeBlock>
+
+The component hierarchy looks like this:
+
+<Mermaid chart={`
+graph TD
+    A[App] --> B[Hello]
+    B --> C[h1]
+    B --> D[div]
+`} />
+
+Here's the result:
+
+<Image 
+  src="/images/hello-component.png" 
+  alt="Hello component preview" 
+  width={600} 
+  height={300}
+/>
+
+<Callout type="tip">
+  Want to learn more? Check out the <a href="https://react.dev">React documentation</a>.
+</Callout>
+
+---
+
+## Summary
+
+Available MDX components:
+
+| Component | Usage | Props |
+|-----------|-------|-------|
+| `Callout` | `<Callout type="info">` | `type`: info/warning/error/success/tip, `title` (optional) |
+| `CodeBlock` | `<CodeBlock filename="...">` | `filename`, `highlightLines` |
+| `YouTube` | `<YouTube videoId="...">` | `videoId`, `title`, `start` |
+| `Mermaid` | `<Mermaid chart={...}>` | `chart` (Mermaid syntax string) |
+| `Image` | `<Image src="..." />` | `src`, `alt`, `width`, `height`, `priority` |
+
+**Note:** All these features work in both light and dark mode! 🌓
