@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 import { useTranslation } from './TranslationProvider';
-import { Locale } from '@/lib/i18n';
 
 interface Props {
   translationUrl: string | null;

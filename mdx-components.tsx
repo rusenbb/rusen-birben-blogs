@@ -1,17 +1,11 @@
 import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image';
 import { Callout } from './src/components/Callout';
-import { CodeBlock } from './src/components/CodeBlock';
-import { YouTubeEmbed } from './src/components/YouTubeEmbed';
-import { MermaidDiagram } from './src/components/MermaidDiagram';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Custom components
     Callout,
-    CodeBlock,
-    YouTube: YouTubeEmbed,
-    Mermaid: MermaidDiagram,
     
     // Override default HTML elements
     img: (props) => (
@@ -24,10 +18,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         style={{ maxWidth: '100%', height: 'auto', borderRadius: '0.5rem' }}
       />
     ),
-    pre: (props) => {
-      const { children, ...rest } = props;
-      return <CodeBlock {...rest}>{children}</CodeBlock>;
-    },
     
     // Add styling to common elements
     h1: (props) => <h1 style={{ marginTop: '2rem', marginBottom: '1rem' }} {...props} />,

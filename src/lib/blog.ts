@@ -10,7 +10,7 @@ import rehypeHighlight from 'rehype-highlight';
 import rehypeSlug from 'rehype-slug';
 import rehypeStringify from 'rehype-stringify';
 import { visit } from 'unist-util-visit';
-import { Locale, defaultLocale, locales } from './i18n';
+import { Locale, locales } from './i18n';
 import 'katex/dist/katex.min.css';
 
 const contentDirectory = path.join(process.cwd(), 'content/blog');
