@@ -1,6 +1,6 @@
 import styles from './page.module.css';
 import Link from 'next/link';
-import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight, FaRss } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight, FaRss, FaClock } from 'react-icons/fa';
 import { Locale, getDictionary } from '@/lib/i18n';
 import { getAllPosts, getAllTags } from '@/lib/blog';
 
@@ -90,6 +90,10 @@ export default function Home({ params }: Props) {
               <Link key={post.slug} href={`/${params.locale}/blog/${post.slug}`} className={styles.blogCard}>
                 <div className={styles.blogMeta}>
                   <span className={styles.blogDate}>{post.date}</span>
+                      <span className={styles.blogReadingTime}>
+                        <FaClock style={{ fontSize: '0.7em' }} />
+                        {post.readingTime} min
+                      </span>
                   {post.tags && post.tags.length > 0 && (
                     <div className={styles.blogTags}>
                       {post.tags.map((tag) => (

@@ -3,6 +3,8 @@ import { Playfair_Display, Inter, IBM_Plex_Mono } from 'next/font/google';
 import '../globals.css';
 import { Locale, locales, getDictionary } from '@/lib/i18n';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { AccessibilitySettings } from '@/components/AccessibilitySettings';
+import { generateMetadata as generateSEOMetadata, generateWebsiteStructuredData } from '@/lib/seo';
 import styles from './layout.module.css';
 
 const playfair = Playfair_Display({
@@ -31,11 +33,11 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { locale: Locale } }): Promise<Metadata> {
   const dict = getDictionary(params.locale);
   
-  return {
-    title: `${dict.hero.name} | ${dict.hero.title}`,
+  return generateSEOMetadata({
+    title: dict.hero.name,
     description: dict.hero.bio,
-    keywords: ['AI Engineer', 'Data Engineer', 'NLP', 'Machine Learning', 'Istanbul Technical University'],
-  };
+    locale: params.locale,
+  });
 }
 
 export default function LocaleLayout({
@@ -45,11 +47,20 @@ export default function LocaleLayout({
   children: React.ReactNode;
   params: { locale: Locale };
 }) {
+  const structuredData = generateWebsiteStructuredData();
+  
   return (
-    <html lang={params.locale}>
+    <html lang={params.locale} suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </head>
       <body className={`${playfair.variable} ${inter.variable} ${ibmPlexMono.variable}`}>
-        <div className={styles.langSwitcherContainer}>
+        <div className={styles.controlsContainer}>
           <LanguageSwitcher currentLocale={params.locale} />
+          <AccessibilitySettings />
         </div>
         {children}
       </body>

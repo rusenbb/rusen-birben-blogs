@@ -20,7 +20,7 @@
 .option::after {
   content: '/';
   margin-left: 0.5rem;
-  color: var(--border-light);
+  color: var(--border);
 }
 
 .option:last-child::after {

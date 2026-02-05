@@ -4,11 +4,14 @@ import matter from 'gray-matter';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 import rehypeHighlight from 'rehype-highlight';
-import rehypeStringify from 'rehype-stringify';
 import rehypeSlug from 'rehype-slug';
+import rehypeStringify from 'rehype-stringify';
 import { visit } from 'unist-util-visit';
 import { Locale, defaultLocale, locales } from './i18n';
+import 'katex/dist/katex.min.css';
 
 const contentDirectory = path.join(process.cwd(), 'content/blog');
 
@@ -25,8 +28,11 @@ export interface BlogPost {
   date: string;
   description: string;
   tags?: string[];
+  series?: string;
+  seriesOrder?: number;
   content: string;
   headings: Heading[];
+  readingTime: number;
 }
 
 export interface BlogPostMeta {
@@ -36,6 +42,14 @@ export interface BlogPostMeta {
   date: string;
   description: string;
   tags?: string[];
+  series?: string;
+  seriesOrder?: number;
+  readingTime: number;
+}
+
+export interface Series {
+  name: string;
+  posts: BlogPostMeta[];
 }
 
 function getLocaleDirectory(locale: Locale): string {
@@ -49,6 +63,12 @@ function ensureDirectoryExists(locale: Locale) {
   }
 }
 
+function calculateReadingTime(content: string): number {
+  const wordsPerMinute = 200;
+  const words = content.trim().split(/\s+/).length;
+  return Math.ceil(words / wordsPerMinute);
+}
+
 export function getAllPosts(locale: Locale): BlogPostMeta[] {
   ensureDirectoryExists(locale);
   
@@ -60,12 +80,12 @@ export function getAllPosts(locale: Locale): BlogPostMeta[] {
 
   const fileNames = fs.readdirSync(postsDirectory);
   const posts = fileNames
-    .filter((fileName) => fileName.endsWith('.md'))
+    .filter((fileName) => fileName.endsWith('.md') || fileName.endsWith('.mdx'))
     .map((fileName) => {
-      const slug = fileName.replace(/\.md$/, '');
+      const slug = fileName.replace(/\.(md|mdx)$/, '');
       const fullPath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const { data } = matter(fileContents);
+      const { data, content } = matter(fileContents);
 
       return {
         slug,
@@ -74,6 +94,9 @@ export function getAllPosts(locale: Locale): BlogPostMeta[] {
         date: data.date,
         description: data.description,
         tags: data.tags,
+        series: data.series,
+        seriesOrder: data.seriesOrder,
+        readingTime: calculateReadingTime(content),
       };
     });
 
@@ -88,7 +111,11 @@ export function getLatestPosts(locale: Locale, count: number): BlogPostMeta[] {
 export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogPost | null> {
   ensureDirectoryExists(locale);
   
-  const fullPath = path.join(getLocaleDirectory(locale), `${slug}.md`);
+  // Try .md first, then .mdx
+  let fullPath = path.join(getLocaleDirectory(locale), `${slug}.md`);
+  if (!fs.existsSync(fullPath)) {
+    fullPath = path.join(getLocaleDirectory(locale), `${slug}.mdx`);
+  }
   
   if (!fs.existsSync(fullPath)) {
     return null;
@@ -102,7 +129,8 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogP
   
   const processedContent = await unified()
     .use(remarkParse)
-    .use(remarkRehype)
+    .use(remarkMath)
+    .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeSlug)
     .use(() => (tree: any) => {
       // Extract headings after slug is added (h1, h2, h3)
@@ -121,8 +149,9 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogP
         }
       });
     })
+    .use(rehypeKatex)
     .use(rehypeHighlight)
-    .use(rehypeStringify)
+    .use(rehypeStringify, { allowDangerousHtml: true })
     .process(content);
   
   const contentHtml = processedContent.toString();
@@ -134,8 +163,11 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogP
     date: data.date,
     description: data.description,
     tags: data.tags,
+    series: data.series,
+    seriesOrder: data.seriesOrder,
     content: contentHtml,
     headings,
+    readingTime: calculateReadingTime(content),
   };
 }
 
@@ -149,11 +181,11 @@ export function getAllPostSlugs(): { locale: Locale; slug: string }[] {
     if (fs.existsSync(postsDirectory)) {
       const fileNames = fs.readdirSync(postsDirectory);
       fileNames
-        .filter((fileName) => fileName.endsWith('.md'))
+        .filter((fileName) => fileName.endsWith('.md') || fileName.endsWith('.mdx'))
         .forEach((fileName) => {
           slugs.push({
             locale,
-            slug: fileName.replace(/\.md$/, ''),
+            slug: fileName.replace(/\.(md|mdx)$/, ''),
           });
         });
     }
@@ -195,4 +227,40 @@ export function getAllTagSlugs(): { locale: Locale; tag: string }[] {
   }
 
   return tagSlugs;
+}
+
+// Series/Collections functions
+export function getAllSeries(locale: Locale): Series[] {
+  const posts = getAllPosts(locale);
+  const seriesMap = new Map<string, BlogPostMeta[]>();
+
+  for (const post of posts) {
+    if (post.series) {
+      const existing = seriesMap.get(post.series) || [];
+      existing.push(post);
+      seriesMap.set(post.series, existing);
+    }
+  }
+
+  // Sort posts within each series by seriesOrder
+  seriesMap.forEach((seriesPosts, name) => {
+    seriesPosts.sort((a, b) => (a.seriesOrder || 0) - (b.seriesOrder || 0));
+    seriesMap.set(name, seriesPosts);
+  });
+
+  return Array.from(seriesMap.entries())
+    .map(([name, posts]) => ({ name, posts }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export function getPostsBySeries(locale: Locale, seriesName: string): BlogPostMeta[] {
+  const posts = getAllPosts(locale);
+  return posts
+    .filter((post) => post.series === seriesName)
+    .sort((a, b) => (a.seriesOrder || 0) - (b.seriesOrder || 0));
+}
+
+export function getAllSeriesSlugs(locale: Locale): string[] {
+  const series = getAllSeries(locale);
+  return series.map((s) => s.name);
 }
