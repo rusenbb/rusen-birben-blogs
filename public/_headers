@@ -1,0 +1,41 @@
+# Cloudflare Pages headers configuration
+# https://developers.cloudflare.com/pages/platform/headers/
+
+# HTML files - no cache (always fresh)
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# JSON files - no cache
+/*.json
+  Cache-Control: public, max-age=0, must-revalidate
+
+# XML files - no cache
+/*.xml
+  Cache-Control: public, max-age=0, must-revalidate
+
+# TXT files - no cache
+/*.txt
+  Cache-Control: public, max-age=0, must-revalidate
+
+# CSS and JS files - long cache (they have hashed filenames)
+/_next/static/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/_next/static/chunks/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/_next/static/media/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images - medium cache
+/*.png
+  Cache-Control: public, max-age=86400
+
+/*.jpg
+  Cache-Control: public, max-age=86400
+
+/*.svg
+  Cache-Control: public, max-age=86400
+
+/*.ico
+  Cache-Control: public, max-age=86400

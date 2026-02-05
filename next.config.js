@@ -5,6 +5,10 @@ const nextConfig = {
     unoptimized: true,
   },
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  // Add trailingSlash for better CDN compatibility
+  trailingSlash: true,
+  // Asset prefix for cache busting (uncomment if needed)
+  // assetPrefix: process.env.NODE_ENV === 'production' ? undefined : undefined,
 };
 
 const withMDX = require('@next/mdx')({
