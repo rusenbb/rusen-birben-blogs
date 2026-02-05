@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { PrefetchLink } from './PrefetchLink';
 import { BlogPostMeta } from '@/lib/blog';
 import { Locale } from '@/lib/i18n';
 import styles from './Series.module.css';
@@ -41,7 +41,7 @@ export function Series({ seriesName, posts, currentSlug, locale }: SeriesProps) 
           const isCompleted = index < currentIndex;
           
           return (
-            <Link
+            <PrefetchLink
               key={post.slug}
               href={`/${locale}/blog/${post.slug}`}
               className={`${styles.item} ${isCurrent ? styles.current : ''} ${isCompleted ? styles.completed : ''}`}
@@ -58,7 +58,7 @@ export function Series({ seriesName, posts, currentSlug, locale }: SeriesProps) 
               </span>
               <span className={styles.itemTitle}>{post.title}</span>
               {isCurrent && <span className={styles.currentIndicator}>You are here</span>}
-            </Link>
+            </PrefetchLink>
           );
         })}
       </nav>
@@ -66,7 +66,7 @@ export function Series({ seriesName, posts, currentSlug, locale }: SeriesProps) 
       {/* Navigation buttons */}
       <div className={styles.navigation}>
         {prevPost ? (
-          <Link
+          <PrefetchLink
             href={`/${locale}/blog/${prevPost.slug}`}
             className={styles.navButton}
           >
@@ -77,13 +77,13 @@ export function Series({ seriesName, posts, currentSlug, locale }: SeriesProps) 
               <span className={styles.navLabel}>Previous</span>
               <span className={styles.navTitle}>{prevPost.title}</span>
             </span>
-          </Link>
+          </PrefetchLink>
         ) : (
           <div />
         )}
         
         {nextPost ? (
-          <Link
+          <PrefetchLink
             href={`/${locale}/blog/${nextPost.slug}`}
             className={`${styles.navButton} ${styles.next}`}
           >
@@ -94,7 +94,7 @@ export function Series({ seriesName, posts, currentSlug, locale }: SeriesProps) 
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <polyline points="9 18 15 12 9 6" />
             </svg>
-          </Link>
+          </PrefetchLink>
         ) : (
           <div />
         )}

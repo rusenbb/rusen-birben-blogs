@@ -1,5 +1,6 @@
 import styles from './page.module.css';
 import Link from 'next/link';
+import { PrefetchLink } from '@/components/PrefetchLink';
 import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight, FaRss, FaClock } from 'react-icons/fa';
 import { Locale, getDictionary } from '@/lib/i18n';
 import { getAllPosts, getAllTags } from '@/lib/blog';
@@ -71,9 +72,9 @@ export default function Home({ params }: Props) {
           </div>
           <div className={styles.tagsContainer}>
             {allTags.slice(0, 8).map(({ tag, count }) => (
-              <Link key={tag} href={`/${params.locale}/tags/${slugifyTag(tag)}`} className={styles.tagChip}>
+              <PrefetchLink key={tag} href={`/${params.locale}/tags/${slugifyTag(tag)}`} className={styles.tagChip}>
                 {tag} <span className={styles.tagCount}>({count})</span>
-              </Link>
+              </PrefetchLink>
             ))}
           </div>
         </section>
@@ -87,7 +88,7 @@ export default function Home({ params }: Props) {
         {allPosts.length > 0 ? (
           <div className={styles.blogGrid}>
             {allPosts.map((post) => (
-              <Link key={post.slug} href={`/${params.locale}/blog/${post.slug}`} className={styles.blogCard}>
+              <PrefetchLink key={post.slug} href={`/${params.locale}/blog/${post.slug}`} className={styles.blogCard}>
                 <div className={styles.blogMeta}>
                   <span className={styles.blogDate}>{post.date}</span>
                       <span className={styles.blogReadingTime}>
@@ -104,7 +105,7 @@ export default function Home({ params }: Props) {
                 </div>
                 <h3 className={styles.blogTitle}>{post.title}</h3>
                 <p className={styles.blogDescription}>{post.description}</p>
-              </Link>
+              </PrefetchLink>
             ))}
           </div>
         ) : (

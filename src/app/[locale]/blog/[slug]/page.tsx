@@ -2,6 +2,7 @@ import { getPostBySlug, getAllPostSlugs, getPostsBySeries, getTranslatedPostUrl 
 import { Locale, getDictionary } from '@/lib/i18n';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { PrefetchLink } from '@/components/PrefetchLink';
 import { FaArrowLeft, FaClock, FaCalendar } from 'react-icons/fa';
 import { Series } from '@/components/Series';
 import { PostTranslationSetter } from '@/components/PostTranslationSetter';
@@ -133,13 +134,13 @@ export default async function BlogPostPage({ params }: Props) {
               {post.tags && post.tags.length > 0 && (
                 <div className={styles.tags}>
                   {post.tags.map((tag) => (
-                    <Link 
+                    <PrefetchLink 
                       key={tag} 
                       href={`/${params.locale}/tags/${slugifyTag(tag)}`}
                       className={styles.tag}
                     >
                       {tag}
-                    </Link>
+                    </PrefetchLink>
                   ))}
                 </div>
               )}
