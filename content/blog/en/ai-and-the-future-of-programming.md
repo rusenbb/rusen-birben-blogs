@@ -3,6 +3,7 @@ title: "AI and the Future of Programming"
 date: "2026-02-04"
 description: "With AI-powered programming tools evolving fast, many developers feel intense anxiety about the future. In this post I explore scenarios for how programming might evolve with AI."
 tags: ["ai", "programming", "skill", "transformation", "human"]
+translationKey: "ai-future-programming"
 ---
 
 

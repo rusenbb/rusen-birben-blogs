@@ -1,9 +1,10 @@
-import { getPostBySlug, getAllPostSlugs, getPostsBySeries } from '@/lib/blog';
+import { getPostBySlug, getAllPostSlugs, getPostsBySeries, getTranslatedPostUrl } from '@/lib/blog';
 import { Locale, getDictionary } from '@/lib/i18n';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { FaArrowLeft, FaClock, FaCalendar } from 'react-icons/fa';
 import { Series } from '@/components/Series';
+import { PostTranslationSetter } from '@/components/PostTranslationSetter';
 import { generateMetadata as generateSEOMetadata, generateArticleStructuredData } from '@/lib/seo';
 import styles from './post.module.css';
 
@@ -48,6 +49,15 @@ export default async function BlogPostPage({ params }: Props) {
     ? getPostsBySeries(params.locale, post.series)
     : [];
 
+  // Calculate translation URL for the other locale
+  const otherLocale = params.locale === 'en' ? 'tr' : 'en';
+  const translationUrl = getTranslatedPostUrl(
+    params.locale,
+    otherLocale,
+    post.slug,
+    post.translationKey
+  );
+
   // Generate structured data
   const structuredData = generateArticleStructuredData({
     slug: post.slug,
@@ -63,6 +73,9 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
+      {/* Set translation URL in context for LanguageSwitcher */}
+      <PostTranslationSetter translationUrl={translationUrl} />
+      
       {/* Structured Data */}
       <script
         type="application/ld+json"

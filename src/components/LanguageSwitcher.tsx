@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import styles from './LanguageSwitcher.module.css';
 import { Locale, locales } from '@/lib/i18n';
+import { useTranslationUrl } from './TranslationProvider';
 
 interface Props {
   currentLocale: Locale;
@@ -13,21 +14,26 @@ interface Props {
 export default function LanguageSwitcher({ currentLocale }: Props) {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+  const translationUrl = useTranslationUrl();  // ← Get translation from context
   
   useEffect(() => {
     setMounted(true);
   }, []);
   
-  const getLocalizedPath = (locale: Locale) => {
-    const segments = pathname.split('/');
-    
-    // If on a blog post page (e.g., /en/blog/some-post), redirect to blog listing
-    // because post slugs are different per language
-    if (segments.length > 3 && segments[2] === 'blog') {
-      return `/${locale}/blog`;
+  const getLocalizedPath = (targetLocale: Locale) => {
+    // If we have a direct translation URL for this target locale, use it
+    if (translationUrl && targetLocale !== currentLocale) {
+      return translationUrl;
     }
     
-    segments[1] = locale;
+    const segments = pathname.split('/');
+    
+    // If on a blog post page without translation, redirect to blog listing
+    if (segments.length > 3 && segments[2] === 'blog') {
+      return `/${targetLocale}/blog`;
+    }
+    
+    segments[1] = targetLocale;
     return segments.join('/');
   };
 

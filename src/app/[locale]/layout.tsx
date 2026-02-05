@@ -4,6 +4,7 @@ import '../globals.css';
 import { Locale, locales, getDictionary } from '@/lib/i18n';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { AccessibilitySettings } from '@/components/AccessibilitySettings';
+import { TranslationProvider } from '@/components/TranslationProvider';
 import { generateMetadata as generateSEOMetadata, generateWebsiteStructuredData } from '@/lib/seo';
 import styles from './layout.module.css';
 
@@ -58,11 +59,13 @@ export default function LocaleLayout({
         />
       </head>
       <body className={`${playfair.variable} ${inter.variable} ${ibmPlexMono.variable}`}>
-        <div className={styles.controlsContainer}>
-          <LanguageSwitcher currentLocale={params.locale} />
-          <AccessibilitySettings />
-        </div>
-        {children}
+        <TranslationProvider>
+          <div className={styles.controlsContainer}>
+            <LanguageSwitcher currentLocale={params.locale} />
+            <AccessibilitySettings />
+          </div>
+          {children}
+        </TranslationProvider>
       </body>
     </html>
   );

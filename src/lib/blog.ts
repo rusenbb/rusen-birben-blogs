@@ -30,6 +30,7 @@ export interface BlogPost {
   tags?: string[];
   series?: string;
   seriesOrder?: number;
+  translationKey?: string;  // ← NEW: Links translations across languages
   content: string;
   headings: Heading[];
   readingTime: number;
@@ -44,6 +45,7 @@ export interface BlogPostMeta {
   tags?: string[];
   series?: string;
   seriesOrder?: number;
+  translationKey?: string;  // ← NEW
   readingTime: number;
 }
 
@@ -51,6 +53,9 @@ export interface Series {
   name: string;
   posts: BlogPostMeta[];
 }
+
+// Translation mapping cache
+let translationMap: Map<string, Map<Locale, string>> | null = null;
 
 function getLocaleDirectory(locale: Locale): string {
   return path.join(contentDirectory, locale);
@@ -67,6 +72,71 @@ function calculateReadingTime(content: string): number {
   const wordsPerMinute = 200;
   const words = content.trim().split(/\s+/).length;
   return Math.ceil(words / wordsPerMinute);
+}
+
+// Build a map of translationKey -> {locale -> slug}
+export function buildTranslationMap(): Map<string, Map<Locale, string>> {
+  if (translationMap) return translationMap;
+  
+  translationMap = new Map();
+  
+  for (const locale of locales) {
+    ensureDirectoryExists(locale);
+    const postsDirectory = getLocaleDirectory(locale);
+    
+    if (!fs.existsSync(postsDirectory)) continue;
+    
+    const fileNames = fs.readdirSync(postsDirectory);
+    
+    for (const fileName of fileNames) {
+      if (!fileName.endsWith('.md') && !fileName.endsWith('.mdx')) continue;
+      
+      const slug = fileName.replace(/\.(md|mdx)$/, '');
+      const fullPath = path.join(postsDirectory, fileName);
+      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      const { data } = matter(fileContents);
+      
+      if (data.translationKey) {
+        if (!translationMap.has(data.translationKey)) {
+          translationMap.set(data.translationKey, new Map());
+        }
+        translationMap.get(data.translationKey)!.set(locale, slug);
+      }
+    }
+  }
+  
+  return translationMap;
+}
+
+// Get the translation URL for a post when switching languages
+export function getTranslatedPostUrl(
+  currentLocale: Locale,
+  targetLocale: Locale,
+  currentSlug: string,
+  translationKey?: string
+): string | null {
+  // If no translationKey, can't translate
+  if (!translationKey) return null;
+  
+  const map = buildTranslationMap();
+  const translations = map.get(translationKey);
+  
+  if (!translations) return null;
+  
+  // Get the slug for the target locale
+  const targetSlug = translations.get(targetLocale);
+  
+  if (!targetSlug) return null;
+  
+  return `/${targetLocale}/blog/${targetSlug}/`;
+}
+
+// Get all available translations for a post
+export function getPostTranslations(translationKey?: string): Map<Locale, string> | null {
+  if (!translationKey) return null;
+  
+  const map = buildTranslationMap();
+  return map.get(translationKey) || null;
 }
 
 export function getAllPosts(locale: Locale): BlogPostMeta[] {
@@ -96,6 +166,7 @@ export function getAllPosts(locale: Locale): BlogPostMeta[] {
         tags: data.tags,
         series: data.series,
         seriesOrder: data.seriesOrder,
+        translationKey: data.translationKey,  // ← NEW
         readingTime: calculateReadingTime(content),
       };
     });
@@ -165,6 +236,7 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogP
     tags: data.tags,
     series: data.series,
     seriesOrder: data.seriesOrder,
+    translationKey: data.translationKey,  // ← NEW
     content: contentHtml,
     headings,
     readingTime: calculateReadingTime(content),
