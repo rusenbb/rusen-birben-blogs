@@ -107,7 +107,7 @@ body {
 
 /* Selection */
 ::selection {
-  background: var(--accent);
+  background: var(--text-primary);
   color: var(--bg-primary);
 }
 
