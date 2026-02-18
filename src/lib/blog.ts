@@ -11,8 +11,6 @@ import rehypeSlug from 'rehype-slug';
 import rehypeStringify from 'rehype-stringify';
 import { visit } from 'unist-util-visit';
 import { Locale, locales } from './i18n';
-import 'katex/dist/katex.min.css';
-
 const contentDirectory = path.join(process.cwd(), 'content/blog');
 
 export interface Heading {
@@ -81,9 +79,8 @@ export function buildTranslationMap(): Map<string, Map<Locale, string>> {
   translationMap = new Map();
   
   for (const locale of locales) {
-    ensureDirectoryExists(locale);
     const postsDirectory = getLocaleDirectory(locale);
-    
+
     if (!fs.existsSync(postsDirectory)) continue;
     
     const fileNames = fs.readdirSync(postsDirectory);
@@ -140,8 +137,6 @@ export function getPostTranslations(translationKey?: string): Map<Locale, string
 }
 
 export function getAllPosts(locale: Locale): BlogPostMeta[] {
-  ensureDirectoryExists(locale);
-  
   const postsDirectory = getLocaleDirectory(locale);
   
   if (!fs.existsSync(postsDirectory)) {
@@ -180,8 +175,6 @@ export function getLatestPosts(locale: Locale, count: number): BlogPostMeta[] {
 }
 
 export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogPost | null> {
-  ensureDirectoryExists(locale);
-  
   // Try .md first, then .mdx
   let fullPath = path.join(getLocaleDirectory(locale), `${slug}.md`);
   if (!fs.existsSync(fullPath)) {
@@ -197,23 +190,25 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogP
 
   // Extract headings for table of contents
   const headings: Heading[] = [];
-  
+
+  function extractText(node: any): string {
+    if (node.type === 'text') return node.value || '';
+    if (node.children) return node.children.map(extractText).join('');
+    return '';
+  }
+
   const processedContent = await unified()
     .use(remarkParse)
     .use(remarkMath)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeSlug)
     .use(() => (tree: any) => {
-      // Extract headings after slug is added (h1, h2, h3)
       visit(tree, 'element', (node: any) => {
         if (node.tagName === 'h1' || node.tagName === 'h2' || node.tagName === 'h3') {
           const level = parseInt(node.tagName[1]);
-          const text = node.children
-            ?.filter((child: any) => child.type === 'text')
-            .map((child: any) => child.value)
-            .join('') || '';
+          const text = extractText(node);
           const id = node.properties?.id || '';
-          
+
           if (text && id) {
             headings.push({ level, text, id });
           }
@@ -247,7 +242,6 @@ export function getAllPostSlugs(): { locale: Locale; slug: string }[] {
   const slugs: { locale: Locale; slug: string }[] = [];
 
   for (const locale of locales) {
-    ensureDirectoryExists(locale);
     const postsDirectory = getLocaleDirectory(locale);
 
     if (fs.existsSync(postsDirectory)) {

@@ -194,3 +194,32 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .navigation {
+    grid-template-columns: 1fr;
+  }
+
+  .navButton.next {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .navTitle {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: initial;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .itemTitle {
+    font-size: 0.85rem;
+  }
+}

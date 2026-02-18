@@ -359,24 +359,59 @@
   }
 }
 
+@media (max-width: 768px) {
+  .main {
+    padding: var(--space-md) var(--space-sm) var(--space-lg);
+  }
+
+  .container {
+    gap: var(--space-lg);
+  }
+}
+
 @media (max-width: 600px) {
   .title {
     font-size: 1.75rem;
   }
-  
+
   .description {
     font-size: 1.1rem;
   }
-  
+
   .content {
     font-size: 1rem;
   }
-  
+
   .content > p:first-of-type::first-letter {
     font-size: 3rem;
   }
-  
+
   .content h2 {
     font-size: 1.5rem;
   }
+
+  .content blockquote {
+    padding: var(--space-sm) var(--space-sm) var(--space-sm) var(--space-md);
+  }
+
+  .content table {
+    font-size: 0.85rem;
+  }
+
+  .content th,
+  .content td {
+    padding: 0.5rem 0.6rem;
+  }
+
+  .header {
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+  }
+}
+
+/* Table overflow handling on mobile */
+.content table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }

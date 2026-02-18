@@ -1,7 +1,7 @@
 ---
 title: "Yapay Zeka İle Birlikte Programlama"
 date: "2026-02-18"
-description: "Yapay Zekanın gelişimi ile birlikte programcıların kodlama işleyişleri yüksek bir hızla değişti. Ne yapmalı, nasıl adapte olmalı ve hepsinden önemlisi "ne yapmamalı" bundan bahsedeceğim."
+description: 'Yapay Zekanın gelişimi ile birlikte programcıların kodlama işleyişleri yüksek bir hızla değişti. Ne yapmalı, nasıl adapte olmalı ve hepsinden önemlisi "ne yapmamalı" bundan bahsedeceğim.'
 tags:
   - "yapayzeka"
   - "programlama"

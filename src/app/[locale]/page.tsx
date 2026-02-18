@@ -1,28 +1,13 @@
 import styles from './page.module.css';
 import Link from 'next/link';
 import { PrefetchLink } from '@/components/PrefetchLink';
-import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight, FaRss, FaClock } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaRss, FaClock } from 'react-icons/fa';
 import { Locale, getDictionary } from '@/lib/i18n';
 import { getAllPosts, getAllTags } from '@/lib/blog';
+import { slugifyTag } from '@/lib/utils';
 
 interface Props {
   params: { locale: Locale };
-}
-
-// Helper to create URL-safe tag slug (handles Turkish chars)
-function slugifyTag(tag: string): string {
-  const turkishMap: Record<string, string> = {
-    'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u',
-    'Ç': 'C', 'Ğ': 'G', 'I': 'I', 'Ö': 'O', 'Ş': 'S', 'Ü': 'U',
-  };
-  
-  return tag
-    .toLowerCase()
-    .split('')
-    .map(char => turkishMap[char] || char)
-    .join('')
-    .replace(/\s+/g, '-')
-    .replace(/[^a-z0-9-]/g, '');
 }
 
 export default function Home({ params }: Props) {
@@ -120,7 +105,7 @@ export default function Home({ params }: Props) {
         <div className={styles.footerContent}>
           <span>© {new Date().getFullYear()} {dict.hero.name}</span>
           <div className={styles.footerLinks}>
-            <a href="https://rusen.ai" target="_blank" rel="noopener noreferrer">
+            <a href="https://rusenbirben.com" target="_blank" rel="noopener noreferrer">
               {dict.footer.visitPortfolio}
             </a>
             <a href={`/${params.locale}/feed.xml`}>

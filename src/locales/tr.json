@@ -22,13 +22,32 @@
     "backToTags": "Tüm etiketlere dön",
     "subtitle": "Yapay zeka, mühendislik ve daha fazlası üzerine düşünceler.",
     "rss": "RSS Akışı",
-    "filterByTag": "Etikete göre filtrele"
+    "filterByTag": "Etikete göre filtrele",
+    "onThisPage": "Bu sayfada",
+    "minRead": "dk okuma"
   },
   "tags": {
     "title": "Etiketler",
     "subtitle": "Konuya göre yazılara göz atın",
     "postsCount": "yazı",
     "noTags": "Henüz etiket yok..."
+  },
+  "series": {
+    "badge": "Seri",
+    "part": "Bölüm",
+    "of": "/",
+    "youAreHere": "Buradasınız",
+    "previous": "Önceki",
+    "next": "Sonraki"
+  },
+  "accessibility": {
+    "theme": "Tema",
+    "fontSize": "Yazı Boyutu",
+    "reduceMotion": "Hareketi azalt",
+    "settings": "Erişilebilirlik ayarları"
+  },
+  "image": {
+    "failedToLoad": "Görsel yüklenemedi"
   },
   "footer": {
     "copyright": "Rusen Birben",

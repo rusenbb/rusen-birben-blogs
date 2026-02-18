@@ -258,22 +258,36 @@
   .header {
     flex-direction: column;
     gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
   }
-  
+
   .headerRight {
     align-self: flex-start;
   }
-  
+
   .name {
     font-size: 1.75rem;
   }
-  
+
+  .section {
+    margin-bottom: var(--space-lg);
+  }
+
+  .blogMeta {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .blogTags {
+    gap: 0.3rem;
+  }
+
   .footerContent {
     flex-direction: column;
     gap: var(--space-sm);
     text-align: center;
   }
-  
+
   .footerLinks {
     flex-wrap: wrap;
     justify-content: center;

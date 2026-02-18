@@ -22,13 +22,32 @@
     "backToTags": "Back to all tags",
     "subtitle": "Thoughts on AI, engineering, and more.",
     "rss": "RSS Feed",
-    "filterByTag": "Filter by tag"
+    "filterByTag": "Filter by tag",
+    "onThisPage": "On this page",
+    "minRead": "min read"
   },
   "tags": {
     "title": "Tags",
     "subtitle": "Browse posts by topic",
     "postsCount": "posts",
     "noTags": "No tags yet..."
+  },
+  "series": {
+    "badge": "Series",
+    "part": "Part",
+    "of": "of",
+    "youAreHere": "You are here",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "accessibility": {
+    "theme": "Theme",
+    "fontSize": "Font Size",
+    "reduceMotion": "Reduce motion",
+    "settings": "Accessibility settings"
+  },
+  "image": {
+    "failedToLoad": "Failed to load image"
   },
   "footer": {
     "copyright": "Rusen Birben",

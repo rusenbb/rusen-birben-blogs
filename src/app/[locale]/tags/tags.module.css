@@ -193,16 +193,30 @@
 }
 
 /* Responsive */
+@media (max-width: 768px) {
+  .main {
+    padding: var(--space-md) var(--space-sm) var(--space-lg);
+  }
+}
+
 @media (max-width: 600px) {
   .title {
     font-size: 2rem;
   }
-  
+
   .tagName {
     font-size: 1.1rem;
   }
-  
+
   .postTitle {
     font-size: 1.25rem;
+  }
+
+  .header {
+    margin-bottom: var(--space-lg);
+  }
+
+  .postsHeader {
+    flex-wrap: wrap;
   }
 }

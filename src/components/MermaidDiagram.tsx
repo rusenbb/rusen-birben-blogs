@@ -3,6 +3,14 @@
 import { useEffect, useRef, useState } from 'react';
 import mermaid from 'mermaid';
 
+mermaid.initialize({
+  startOnLoad: false,
+  theme: 'default',
+  securityLevel: 'strict',
+});
+
+let idCounter = 0;
+
 interface MermaidDiagramProps {
   chart: string;
 }
@@ -20,13 +28,8 @@ export function MermaidDiagram({ chart }: MermaidDiagramProps) {
 
     const renderDiagram = async () => {
       try {
-        mermaid.initialize({
-          startOnLoad: false,
-          theme: 'default',
-          securityLevel: 'strict',
-        });
-
-        const { svg } = await mermaid.render(`mermaid-${Date.now()}`, chart);
+        const id = `mermaid-${idCounter++}`;
+        const { svg } = await mermaid.render(id, chart);
         if (containerRef.current) {
           containerRef.current.innerHTML = svg;
         }

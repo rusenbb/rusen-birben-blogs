@@ -1,5 +1,6 @@
 import { getPostBySlug, getAllPostSlugs, getPostsBySeries, getTranslatedPostUrl } from '@/lib/blog';
 import { Locale, getDictionary } from '@/lib/i18n';
+import { slugifyTag } from '@/lib/utils';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { PrefetchLink } from '@/components/PrefetchLink';
@@ -20,7 +21,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props) {
   const post = await getPostBySlug(params.locale, params.slug);
-  
+
   if (!post) {
     return { title: 'Post Not Found' };
   }
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: Props) {
     description: post.description,
     type: 'article',
     publishedAt: post.date,
-    authors: [post.locale === 'tr' ? 'Rusen Birben' : 'Rusen Birben'],
+    authors: ['Rusen Birben'],
     tags: post.tags,
     locale: params.locale,
     pathname: `/blog/${params.slug}`,
@@ -46,7 +47,7 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   // Get series posts if this post is part of a series
-  const seriesPosts = post.series 
+  const seriesPosts = post.series
     ? getPostsBySeries(params.locale, post.series)
     : [];
 
@@ -76,26 +77,26 @@ export default async function BlogPostPage({ params }: Props) {
     <>
       {/* Set translation URL in context for LanguageSwitcher */}
       <PostTranslationSetter translationUrl={translationUrl} />
-      
+
       {/* Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      
+
       <main className={styles.main}>
         <div className={styles.container}>
           {/* Table of Contents Sidebar */}
           {post.headings.length > 0 && (
             <aside className={styles.tocSidebar}>
               <nav className={styles.toc}>
-                <h2 className={styles.tocTitle}>{params.locale === 'en' ? 'On this page' : 'Bu sayfada'}</h2>
+                <h2 className={styles.tocTitle}>{dict.blog.onThisPage}</h2>
                 <ul className={styles.tocList}>
                   {post.headings.map((heading) => (
-                    <li 
-                      key={heading.id} 
+                    <li
+                      key={heading.id}
                       className={`
-                        ${styles.tocItem} 
+                        ${styles.tocItem}
                         ${heading.level === 1 ? styles.tocItemLevel1 : ''}
                         ${heading.level === 3 ? styles.tocItemSub : ''}
                       `}
@@ -124,18 +125,18 @@ export default async function BlogPostPage({ params }: Props) {
                 </span>
                 <span className={styles.metaItem}>
                   <FaClock />
-                  <span>{post.readingTime} {params.locale === 'en' ? 'min read' : 'dk okuma'}</span>
+                  <span>{post.readingTime} {dict.blog.minRead}</span>
                 </span>
               </div>
-              
+
               <h1 className={styles.title}>{post.title}</h1>
               <p className={styles.description}>{post.description}</p>
-              
+
               {post.tags && post.tags.length > 0 && (
                 <div className={styles.tags}>
                   {post.tags.map((tag) => (
-                    <PrefetchLink 
-                      key={tag} 
+                    <PrefetchLink
+                      key={tag}
                       href={`/${params.locale}/tags/${slugifyTag(tag)}`}
                       className={styles.tag}
                     >
@@ -153,10 +154,11 @@ export default async function BlogPostPage({ params }: Props) {
                 posts={seriesPosts}
                 currentSlug={post.slug}
                 locale={params.locale}
+                dict={dict}
               />
             )}
 
-            <div 
+            <div
               className={styles.content}
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
@@ -171,20 +173,4 @@ export default async function BlogPostPage({ params }: Props) {
       </main>
     </>
   );
-}
-
-// Helper to create URL-safe tag slug (handles Turkish chars)
-function slugifyTag(tag: string): string {
-  const turkishMap: Record<string, string> = {
-    'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u',
-    'Ç': 'C', 'Ğ': 'G', 'I': 'I', 'Ö': 'O', 'Ş': 'S', 'Ü': 'U',
-  };
-  
-  return tag
-    .toLowerCase()
-    .split('')
-    .map(char => turkishMap[char] || char)
-    .join('')
-    .replace(/\s+/g, '-')
-    .replace(/[^a-z0-9-]/g, '');
 }

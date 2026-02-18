@@ -5,7 +5,7 @@ import { Locale } from './i18n';
 const siteConfig = {
   name: 'Rusen Birben',
   description: 'Thoughts on software engineering, AI, and technology',
-  url: 'https://rusen.ai/blog',
+  url: 'https://rusenbirben.com',
   author: 'Rusen Birben',
   twitterHandle: '@rusenb',
 };

@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Inter, IBM_Plex_Mono } from 'next/font/google';
 import '../globals.css';
+import 'katex/dist/katex.min.css';
 import { Locale, locales, getDictionary } from '@/lib/i18n';
+import { ThemeProvider } from '@/components/ThemeProvider';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { AccessibilitySettings } from '@/components/AccessibilitySettings';
 import { TranslationProvider } from '@/components/TranslationProvider';
@@ -34,7 +36,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: { locale: Locale } }): Promise<Metadata> {
   const dict = getDictionary(params.locale);
-  
+
   return generateSEOMetadata({
     title: dict.hero.name,
     description: dict.hero.bio,
@@ -50,7 +52,7 @@ export default function LocaleLayout({
   params: { locale: Locale };
 }) {
   const structuredData = generateWebsiteStructuredData();
-  
+
   return (
     <html lang={params.locale} suppressHydrationWarning>
       <head>
@@ -60,15 +62,17 @@ export default function LocaleLayout({
         />
       </head>
       <body className={`${playfair.variable} ${inter.variable} ${ibmPlexMono.variable}`}>
-        <TranslationProvider>
-          <ViewTransition>
-            <div className={styles.controlsContainer}>
-              <LanguageSwitcher currentLocale={params.locale} />
-              <AccessibilitySettings />
-            </div>
-            {children}
-          </ViewTransition>
-        </TranslationProvider>
+        <ThemeProvider>
+          <TranslationProvider>
+            <ViewTransition>
+              <div className={styles.controlsContainer}>
+                <LanguageSwitcher currentLocale={params.locale} />
+                <AccessibilitySettings locale={params.locale} />
+              </div>
+              {children}
+            </ViewTransition>
+          </TranslationProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

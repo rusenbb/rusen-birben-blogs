@@ -30,6 +30,7 @@
   --accent: #2563eb;
   --accent-hover: #1d4ed8;
   --border: #d4d4d4;
+  --border-light: #e5e5e5;
   --border-hover: #a3a3a3;
   --shadow: rgba(0, 0, 0, 0.1);
   
@@ -60,6 +61,7 @@
   --accent: #60a5fa;
   --accent-hover: #93c5fd;
   --border: #404040;
+  --border-light: #333333;
   --border-hover: #525252;
   --shadow: rgba(0, 0, 0, 0.3);
   
@@ -422,6 +424,21 @@ hr {
 /* ========================================
    PRINT STYLES
    ======================================== */
+
+/* Responsive Spacing */
+@media (max-width: 768px) {
+  :root {
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+  }
+}
 
 @media print {
   /* Reset background and colors for printing */
