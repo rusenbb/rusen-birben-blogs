@@ -38,7 +38,12 @@
     "of": "/",
     "youAreHere": "Buradasınız",
     "previous": "Önceki",
-    "next": "Sonraki"
+    "next": "Sonraki",
+    "title": "Seriler",
+    "subtitle": "Çok bölümlü yazı serileri",
+    "postsCount": "bölüm",
+    "noSeries": "Henüz seri yok...",
+    "backToSeries": "Tüm serilere dön"
   },
   "accessibility": {
     "theme": "Tema",
@@ -51,7 +56,8 @@
   },
   "nav": {
     "blog": "Blog",
-    "tags": "Etiketler"
+    "tags": "Etiketler",
+    "series": "Seriler"
   },
   "footer": {
     "copyright": "Rusen Birben",

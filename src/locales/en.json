@@ -38,7 +38,12 @@
     "of": "of",
     "youAreHere": "You are here",
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "title": "Series",
+    "subtitle": "Multi-part explorations",
+    "postsCount": "parts",
+    "noSeries": "No series yet...",
+    "backToSeries": "Back to all series"
   },
   "accessibility": {
     "theme": "Theme",
@@ -51,7 +56,8 @@
   },
   "nav": {
     "blog": "Blog",
-    "tags": "Tags"
+    "tags": "Tags",
+    "series": "Series"
   },
   "footer": {
     "copyright": "Rusen Birben",

@@ -62,6 +62,11 @@ export default function LocaleLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var f=localStorage.getItem('font-size');if(f){var m={small:'14px',normal:'16px',large:'18px',xlarge:'20px'};if(m[f])document.documentElement.style.fontSize=m[f]}var r=localStorage.getItem('reduced-motion');if(r==='true')document.documentElement.setAttribute('data-reduced-motion','true')}catch(e){}})()`,
+          }}
+        />
       </head>
       <body className={`${playfair.variable} ${inter.variable} ${ibmPlexMono.variable}`}>
         <ThemeProvider>
@@ -70,16 +75,14 @@ export default function LocaleLayout({
               <nav className={styles.navbar}>
                 <div className={styles.navInner}>
                   <div className={styles.navLinks}>
-                    <Link href={`/${params.locale}`} className={styles.navLink}>
-                      {dict.hero.name}
-                    </Link>
-                    <span className={styles.navSep}>/</span>
                     <Link href={`/${params.locale}/blog`} className={styles.navLink}>
                       {dict.nav.blog}
                     </Link>
-                    <span className={styles.navSep}>/</span>
                     <Link href={`/${params.locale}/tags`} className={styles.navLink}>
                       {dict.nav.tags}
+                    </Link>
+                    <Link href={`/${params.locale}/series`} className={styles.navLink}>
+                      {dict.nav.series}
                     </Link>
                   </div>
                   <div className={styles.navControls}>

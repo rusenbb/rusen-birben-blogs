@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { FaArrowLeft, FaClock, FaCalendar } from 'react-icons/fa';
-import { Series } from '@/components/Series';
+import { SeriesMeta, SeriesNav } from '@/components/Series';
 import { PostTranslationSetter } from '@/components/PostTranslationSetter';
 import { generateMetadata as generateSEOMetadata, generateArticleStructuredData } from '@/lib/seo';
 import styles from './post.module.css';
@@ -127,6 +127,15 @@ export default async function BlogPostPage({ params }: Props) {
                   <FaClock />
                   <span>{post.readingTime} {dict.blog.minRead}</span>
                 </span>
+                {post.series && seriesPosts.length > 1 && (
+                  <SeriesMeta
+                    seriesName={post.series}
+                    posts={seriesPosts}
+                    currentSlug={post.slug}
+                    locale={params.locale}
+                    dict={dict}
+                  />
+                )}
               </div>
 
               <h1 className={styles.title}>{post.title}</h1>
@@ -147,9 +156,14 @@ export default async function BlogPostPage({ params }: Props) {
               )}
             </header>
 
+            <div
+              className={styles.content}
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+
             {/* Series Navigation */}
             {post.series && seriesPosts.length > 1 && (
-              <Series
+              <SeriesNav
                 seriesName={post.series}
                 posts={seriesPosts}
                 currentSlug={post.slug}
@@ -157,11 +171,6 @@ export default async function BlogPostPage({ params }: Props) {
                 dict={dict}
               />
             )}
-
-            <div
-              className={styles.content}
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
 
             <footer className={styles.footer}>
               <Link href={`/${params.locale}/blog`} className={styles.footerLink}>

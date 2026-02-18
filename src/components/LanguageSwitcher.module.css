@@ -1,6 +1,7 @@
 .switcher {
   display: flex;
-  gap: 0.25rem;
+  align-items: center;
+  gap: 0.15rem;
 }
 
 .option {
@@ -19,8 +20,8 @@
 }
 
 .option::after {
-  content: '/';
-  margin-left: 0.4rem;
+  content: '·';
+  margin-left: 0.3rem;
   color: var(--border);
 }
 

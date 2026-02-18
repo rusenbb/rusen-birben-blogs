@@ -5,6 +5,7 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaRss, FaClock } from 'react-icons/fa
 import { Locale, getDictionary } from '@/lib/i18n';
 import { getAllPosts } from '@/lib/blog';
 
+
 interface Props {
   params: { locale: Locale };
 }
@@ -17,24 +18,8 @@ export default function Home({ params }: Props) {
     <main className={styles.main}>
       {/* Header */}
       <header className={styles.header}>
-        <div className={styles.headerLeft}>
-          <h1 className={styles.name}>{dict.hero.name}</h1>
-          <p className={styles.title}>{dict.hero.title}</p>
-        </div>
-        <div className={styles.headerRight}>
-          <a href="https://github.com/rusenbb" target="_blank" rel="noopener noreferrer" className={styles.iconLink}>
-            <FaGithub />
-          </a>
-          <a href="https://linkedin.com/in/rusenbirben" target="_blank" rel="noopener noreferrer" className={styles.iconLink}>
-            <FaLinkedin />
-          </a>
-          <a href="mailto:rusenbirben@gmail.com" className={styles.iconLink}>
-            <FaEnvelope />
-          </a>
-          <Link href={`/${params.locale}/feed.xml`} className={styles.iconLink} title={dict.blog.rss}>
-            <FaRss />
-          </Link>
-        </div>
+        <h1 className={styles.name}>{dict.hero.name}</h1>
+        <p className={styles.title}>{dict.hero.title}</p>
       </header>
 
       {/* About */}
@@ -84,16 +69,25 @@ export default function Home({ params }: Props) {
 
       {/* Footer */}
       <footer className={styles.footer}>
+        <div className={styles.footerIcons}>
+          <a href="https://github.com/rusenbb" target="_blank" rel="noopener noreferrer" className={styles.footerIcon}>
+            <FaGithub />
+          </a>
+          <a href="https://linkedin.com/in/rusenbirben" target="_blank" rel="noopener noreferrer" className={styles.footerIcon}>
+            <FaLinkedin />
+          </a>
+          <a href="mailto:rusenbirben@gmail.com" className={styles.footerIcon}>
+            <FaEnvelope />
+          </a>
+          <Link href={`/${params.locale}/feed.xml`} className={styles.footerIcon} title={dict.blog.rss}>
+            <FaRss />
+          </Link>
+        </div>
         <div className={styles.footerContent}>
           <span>© {new Date().getFullYear()} {dict.hero.name}</span>
-          <div className={styles.footerLinks}>
-            <a href="https://rusenbirben.com" target="_blank" rel="noopener noreferrer">
-              {dict.footer.visitPortfolio}
-            </a>
-            <a href={`/${params.locale}/feed.xml`}>
-              RSS
-            </a>
-          </div>
+          <a href="https://rusenbirben.com" target="_blank" rel="noopener noreferrer" className={styles.footerPortfolio}>
+            {dict.footer.visitPortfolio}
+          </a>
         </div>
       </footer>
     </main>
