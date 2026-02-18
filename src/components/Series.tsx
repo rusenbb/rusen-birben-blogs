@@ -20,86 +20,65 @@ export function Series({ seriesName, posts, currentSlug, locale, dict }: SeriesP
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <span className={styles.badge}>{dict.series.badge}</span>
-        <h3 className={styles.title}>{seriesName}</h3>
+        <span className={styles.label}>{dict.series.badge}</span>
+        <span className={styles.separator}>·</span>
+        <span className={styles.title}>{seriesName}</span>
+        <span className={styles.separator}>·</span>
         <span className={styles.progress}>
           {dict.series.part} {currentIndex + 1} {dict.series.of} {posts.length}
         </span>
       </div>
 
-      {/* Progress bar */}
-      <div className={styles.progressBar}>
-        <div
-          className={styles.progressFill}
-          style={{ width: `${((currentIndex + 1) / posts.length) * 100}%` }}
-        />
-      </div>
-
-      {/* Series list */}
       <nav className={styles.list} aria-label="Series posts">
         {posts.map((post, index) => {
           const isCurrent = post.slug === currentSlug;
-          const isCompleted = index < currentIndex;
 
-          return (
+          return isCurrent ? (
+            <span
+              key={post.slug}
+              className={`${styles.item} ${styles.current}`}
+              aria-current="page"
+            >
+              <span className={styles.number}>{index + 1}.</span>
+              <span className={styles.itemTitle}>{post.title}</span>
+            </span>
+          ) : (
             <PrefetchLink
               key={post.slug}
               href={`/${locale}/blog/${post.slug}`}
-              className={`${styles.item} ${isCurrent ? styles.current : ''} ${isCompleted ? styles.completed : ''}`}
-              aria-current={isCurrent ? 'page' : undefined}
+              className={styles.item}
             >
-              <span className={styles.number}>
-                {isCompleted ? (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                ) : (
-                  index + 1
-                )}
-              </span>
+              <span className={styles.number}>{index + 1}.</span>
               <span className={styles.itemTitle}>{post.title}</span>
-              {isCurrent && <span className={styles.currentIndicator}>{dict.series.youAreHere}</span>}
             </PrefetchLink>
           );
         })}
       </nav>
 
-      {/* Navigation buttons */}
-      <div className={styles.navigation}>
-        {prevPost ? (
-          <PrefetchLink
-            href={`/${locale}/blog/${prevPost.slug}`}
-            className={styles.navButton}
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-            <span>
-              <span className={styles.navLabel}>{dict.series.previous}</span>
-              <span className={styles.navTitle}>{prevPost.title}</span>
-            </span>
-          </PrefetchLink>
-        ) : (
-          <div />
-        )}
-
-        {nextPost ? (
-          <PrefetchLink
-            href={`/${locale}/blog/${nextPost.slug}`}
-            className={`${styles.navButton} ${styles.next}`}
-          >
-            <span>
-              <span className={styles.navLabel}>{dict.series.next}</span>
-              <span className={styles.navTitle}>{nextPost.title}</span>
-            </span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
-          </PrefetchLink>
-        ) : (
-          <div />
-        )}
-      </div>
+      {(prevPost || nextPost) && (
+        <div className={styles.navigation}>
+          {prevPost ? (
+            <PrefetchLink
+              href={`/${locale}/blog/${prevPost.slug}`}
+              className={styles.navLink}
+            >
+              ← {dict.series.previous}
+            </PrefetchLink>
+          ) : (
+            <span />
+          )}
+          {nextPost ? (
+            <PrefetchLink
+              href={`/${locale}/blog/${nextPost.slug}`}
+              className={`${styles.navLink} ${styles.navNext}`}
+            >
+              {dict.series.next} →
+            </PrefetchLink>
+          ) : (
+            <span />
+          )}
+        </div>
+      )}
     </div>
   );
 }
