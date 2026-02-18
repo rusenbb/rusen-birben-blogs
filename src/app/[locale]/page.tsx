@@ -3,8 +3,7 @@ import Link from 'next/link';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { FaGithub, FaLinkedin, FaEnvelope, FaRss, FaClock } from 'react-icons/fa';
 import { Locale, getDictionary } from '@/lib/i18n';
-import { getAllPosts, getAllTags } from '@/lib/blog';
-import { slugifyTag } from '@/lib/utils';
+import { getAllPosts } from '@/lib/blog';
 
 interface Props {
   params: { locale: Locale };
@@ -13,7 +12,6 @@ interface Props {
 export default function Home({ params }: Props) {
   const dict = getDictionary(params.locale);
   const allPosts = getAllPosts(params.locale);
-  const allTags = getAllTags(params.locale);
 
   return (
     <main className={styles.main}>
@@ -46,29 +44,13 @@ export default function Home({ params }: Props) {
         </div>
       </section>
 
-      {/* Tags Section */}
-      {allTags.length > 0 && (
-        <section className={styles.section} id="tags">
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>{dict.sections.tags}</h2>
-            <Link href={`/${params.locale}/tags`} className={styles.viewAllLink}>
-              {dict.sections.viewAll} →
-            </Link>
-          </div>
-          <div className={styles.tagsContainer}>
-            {allTags.slice(0, 8).map(({ tag, count }) => (
-              <PrefetchLink key={tag} href={`/${params.locale}/tags/${slugifyTag(tag)}`} className={styles.tagChip}>
-                {tag} <span className={styles.tagCount}>({count})</span>
-              </PrefetchLink>
-            ))}
-          </div>
-        </section>
-      )}
-
       {/* Blog Section */}
       <section className={styles.section} id="blog">
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>{dict.sections.blog}</h2>
+          <Link href={`/${params.locale}/blog`} className={styles.viewAllLink}>
+            {dict.sections.viewAll} →
+          </Link>
         </div>
         {allPosts.length > 0 ? (
           <div className={styles.blogGrid}>
@@ -76,10 +58,10 @@ export default function Home({ params }: Props) {
               <PrefetchLink key={post.slug} href={`/${params.locale}/blog/${post.slug}`} className={styles.blogCard}>
                 <div className={styles.blogMeta}>
                   <span className={styles.blogDate}>{post.date}</span>
-                      <span className={styles.blogReadingTime}>
-                        <FaClock style={{ fontSize: '0.7em' }} />
-                        {post.readingTime} min
-                      </span>
+                  <span className={styles.blogReadingTime}>
+                    <FaClock style={{ fontSize: '0.7em' }} />
+                    {post.readingTime} min
+                  </span>
                   {post.tags && post.tags.length > 0 && (
                     <div className={styles.blogTags}>
                       {post.tags.map((tag) => (

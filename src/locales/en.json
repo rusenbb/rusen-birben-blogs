@@ -49,6 +49,10 @@
   "image": {
     "failedToLoad": "Failed to load image"
   },
+  "nav": {
+    "blog": "Blog",
+    "tags": "Tags"
+  },
   "footer": {
     "copyright": "Rusen Birben",
     "visitPortfolio": "Visit my portfolio"

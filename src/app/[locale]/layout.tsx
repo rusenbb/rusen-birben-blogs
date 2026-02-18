@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Inter, IBM_Plex_Mono } from 'next/font/google';
+import Link from 'next/link';
 import '../globals.css';
 import 'katex/dist/katex.min.css';
 import { Locale, locales, getDictionary } from '@/lib/i18n';
@@ -52,6 +53,7 @@ export default function LocaleLayout({
   params: { locale: Locale };
 }) {
   const structuredData = generateWebsiteStructuredData();
+  const dict = getDictionary(params.locale);
 
   return (
     <html lang={params.locale} suppressHydrationWarning>
@@ -65,10 +67,27 @@ export default function LocaleLayout({
         <ThemeProvider>
           <TranslationProvider>
             <ViewTransition>
-              <div className={styles.controlsContainer}>
-                <LanguageSwitcher currentLocale={params.locale} />
-                <AccessibilitySettings locale={params.locale} />
-              </div>
+              <nav className={styles.navbar}>
+                <div className={styles.navInner}>
+                  <div className={styles.navLinks}>
+                    <Link href={`/${params.locale}`} className={styles.navLink}>
+                      {dict.hero.name}
+                    </Link>
+                    <span className={styles.navSep}>/</span>
+                    <Link href={`/${params.locale}/blog`} className={styles.navLink}>
+                      {dict.nav.blog}
+                    </Link>
+                    <span className={styles.navSep}>/</span>
+                    <Link href={`/${params.locale}/tags`} className={styles.navLink}>
+                      {dict.nav.tags}
+                    </Link>
+                  </div>
+                  <div className={styles.navControls}>
+                    <LanguageSwitcher currentLocale={params.locale} />
+                    <AccessibilitySettings locale={params.locale} />
+                  </div>
+                </div>
+              </nav>
               {children}
             </ViewTransition>
           </TranslationProvider>

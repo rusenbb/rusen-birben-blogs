@@ -49,6 +49,10 @@
   "image": {
     "failedToLoad": "Görsel yüklenemedi"
   },
+  "nav": {
+    "blog": "Blog",
+    "tags": "Etiketler"
+  },
   "footer": {
     "copyright": "Rusen Birben",
     "visitPortfolio": "Portfolyomu ziyaret et"

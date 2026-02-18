@@ -1,16 +1,64 @@
-.controlsContainer {
-  position: fixed;
-  top: 1.5rem;
-  right: 1.5rem;
-  z-index: 100;
+.navbar {
+  border-bottom: 1px solid var(--border);
+}
+
+.navInner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navLink {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.navLink:first-child {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.navLink:hover {
+  color: var(--text-primary);
+}
+
+.navSep {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--border);
+  user-select: none;
+}
+
+.navControls {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
 
 @media (max-width: 600px) {
-  .controlsContainer {
-    top: 1rem;
-    right: 1rem;
+  .navInner {
+    padding: 0.75rem var(--space-sm);
+  }
+
+  .navLink {
+    font-size: 0.7rem;
+  }
+
+  .navLinks {
+    gap: 0.35rem;
   }
 }
