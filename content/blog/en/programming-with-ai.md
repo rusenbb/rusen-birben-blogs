@@ -134,4 +134,4 @@ Knowledge can be downloaded. Wisdom is earned. AI will drive the first to zero. 
 > - Build speed — experiment fast, fail fast
 > - Keep your horizons wide — don't get lost in a single domain while going deep
 > - Stay social, look at the world -> Be a storyteller
-> - Shift from an engineer mindset to a builder mindset
+> - Shift from an engineer mindset to a builder mindset -> Don't dwell in problems / reasons, deal with the reactions and people too

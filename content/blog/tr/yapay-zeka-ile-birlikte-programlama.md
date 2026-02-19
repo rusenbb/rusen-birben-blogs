@@ -134,4 +134,4 @@ Bilgi indirilebilir. Bilgelik kazanılır. Yapay zeka birincisini sıfıra indir
 > - Hız kazanın, hızlı deneyin, hızlı yanılın
 > - Ufkunuzu geniş tutun, derinleşirken tek bir alan içinde kaybolmayın
 > - Sosyal kalın, dünyaya bakın -> Hikaye anlatıcısı olun
-> - Mühendis kafasından inşa eden birey kafasına girin
+> - Mühendis kafasından inşa eden birey kafasına girin -> sebeplere / problemlere takılıp kalmayın. Sonuçlarla ve insanlarla da uğraşın
