@@ -1,11 +1,11 @@
 import { createCanvas, loadImage } from 'canvas';
 import type { CanvasRenderingContext2D } from 'canvas';
-import geopattern from 'geopattern';
+import geopattern, { type GeneratorType } from 'geopattern';
 import { colors, rgba } from './palette';
 import { rngRange } from './seed';
 
 // Pattern types that look best at OG image scale
-const goodPatterns = [
+const goodPatterns: GeneratorType[] = [
   'chevrons',
   'overlappingCircles',
   'hexagons',

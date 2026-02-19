@@ -3,6 +3,7 @@ import { BlogPostMeta } from '@/lib/blog';
 import { Locale } from '@/lib/i18n';
 import type { Dictionary } from '@/lib/i18n';
 import { slugifySeries } from '@/lib/utils';
+import { FaLayerGroup } from 'react-icons/fa';
 import styles from './Series.module.css';
 
 interface SeriesProps {
@@ -18,6 +19,7 @@ export function SeriesMeta({ seriesName, posts, currentSlug, locale, dict }: Ser
 
   return (
     <span className={styles.meta}>
+      <FaLayerGroup />
       <PrefetchLink
         href={`/${locale}/series/${slugifySeries(seriesName)}`}
         className={styles.metaLink}
