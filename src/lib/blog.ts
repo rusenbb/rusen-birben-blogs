@@ -1,15 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-import rehypeHighlight from 'rehype-highlight';
-import rehypeSlug from 'rehype-slug';
-import rehypeStringify from 'rehype-stringify';
 import { visit } from 'unist-util-visit';
+import { createMarkdownProcessor } from './markdown-plugins';
 import { Locale, locales } from './i18n';
 const contentDirectory = path.join(process.cwd(), 'content/blog');
 
@@ -52,18 +45,12 @@ export interface Series {
   posts: BlogPostMeta[];
 }
 
-// Translation mapping cache
+// Caches — populated once per build, reused across all pages
+const postsCache = new Map<Locale, BlogPostMeta[]>();
 let translationMap: Map<string, Map<Locale, string>> | null = null;
 
 function getLocaleDirectory(locale: Locale): string {
   return path.join(contentDirectory, locale);
-}
-
-function ensureDirectoryExists(locale: Locale) {
-  const dir = getLocaleDirectory(locale);
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
 }
 
 function calculateReadingTime(content: string): number {
@@ -137,8 +124,11 @@ export function getPostTranslations(translationKey?: string): Map<Locale, string
 }
 
 export function getAllPosts(locale: Locale): BlogPostMeta[] {
+  const cached = postsCache.get(locale);
+  if (cached) return cached;
+
   const postsDirectory = getLocaleDirectory(locale);
-  
+
   if (!fs.existsSync(postsDirectory)) {
     return [];
   }
@@ -161,12 +151,14 @@ export function getAllPosts(locale: Locale): BlogPostMeta[] {
         tags: data.tags,
         series: data.series,
         seriesOrder: data.seriesOrder,
-        translationKey: data.translationKey,  // ← NEW
+        translationKey: data.translationKey,
         readingTime: calculateReadingTime(content),
       };
     });
 
-  return posts.sort((a, b) => (a.date > b.date ? -1 : 1));
+  const sorted = posts.sort((a, b) => (a.date > b.date ? -1 : 1));
+  postsCache.set(locale, sorted);
+  return sorted;
 }
 
 export function getLatestPosts(locale: Locale, count: number): BlogPostMeta[] {
@@ -191,34 +183,33 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogP
   // Extract headings for table of contents
   const headings: Heading[] = [];
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function extractText(node: any): string {
     if (node.type === 'text') return node.value || '';
     if (node.children) return node.children.map(extractText).join('');
     return '';
   }
 
-  const processedContent = await unified()
-    .use(remarkParse)
-    .use(remarkMath)
-    .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeSlug)
-    .use(() => (tree: any) => {
-      visit(tree, 'element', (node: any) => {
-        if (node.tagName === 'h1' || node.tagName === 'h2' || node.tagName === 'h3') {
-          const level = parseInt(node.tagName[1]);
-          const text = extractText(node);
-          const id = node.properties?.id || '';
+  const processor = createMarkdownProcessor();
 
-          if (text && id) {
-            headings.push({ level, text, id });
-          }
+  // Heading extractor runs after rehypeSlug has assigned IDs
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  processor.use(() => (tree: any) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    visit(tree, 'element', (node: any) => {
+      if (node.tagName === 'h1' || node.tagName === 'h2' || node.tagName === 'h3') {
+        const level = parseInt(node.tagName[1]);
+        const text = extractText(node);
+        const id = node.properties?.id || '';
+
+        if (text && id) {
+          headings.push({ level, text, id });
         }
-      });
-    })
-    .use(rehypeKatex)
-    .use(rehypeHighlight)
-    .use(rehypeStringify, { allowDangerousHtml: true })
-    .process(content);
+      }
+    });
+  });
+
+  const processedContent = await processor.process(content);
   
   const contentHtml = processedContent.toString();
 
@@ -231,7 +222,7 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogP
     tags: data.tags,
     series: data.series,
     seriesOrder: data.seriesOrder,
-    translationKey: data.translationKey,  // ← NEW
+    translationKey: data.translationKey,
     content: contentHtml,
     headings,
     readingTime: calculateReadingTime(content),

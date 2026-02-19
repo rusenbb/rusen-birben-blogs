@@ -1,9 +1,10 @@
 import { getAllPosts } from '@/lib/blog';
 import { Locale, getDictionary, locales } from '@/lib/i18n';
+import { siteConfig } from '@/lib/seo';
 
 export const dynamic = 'force-static';
 
-const SITE_URL = 'https://rusenbirben.com';
+const SITE_URL = siteConfig.url;
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

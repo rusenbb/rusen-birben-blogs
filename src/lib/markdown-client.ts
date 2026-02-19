@@ -1,26 +1,11 @@
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
-import remarkMath from 'remark-math';
-import remarkRehype from 'remark-rehype';
-import rehypeSlug from 'rehype-slug';
-import rehypeKatex from 'rehype-katex';
-import rehypeHighlight from 'rehype-highlight';
-import rehypeStringify from 'rehype-stringify';
+import { createMarkdownProcessor } from './markdown-plugins';
 
 // Singleton processor — avoids rebuilding the plugin chain per render
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-let processor: any = null;
+let processor: ReturnType<typeof createMarkdownProcessor> | null = null;
 
 function getProcessor() {
   if (!processor) {
-    processor = unified()
-      .use(remarkParse)
-      .use(remarkMath)
-      .use(remarkRehype, { allowDangerousHtml: true })
-      .use(rehypeSlug)
-      .use(rehypeKatex)
-      .use(rehypeHighlight)
-      .use(rehypeStringify, { allowDangerousHtml: true });
+    processor = createMarkdownProcessor();
   }
   return processor;
 }
