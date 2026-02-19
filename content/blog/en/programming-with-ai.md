@@ -1,15 +1,16 @@
 ---
-title: "Programming With AI"
+title: "Building In The Age Of AI"
 date: "2026-02-18"
-description: "As AI evolves, the way programmers work is changing at breakneck speed. What should we do, how should we adapt, and most importantly — what should we not do?"
+description: "As AI evolves, the way *digital builders* work is changing at breakneck speed. What should we do, how should we adapt, and most importantly — what should we not do?"
 tags:
   - "ai"
   - "programming"
   - "change"
-translationKey: "programming-with-ai"
+translationKey: "building-in-the-age-of-ai"
 series: "AI and Programming"
 seriesOrder: 2
 ---
+
 # What Will We Do When AI Writes All the Software?
 
 AI has gained incredible skill at coding — I think we all agree on that. And extrapolating this trend, it seems clear that we'll use virtual AI assistants much like real people. As capitalism dictates, labor always gets cheaper relative to its output (i.e., productivity increases).
@@ -24,7 +25,7 @@ Today I want to talk about something different. I want to talk about the death o
 
 I want you to imagine a scenario. AI has truly gained persistent memory — it no longer acts like it has Alzheimer's every session. We've integrated it into real software systems, given it tasks and personas. AI has taken over all white-collar jobs. Every job in the digital world that involves shuffling knowledge has given itself over to the cheaper alternative: AI. Just like "all" heavy labor was handed off to machines... except it wasn't. Machines didn't take all physical labor, because in some jobs humans are still cheaper or more adaptive. But in software, both of those defenses collapse: AI's cost is approaching zero, its capability keeps growing, and in the digital world there's no adaptation problem. This time, the conditions really could be different.
 
-Let me clarify what I mean by "shuffling knowledge": writing code, preparing reports, analyzing data, drafting contracts, designing presentations, business correspondence, etc. What I really mean is "processing information in the digital world" (I just avoided the word *digital* because there are also information-processing jobs that haven't been digitized yet but could be). If you define your job as sitting at a computer and thinking, you'll probably need to interact with AI.
+Let me clarify what I mean by "shuffling knowledge": writing code, preparing reports, analyzing data, drafting contracts, designing presentations, business correspondence, etc. What I really mean is "processing information in the digital world" (I just avoided the word _digital_ because there are also information-processing jobs that haven't been digitized yet but could be). If you define your job as sitting at a computer and thinking, you'll probably need to interact with AI.
 
 We're not yet at a point where all jobs have been handed over to AI — I'm aware. But the direction is clear. Less and less of value is built on "manipulating knowledge" with each passing day.
 
@@ -36,14 +37,12 @@ I want you to think about what it means for AI to handle all "white-collar" work
 
 Shuffling knowledge will become completely worthless. I want to repeat this sentence, because you can unlock this entire blog post just by understanding it.
 
-
 > Shuffling knowledge will become completely worthless.
-
 
 So what will be valuable? Let's list some options — I'd like you to read these with a wide-angle lens:
 
 1. Knowing which knowledge is worth shuffling
-   - Knowing *what* to build becomes more important than knowing *how* to build.
+   - Knowing _what_ to build becomes more important than knowing _how_ to build.
 2. Shuffling knowledge the fastest
    - When everyone has the same competitive tool, speed and volume become the decisive factors.
 3. Holding the most knowledge that can be shuffled
@@ -52,7 +51,6 @@ So what will be valuable? Let's list some options — I'd like you to read these
    - You go so deep in a certain field that you gain a competitively advantageous insight. In an era when everyone has AI tools that can code with cutting-edge technology, developing the "cutting edge" itself might make more sense than focusing on AI.
 5. Bringing shuffled knowledge to life through real-world relationships
    - AI can be smart, but is it effective? Nerd vs. social. Technical success doesn't equal product success.
-
 
 I want to touch on each of these points from the perspective of "how does this affect us — the people who love building things." A single reality can be examined from different perspectives. Let's do that:
 
@@ -84,7 +82,6 @@ The takeaway from this point (assisting the previous ones too):
 
 > Once you've learned what's valuable and how to do it fast, the next thing to do is repeat. Repeat broadly, without trying to be perfect. Every repetition gives you new information; every piece of information makes the next repetition better. Until you succeed. If you stay alive long enough, you will succeed.
 
-
 ### Quality Over Quantity
 
 The more poetic point — the one nearly all of us pray to be true. Even if AI takes everything from us, it can't take creativity. The differentiating factor, the next-generation breakthrough technology, the knowledge nobody else has... it can't know these things. The value of building these factors will increase exponentially. If the previous three points advised you to go broad, this one advises you to go deep. Truly love what you do, and try things that nobody could even conceive of, that they'd be too lazy to attempt. Work hard, strive, and contribute new things to humanity.
@@ -110,7 +107,6 @@ That's why, when you finish a technical task, you've only completed half the roa
 At the end of the day, AI can write your code. But it can't tell your story. It can't sell it.
 
 And yes, everything is just marketing. Because a tree that nobody hears fall makes no sound. In any reality.
-
 
 ## How Does One Become Wise?
 
