@@ -32,10 +32,12 @@ export async function generateMetadata({ params }: Props) {
     description: post.description,
     type: 'article',
     publishedAt: post.date,
-    authors: ['Rusen Birben'],
+    authors: ['Ruşen Birben'],
     tags: post.tags,
     locale: params.locale,
     pathname: `/blog/${params.slug}`,
+    ogImage: post.ogImage,
+    translationKey: post.translationKey,
   });
 }
 

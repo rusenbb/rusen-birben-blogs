@@ -23,6 +23,7 @@ export interface BlogPost {
   series?: string;
   seriesOrder?: number;
   translationKey?: string;  // ← NEW: Links translations across languages
+  ogImage?: string;
   content: string;
   headings: Heading[];
   readingTime: number;
@@ -39,6 +40,7 @@ export interface BlogPostMeta {
   series?: string;
   seriesOrder?: number;
   translationKey?: string;  // ← NEW
+  ogImage?: string;
   readingTime: number;
 }
 
@@ -154,6 +156,7 @@ export function getAllPosts(locale: Locale): BlogPostMeta[] {
         series: data.series,
         seriesOrder: data.seriesOrder,
         translationKey: data.translationKey,
+        ogImage: data.ogImage,
         readingTime: calculateReadingTime(content),
       };
     });
@@ -229,6 +232,7 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogP
     series: data.series,
     seriesOrder: data.seriesOrder,
     translationKey: data.translationKey,
+    ogImage: data.ogImage,
     content: contentHtml,
     headings,
     readingTime: calculateReadingTime(content),
