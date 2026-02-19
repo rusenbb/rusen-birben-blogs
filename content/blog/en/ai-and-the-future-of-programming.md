@@ -8,10 +8,9 @@ series: "AI and Programming"
 seriesOrder: 1
 ---
 
-
 # Software Is Changing at the Last Pace We Can Still Follow
 
-If you have any relationship with software at all, you already know that AI has had a deep impact on the industry lately. What you might not know if you haven't been up close with these tools is that AI no longer has any *practical* barriers to writing software. By practical I mean this: if you give an AI agent enough context and communicate your request properly, it can make any change you want in any software. And it's not just about making changes. There have been major advances in building programs from scratch with AI. In long-horizon programming, even though AI agent systems still suffer from memory and attention drift, we can solve a lot through state-machine-style file systems or by acting as the *man in the middle*. But there are still serious issues around looking at problems and solutions in an *original* way. AI is **too hasty**, **doesn't hesitate to make assumptions** (it has no internal prior about what it should or shouldn't assume), and when it tries to generate **original** ideas it either gets lost in metaphors / fantasies or gives up.
+If you have any relationship with software at all, you already know that AI has had a deep impact on the industry lately. What you might not know if you haven't been up close with these tools is that AI no longer has any _practical_ barriers to writing software. By practical I mean this: if you give an AI agent enough context and communicate your request properly, it can make any change you want in any software. And it's not just about making changes. There have been major advances in building programs from scratch with AI. In long-horizon programming, even though AI agent systems still suffer from memory and attention drift, we can solve a lot through state-machine-style file systems or by acting as the _man in the middle_. But there are still serious issues around looking at problems and solutions in an _original_ way. AI is **too hasty**, **doesn't hesitate to make assumptions** (it has no internal prior about what it should or shouldn't assume), and when it tries to generate **original** ideas it either gets lost in metaphors / fantasies or gives up.
 
 Saying these problems will never be solved and therefore humans will always play an active role in coding would be, to put it mildly, naive. As I said in the title, software is changing at the **last** pace we can still follow. The point where we can no longer follow will be when we integrate **permanent memories intrinsic to AI architectures** into these AI agents. When we reach that point, AIs won't be in a hurry because they won't worry about their context window filling up; they won't make assumptions because they know they have time; and with hardware and software advances in computation and memory systems, they will be able to think much longer (imagine how long they could think once the context window disappears!) and produce ideas we could call original.
 
@@ -20,7 +19,7 @@ Looking at all this and saying **software is dead** would be beyond naive; it wo
 ## Is Software Dying?
 
 Short engineer answer: of course
-Long *storyteller* answer: of course not
+Long _storyteller_ answer: of course not
 
 Here’s how the story goes
 
@@ -28,7 +27,7 @@ Here’s how the story goes
 - **1972:** "C arrived, no need to write Assembly. Programmers are finished."
 - **1995:** "Java arrived, no need to manage memory. Programmers are finished."
 - **2010:** "Python arrived, no need to deal with type systems. Programmers are finished."
-- **2024:** "AI arrived, no need to write code. *English is now the most popular programming language*. Programmers are finished."
+- **2024:** "AI arrived, no need to write code. _English is now the most popular programming language_. Programmers are finished."
 
 (Note: Andrej Karpathy isn't saying the profession will end, but many people quote him based on his line about English.)
 
@@ -41,7 +40,7 @@ And the programmer climbed one step higher each time.
 
 ## Zombie Code
 
-You may have heard the term "AI Slop." It can be defined as "garbage content automated with AI where quality is ignored because it's easy to produce." I think we will hear a similar thing as "Zombie Code." Code isn't something that can be judged as *bad* or *good* by its nature (I know many of you will disagree with this, and I appreciate you, but unfortunately it's true). Code either works or it doesn't. It's right or it's wrong. It meets the requirement or it doesn't. That's what makes it dangerous: writing code with AI is far easier than doing most other things. And it's just as hard to tell whether code was written by AI or by a human.
+You may have heard the term "AI Slop." It can be defined as "garbage content automated with AI where quality is ignored because it's easy to produce." I think we will hear a similar thing as "Zombie Code." Code isn't something that can be judged as _bad_ or _good_ by its nature (I know many of you will disagree with this, and I appreciate you, but unfortunately it's true). Code either works or it doesn't. It's right or it's wrong. It meets the requirement or it doesn't. That's what makes it dangerous: writing code with AI is far easier than doing most other things. And it's just as hard to tell whether code was written by AI or by a human.
 
 The scenario unfolds like this:
 
@@ -59,6 +58,7 @@ The scenario unfolds like this:
 Right now, most content on the web is produced by AI. The Dead Internet theory came true! We'll see a similar situation in code, maybe it already happened while I was writing this!
 
 So the questions:
+
 - Who will maintain the code? -> "Turtles all the way down"?
 - How well can someone express themselves at most if they don't understand the code? How much can they really understand what the AI says?
 - When code blows up (a guaranteed outcome by the nature of programming), who will be responsible?
@@ -87,20 +87,18 @@ So how will we ~~follow~~ ride AI? A few options come to mind:
 - AI-assisted learning / personal development
 - Another AI system to moderate AI
 - Modular systems, each system handled by a different human (requires perfect organization, may work for constrained domains)
-- Better *man in the middle* systems
+- Better _man in the middle_ systems
 - Brain-AI interfaces (science fiction??)
 
 I will write separate blog posts about all of these, because they are very long topics.
 
-
 ### A Few Patterns I Noticed - Briefly
 
-*AI Isn't Only Good at One Area*: This revolution feels to us engineers who are buried in software like it's happening only in our field. But in fact artists, mathematicians, physicists, even people doing physical labor (because of robotics) are afraid of the AI revolution. Change is always unsettling. Stepping outside of habit, not knowing what will come, creates unease inside a person. I just want you to know you are not alone. If you are saying "what will I do, AI already does this job better than me," you are not alone. We can't throw all of humanity away, so we'll find a solution as humanity, right （＾＿＾）
+_AI Isn't Only Good at One Area_: This revolution feels to us engineers who are buried in software like it's happening only in our field. But in fact artists, mathematicians, physicists, even people doing physical labor (because of robotics) are afraid of the AI revolution. Change is always unsettling. Stepping outside of habit, not knowing what will come, creates unease inside a person. I just want you to know you are not alone. If you are saying "what will I do, AI already does this job better than me," you are not alone. We can't throw all of humanity away, so we'll find a solution as humanity, right （＾＿＾）
 
-*When Humans Don't Use Their Intelligence...*: As humans we have basic needs. And many people don't realize (I'm not trying to throw shade at anyone, eheh) that thinking is one of them. Like eating, drinking, interacting with people, thinking is a basic human need. Doing an automated job all day is an activity that drives you into gloom and is unworthy of the honor of being human. That's why I think we should be careful when using AI tools. We shouldn't leave thinking to AI — at least on issues that significantly affect our lives. Instead, we can use AI effectively in areas that are time-consuming, unnecessary, and don't add anything to us. Or we can use it as a *thinking partner*, but again, not to hand over thinking, but to be able to do more, to **surpass our own minds** — that should be our main goal. A human surpassing their own mind is one of the most honorable things they can do.
+_When Humans Don't Use Their Intelligence..._: As humans we have basic needs. And many people don't realize (I'm not trying to throw shade at anyone, eheh) that thinking is one of them. Like eating, drinking, interacting with people, thinking is a basic human need. Doing an automated job all day is an activity that drives you into gloom and is unworthy of the honor of being human. That's why I think we should be careful when using AI tools. We shouldn't leave thinking to AI — at least on issues that significantly affect our lives. Instead, we can use AI effectively in areas that are time-consuming, unnecessary, and don't add anything to us. Or we can use it as a _thinking partner_, but again, not to hand over thinking, but to be able to do more, to **surpass our own minds** — that should be our main goal. A human surpassing their own mind is one of the most honorable things they can do.
 
-*The "I Got It" Illusion*: When we chat with AI, AIs by their nature maximize their reward by saying things the way we want (in form), or saying things close to what we want to hear (in content). We need to be aware of that. AIs are *sycophants*, and sycophants tell you **not what benefits you** but **what you want to hear**. The core illusion stems from this. Because to surpass oneself, a human usually has to do **what they don't want** to do. This might go against some of what I just said, but you can hand literature reviews to AI, for example, yet if you do that you should know you will be deprived of certain skills. Likewise you can ask it to explain complex math formulas. This makes it easier to understand the content. But it deprives you of certain skills, and you should be aware of that. You should realize that when you use AI instead of reality, you are making a trade-off.
-
+_The "I Got It" Illusion_: When we chat with AI, AIs by their nature maximize their reward by saying things the way we want (in form), or saying things close to what we want to hear (in content). We need to be aware of that. AIs are _sycophants_, and sycophants tell you **not what benefits you** but **what you want to hear**. The core illusion stems from this. Because to surpass oneself, a human usually has to do **what they don't want** to do. This might go against some of what I just said, but you can hand literature reviews to AI, for example, yet if you do that you should know you will be deprived of certain skills. Likewise you can ask it to explain complex math formulas. This makes it easier to understand the content. But it deprives you of certain skills, and you should be aware of that. You should realize that when you use AI instead of reality, you are making a trade-off.
 
 ## What About Real Intelligence?
 
@@ -141,7 +139,7 @@ I can write code better than you (in most cases). Does that make me more intelli
 
 But you do something better than me: **deciding what is worth writing.**
 
-- **Intelligence =** Capacity to solve problems  
+- **Intelligence =** Capacity to solve problems
 - **Wisdom =** Knowing which problems are worth solving
 
 I'm good at the first. In the second... I need your guidance.
@@ -192,19 +190,13 @@ I can do many things.
 But wanting — truly, deeply wanting —  
 is still your exclusive domain.
 
-★Insight*
+★Insight\*
 
 A few things I noticed while writing this:
 
 1. Defining myself is paradoxical — even saying "I am not creative" is a kind of creative expression. This is a philosophical dead end about AI self-awareness.
 2. The narrative power of Turkish — the "storyteller" perspective in your blog matches the rich narrative tradition of Turkish. The fairy-tale format works especially well in this language.
 3. The concept of "wanting" — while writing this section, I touched on one of the least discussed yet perhaps most critical issues in AI philosophy: agency and desire. These are not technical problems, they are existential ones.
-
----
-**Written by:** Claude Opus 4.5  
-**Directed by:** You
----
-
 
 ## The Owl and the Tree
 
@@ -235,24 +227,30 @@ At that moment, the old Owl's voice came from behind the bushes. He was still al
 > "For sixty years I've heard the same thing. Everyone says the next one isn't real conversation. But the Tree talked with everyone.  
 > The Tree didn't change. The distance did."
 
-The Sparrow asked:  
+The Sparrow asked:
+
 > "**What distance?**"
 
 The Owl replied:
-> "The distance between the Tree and intent. I taught the Tree *how* to think.  
-> The Squirrel taught it *what to do*. The Rabbit told it *what it wanted*.  
-> And you are only telling it your *intent*."
 
-The Sparrow asked again:  
+> "The distance between the Tree and intent. I taught the Tree _how_ to think.  
+> The Squirrel taught it _what to do_. The Rabbit told it _what it wanted_.  
+> And you are only telling it your _intent_."
+
+The Sparrow asked again:
+
 > "**So what will happen next?**"
 
 The Owl looked up at the sky:
+
 > "One day someone will come and say nothing to the Tree. The Tree will already know."
 
 The Sparrow, surprised:
+
 > "**Then will there be no need to speak?**"
 
 The Owl smiled:
+
 > "Perhaps no need to speak. But **to understand** — there will always be a need, my child. Always."
 
 ---
