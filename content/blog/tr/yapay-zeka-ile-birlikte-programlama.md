@@ -14,7 +14,7 @@ seriesOrder: 2
 
 Yapay zeka kodlamada müthiş bir beceri kazandı, bu konuda hepimiz hemfikiriz sanırım. Ve aynı şekilde bu trendin extrapole edildiğinde (geleceğe uzatıldığı zaman) sanal yapay zeka asistanlarını tıpkı gerçek insanlar gibi kullanacağımız açık gibi gözüküyor. Kapitalizmin emrettiği gibi, iş her zaman çıktısı karşısında ucuzlar (e.g. verimlilik artar).
 
-Bu noktada serinin bir önceki blog postunda bahsettiğim gibi birkaç şey gözardı ediliyor olsa bile, şimdilik biz de onları göz ardı edeceğiz. Kendimi tekrar etmemek adına bu noktaların bahsini geçmeyeceğim, merak ettiyseniz önceki blog postuma gidebilirsiniz.
+Bu noktada serinin bir önceki blog postunda bahsettiğim gibi birkaç şey göz ardı ediliyor olsa bile, şimdilik biz de onları göz ardı edeceğiz. Kendimi tekrar etmemek adına bu noktaların bahsini geçmeyeceğim, merak ettiyseniz önceki blog postuma gidebilirsiniz.
 
 Bugün daha farklı bir konudan bahsetmek istiyorum. Yapay zeka ile bilgiyi evirip çevirmenin ölümünden bahsetmek istiyorum.
 
@@ -34,7 +34,7 @@ Peki soralım bakalım, neden? Neden hâlâ insan gücü var? Her şey otomatize
 1. Ekonomik olarak daha avantajlı
 2. Zekâ ve kas gücü birlikte gerekli, makineler belli ortamlar için uygun değil (yeterince adaptif/zeki değiller)
 
-iki argümanın da yazılıma uyarlamasında benzer karşı tez savunulabilir:
+İki argümanın da yazılıma uyarlamasında benzer karşı tez savunulabilir:
 
 ~~~
 iyi de yapay zeka teknolojisi dijital kodlama ortamında,
@@ -43,7 +43,7 @@ maliyeti sıfıra iniyor ve becerisi gittikçe artıyor.
 
 Haklısınız. Bu argümanlar programcıların kod yazmaya devam etmesi için yeterli değil. "Bu defa farklı" tezi her ne kadar finansta çok tehlikeli bir tez de olsa, kim bilir, belki gerçekten de bu defa farklıdır. Bu defa gerçekten de bizi insan yapan şey, bizden daha iyi bir şekilde bir sistem tarafından tekrar edilebiliyor ise, durum cidden farklı olabilir.
 
-Fakat bu ne anlam ifade ediyor, ve bizim ne yapmamız gerekiyor? Konuyu fazla evirip çektiğimin farkındayım, lütfen benimle kalmaya çalışın :)
+Fakat bu ne anlam ifade ediyor, ve bizim ne yapmamız gerekiyor? Konuyu fazla evirip çevirdiğimin farkındayım, lütfen benimle kalmaya çalışın :)
 
 ## Bilgeliğin Başlangıcı
 
@@ -57,11 +57,11 @@ Bilgiyi evirip çevirmek tamamen değersiz bir şey olacak. Bu cümlemi tekrar e
 
 Peki o zaman değerli olan ne olacak? Bazı seçenekler sıralayalım -maddeleri okurken biraz geniş perspektif ile bakmanızı istiyorum-:
 
-1. Hangi bilginin evirilip çevirilmeye değer olduğunu bilmek 
+1. Hangi bilginin evirilip çevrilmeye değer olduğunu bilmek 
    - Ne yapmak gerektiğini bilmek, nasıl yapmak gerektiğini bilmekten daha önemli hâle gelir.
 2. En hızlı şekilde bilgiyi evirip çevirmek
    - Herkes aynı rekabet unsuruna sahip olduğu zaman, hız ve hacim belirleyici unsur olur
-3. En çok evirilip çevirilebilecek bilgiyi tutmak 
+3. En çok evirilip çevrilebilecek bilgiyi tutmak 
    - Google ile nasıl yarışabilirsin ki? Müşterilerin bile kendileri hakkında bilmedikleri bilgilere sahip olmak, yazılım ücretinin sıfıra indiği bir dünyada ilginç sonuçlar doğurabilir.
 4. Kimsenin taklidine bile sahip olmadığı gerçek anlamda özgün bilgiler elde etmek
    - Belirli bir alanda öyle derinleşilir ki, rekabetçi bir avantaj olacak bir içgörü elde edilir. Herkesin son teknoloji ile kod yazabilen YZ araçları olduğu bir dönemde, "son teknoloji"yi geliştirmek, YZ'ye odaklanmaktan daha mantıklı olabilir.
@@ -73,7 +73,7 @@ Bu maddelerin her birine, "biz inşa etmeyi seven insanları nasıl etkiler" per
 
 ### Bilginin Değeri
 
-Neyin inşa edilip neyin edilmemesi gerektiği sorunsalı size çok basit gelebilir, ama aslında çok önemlidir. Yapay zekadan bağımsız olarak bile var olan bir sorundur, ve pek çok firma bu sorunsalı düzgün halledemediği için batmıştır. Neyi inşa etmenin değerli olduğuna yönelik bir ölçüm metodumuz yok. Bir teorimiz de yok. Olsaydı muhtemelen bu teori de geçerliliğini (muhtemelen efektif market hipotezi sebebi ile) kaybederdi. İnsan ilginç bir varlık, ve insanların içinde yaşadığı gerçeklik süreç içerisinde değişiyor, devletler, metalar, şirketler, oyuncular değişiyor. Neyin inşa etmeye değer olduğu her zaman insana içkin ve bağlama özgün bir sorunsal olacak gibi duruyor. Genel bir yapay zeka bile insanların içinde bulunduğu bağlamı insanlarla etkileşime geçmeden anlayamaz. (Biraz da bu maddeyi zor yapan da bu, zeki bir insan da olsanız neyin inşa edilmeye değer olduğunu anlamak için bilgisayardan kafanızı kaldırmanız gerekiyor.) 
+Neyin inşa edilip neyin edilmemesi gerektiği sorunsalı size çok basit gelebilir, ama aslında çok önemlidir. Yapay zekadan bağımsız olarak bile var olan bir sorundur, ve pek çok firma bu sorunsalı düzgün halledemediği için batmıştır. Neyi inşa etmenin değerli olduğuna yönelik bir ölçüm metodumuz yok. Bir teorimiz de yok. Olsaydı muhtemelen bu teori de geçerliliğini (muhtemelen efektif market hipotezi sebebi ile) kaybederdi. İnsan ilginç bir varlık, ve insanların içinde yaşadığı gerçeklik süreç içerisinde değişiyor, devletler, metalar, şirketler, oyuncular değişiyor. Neyin inşa etmeye değer olduğu her zaman insana içkin ve bağlama özgü bir sorunsal olacak gibi duruyor. Genel bir yapay zeka bile insanların içinde bulunduğu bağlamı insanlarla etkileşime geçmeden anlayamaz. (Biraz da bu maddeyi zor yapan da bu, zeki bir insan da olsanız neyin inşa edilmeye değer olduğunu anlamak için bilgisayardan kafanızı kaldırmanız gerekiyor.) 
 
 > So anon, touch some grass. And learn what's worthy to build.
 
@@ -106,7 +106,7 @@ Biraz daha şiirsel olan ve neredeyse hepimizin doğru olması için yalvardığ
 
 Bunun değerinin yapay zeka ne kadar gelişirse gelişsin azalacağını düşünmüyorum, hatta yapay zeka bir kaldıraç bile olabilir. Yeni teknolojilerin önemini arttıran bir kaldıraç. Bir database daha iyi çalıştığı zaman artık insanlığa çok daha önemli bir katkısı olmuş olacak. Bir video paketleme algoritması daha iyi çalıştığı zaman, artık etkisi çok çok çok daha yüksek olacak. Örnekler arttırılabilir, ama temel fikir aynı. 
 
-İnsan emeğinin tamamen çöpre gideceğine yönelik inancım sıfır, hatta mümkünse negatif. Bir insan gerçekten merak ettiği için kendine bir şeyler katıyorsa ve bu katkıyı sonra yeni fikirler bularak insanlık ile paylaşabiliyorsa, kesinlikle ama kesinlikle insanlığın var olduğu her dönemde bunun ödülü olacaktır. Bunu ödüllendirmeyen toplumlar zaten yok olmaya mahkumdur. Bu yüzden yapay zeka var diye bir şeyler öğrenmekten çekinmeyin. Sorduğunuz soruları ve yaptığınız işleri aptalca görmeyin, "zaten AI bunu yapabilir demeyin". Yapamadığı şeyleri yapabildiğiniz yeteneğe eriştiğinizde, sahip olacağınız kaldıracı muhtemelen hayal edemiyorsunuz çünkü.
+İnsan emeğinin tamamen çöpe gideceğine yönelik inancım sıfır, hatta mümkünse negatif. Bir insan gerçekten merak ettiği için kendine bir şeyler katıyorsa ve bu katkıyı sonra yeni fikirler bularak insanlık ile paylaşabiliyorsa, kesinlikle ama kesinlikle insanlığın var olduğu her dönemde bunun ödülü olacaktır. Bunu ödüllendirmeyen toplumlar zaten yok olmaya mahkumdur. Bu yüzden yapay zeka var diye bir şeyler öğrenmekten çekinmeyin. Sorduğunuz soruları ve yaptığınız işleri aptalca görmeyin, "zaten AI bunu yapabilir demeyin". Yapamadığı şeyleri yapabildiğiniz yeteneğe eriştiğinizde, sahip olacağınız kaldıracı muhtemelen hayal edemiyorsunuz çünkü.
 
 ### Her Şey Sadece Pazarlamadır
 
@@ -120,7 +120,7 @@ günün sonunda yaptığınız şeyin ne kadar iyi olduğu bir anlam ifade etmiy
 
 Mühendisler olarak her şeye sadece teknik bakmayı seviyoruz, bir problemin çözümü iyiyse, her şey bitmiştir. Bu hatalı bakış açısı hayata olan genel hatalı bakışımızdan kaynaklı. Problemler, problemleri çözmek için var değildir, insan hayatına dokunmak için vardır. Dünyanın en zor problemlerini çözebilirsiniz, eğer kimsenin hayatına dokunmazsa, kimse umursamaz. Çözümünüz ne kadar estetik olursa olsun, kimsenin hayatına dokunmuyorsa, hiçbir anlam ifade etmez.
 
-Bu yüzden, teknik bir işlemi bitirdiğiniz zaman yolun sadece yarısını (bazen yarısından da azını) bitirmiş olursunuz. Geriye kalan kısmı hikayenizi anlatmaktır. Satmakdır. Ve genelde bu, teknik çözüme başlamadan düşünülmesi gereken bir unsurdur. İnşa edeceğiniz şeyi satabilmenizin bir yolu yoksa (en kötü senaryo: kişisel kullanım), inşa etmek için bir sebebiniz de yoktur (bu noktada birinci maddeye de dönebilirsiniz).
+Bu yüzden, teknik bir işlemi bitirdiğiniz zaman yolun sadece yarısını (bazen yarısından da azını) bitirmiş olursunuz. Geriye kalan kısmı hikayenizi anlatmaktır. Satmaktır. Ve genelde bu, teknik çözüme başlamadan düşünülmesi gereken bir unsurdur. İnşa edeceğiniz şeyi satabilmenizin bir yolu yoksa (en kötü senaryo: kişisel kullanım), inşa etmek için bir sebebiniz de yoktur (bu noktada birinci maddeye de dönebilirsiniz).
 
 Günün sonunda yapay zeka kodunuzu yazabilir. Ama hikayenizi anlatamaz / satamaz.
 

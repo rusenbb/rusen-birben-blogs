@@ -75,6 +75,9 @@ export default function LocaleLayout({
               <nav className={styles.navbar}>
                 <div className={styles.navInner}>
                   <div className={styles.navLinks}>
+                    <Link href={`/${params.locale}`} className={styles.logo} aria-label="Home">
+                      RB
+                    </Link>
                     <Link href={`/${params.locale}/blog`} className={styles.navLink}>
                       {dict.nav.blog}
                     </Link>

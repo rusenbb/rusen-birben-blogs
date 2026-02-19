@@ -17,6 +17,21 @@
   gap: var(--space-md);
 }
 
+.logo {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  margin-right: var(--space-xs);
+  transition: opacity 0.15s ease;
+}
+
+.logo:hover {
+  opacity: 0.6;
+}
+
 .navLink {
   font-family: var(--font-mono);
   font-size: 0.75rem;
