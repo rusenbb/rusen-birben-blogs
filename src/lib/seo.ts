@@ -41,7 +41,7 @@ export function generateMetadata({
   const resolvedOgImage = ogImage
     ? `${siteConfig.url}${ogImage}`
     : translationKey
-      ? `${siteConfig.url}/og/${translationKey}.png`
+      ? `${siteConfig.url}/og/${translationKey}.jpg`
       : `${siteConfig.url}/og/default.png`;
 
   return {

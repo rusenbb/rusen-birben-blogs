@@ -22,7 +22,7 @@ async function generateImage(translationKey: string, title: string): Promise<Buf
   renderGrain(ctx, WIDTH, HEIGHT, rng);
   renderTextOverlay(ctx, WIDTH, HEIGHT, title, patternColor);
 
-  return canvas.toBuffer('image/png');
+  return canvas.toBuffer('image/jpeg', { quality: 0.85 });
 }
 
 async function main() {
@@ -35,18 +35,18 @@ async function main() {
   let skipped = 0;
 
   for (const post of posts) {
-    const outputPath = path.join(OUTPUT_DIR, `${post.translationKey}.png`);
+    const outputPath = path.join(OUTPUT_DIR, `${post.translationKey}.jpg`);
 
     if (!force && fs.existsSync(outputPath)) {
       skipped++;
-      console.log(`  skip  ${post.translationKey}.png (exists)`);
+      console.log(`  skip  ${post.translationKey}.jpg (exists)`);
       continue;
     }
 
     const buffer = await generateImage(post.translationKey, post.title);
     fs.writeFileSync(outputPath, buffer);
     generated++;
-    console.log(`  done  ${post.translationKey}.png  "${post.title}"`);
+    console.log(`  done  ${post.translationKey}.jpg  "${post.title}"`);
   }
 
   console.log(`\nOG images: ${generated} generated, ${skipped} skipped`);
