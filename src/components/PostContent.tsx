@@ -58,7 +58,7 @@ export function PostContent({ html, className }: Props) {
       }
 
       tooltip.style.left = `${left}px`;
-      tooltip.style.top = `${top + window.scrollY}px`;
+      tooltip.style.top = `${top}px`;
     };
 
     const hide = (e: MouseEvent) => {
