@@ -46,7 +46,7 @@ export function PostContent({ html, className }: Props) {
       const tooltipRect = tooltip.getBoundingClientRect();
 
       let left = rect.left + rect.width / 2 - tooltipRect.width / 2;
-      let top = rect.top - tooltipRect.height - 8;
+      let top = rect.top - tooltipRect.height - 4;
 
       // Viewport clamping
       if (left < 8) left = 8;
@@ -54,7 +54,7 @@ export function PostContent({ html, className }: Props) {
         left = window.innerWidth - tooltipRect.width - 8;
       }
       if (top < 8) {
-        top = rect.bottom + 8; // flip below if no space above
+        top = rect.bottom + 4; // flip below if no space above
       }
 
       tooltip.style.left = `${left}px`;

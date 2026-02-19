@@ -1,7 +1,7 @@
 ---
 title: "Building In The Age Of AI"
 date: "2026-02-18"
-description: "As AI evolves, the way *digital builders* work is changing at breakneck speed. What should we do, how should we adapt, and most importantly — what should we not do?"
+description: "As AI evolves, the way **digital builders** work is changing at breakneck speed. What should we do, how should we adapt, and most importantly — what should we not do?"
 tags:
   - "ai"
   - "programming"

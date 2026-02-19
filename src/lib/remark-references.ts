@@ -140,7 +140,6 @@ const remarkReferences: Plugin<[RemarkReferencesOptions], Root> = (options) => {
           children.push({
             type: 'link',
             url: match.external.url,
-            title: match.external.title,
             data: {
               hProperties: {
                 className: 'post-reference',
@@ -168,7 +167,6 @@ const remarkReferences: Plugin<[RemarkReferencesOptions], Root> = (options) => {
           children.push({
             type: 'link',
             url,
-            title: match.post.title,
             data: {
               hProperties: {
                 className: 'post-reference',
