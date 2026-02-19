@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { visit } from 'unist-util-visit';
 import { createMarkdownProcessor } from './markdown-plugins';
+import remarkReferences, { type ResolvedReference } from './remark-references';
 import { Locale, locales } from './i18n';
 const contentDirectory = path.join(process.cwd(), 'content/blog');
 
@@ -25,6 +26,7 @@ export interface BlogPost {
   content: string;
   headings: Heading[];
   readingTime: number;
+  references: ResolvedReference[];
 }
 
 export interface BlogPostMeta {
@@ -190,7 +192,10 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogP
     return '';
   }
 
-  const processor = createMarkdownProcessor();
+  const allPosts = getAllPosts(locale);
+  const processor = createMarkdownProcessor([
+    [remarkReferences, { locale, currentSeries: data.series, allPosts }],
+  ]);
 
   // Heading extractor runs after rehypeSlug has assigned IDs
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -210,8 +215,9 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogP
   });
 
   const processedContent = await processor.process(content);
-  
+
   const contentHtml = processedContent.toString();
+  const references = (processedContent.data.references as ResolvedReference[]) ?? [];
 
   return {
     slug,
@@ -226,6 +232,7 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogP
     content: contentHtml,
     headings,
     readingTime: calculateReadingTime(content),
+    references,
   };
 }
 

@@ -326,6 +326,65 @@
   font-family: var(--font-serif);
 }
 
+/* References */
+.referencesSection {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-light);
+}
+
+.referencesSummary {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+
+.referencesSummary::-webkit-details-marker {
+  display: none;
+}
+
+.referencesSummary::before {
+  content: '+ ';
+}
+
+.referencesSection[open] .referencesSummary::before {
+  content: '− ';
+}
+
+.referencesList {
+  margin-top: var(--space-sm);
+  padding-left: 1.5rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.referencesItem {
+  margin-bottom: 0.4rem;
+}
+
+.referencesItem a {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+
+.referencesItem a:hover {
+  text-decoration: none;
+}
+
+.referencesBadge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-left: 0.5rem;
+}
+
 /* Footer */
 .footer {
   margin-top: var(--space-xl);

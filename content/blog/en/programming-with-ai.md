@@ -14,7 +14,7 @@ seriesOrder: 2
 
 AI has gained incredible skill at coding — I think we all agree on that. And extrapolating this trend, it seems clear that we'll use virtual AI assistants much like real people. As capitalism dictates, labor always gets cheaper relative to its output (i.e., productivity increases).
 
-At this point, even though a few things are being overlooked — as I mentioned in the previous post in this series — we'll ignore them for now too. To avoid repeating myself, I won't revisit those points; if you're curious, check out the previous post.
+At this point, even though a few things are being overlooked — as I mentioned in the previous post in this series — we'll ignore them for now too. To avoid repeating myself, I won't revisit those points; if you're curious, you can check out the previous post [s1].
 
 Today I want to talk about something different. I want to talk about the death of knowledge-shuffling.
 
@@ -22,27 +22,13 @@ Today I want to talk about something different. I want to talk about the death o
 
 ## The End of Knowledge
 
-I want you to imagine a scenario. AI has truly gained persistent memory — it no longer acts like it has Alzheimer's every session. We've integrated it into real software systems, given it tasks and personas. AI has taken over all white-collar jobs. Every job in the digital world that involves shuffling knowledge has given itself over to the cheaper alternative: AI. Just like "all" heavy labor was handed off to machines.
+I want you to imagine a scenario. AI has truly gained persistent memory — it no longer acts like it has Alzheimer's every session. We've integrated it into real software systems, given it tasks and personas. AI has taken over all white-collar jobs. Every job in the digital world that involves shuffling knowledge has given itself over to the cheaper alternative: AI. Just like "all" heavy labor was handed off to machines... except it wasn't. Machines didn't take all physical labor, because in some jobs humans are still cheaper or more adaptive. But in software, both of those defenses collapse: AI's cost is approaching zero, its capability keeps growing, and in the digital world there's no adaptation problem. This time, the conditions really could be different.
 
-Wait a second — machines still don't do all the heavy labor, do they?
+Let me clarify what I mean by "shuffling knowledge": writing code, preparing reports, analyzing data, drafting contracts, designing presentations, business correspondence, etc. What I really mean is "processing information in the digital world" (I just avoided the word *digital* because there are also information-processing jobs that haven't been digitized yet but could be). If you define your job as sitting at a computer and thinking, you'll probably need to interact with AI.
 
-Yeah, our logic couldn't even get us from point A to point B, right :) ?
+We're not yet at a point where all jobs have been handed over to AI — I'm aware. But the direction is clear. Less and less of value is built on "manipulating knowledge" with each passing day.
 
-So let's ask: why? Why does human labor still exist? Can't everything be automated? Couldn't machines do it all? Why are people still around?
-
-1. Economically more advantageous
-2. Intelligence and physical strength are needed together — machines aren't suitable for certain environments (not adaptive/smart enough)
-
-A similar counterargument can be made when adapting both points to software:
-
-~~~
-But in the digital coding environment, AI technology's
-cost is approaching zero and its capability keeps growing.
-~~~
-
-You're right. These arguments aren't enough to justify programmers continuing to write code. The "this time is different" thesis, as dangerous as it is in finance, might — who knows — actually be different this time. If what makes us human can truly be replicated better by a system, the situation really could be different.
-
-But what does this mean, and what should we do? I'm aware I've been going around in circles — please stick with me :)
+So what does this shift mean, and what should we do?
 
 ## The Beginning of Wisdom
 
@@ -143,3 +129,13 @@ That's why AI can write everything, but it can't write you.
 You must write yourself. You might do a terrible job at first — that's okay. What you learn from terrible will always be more valuable than what you learn from imagining perfect.
 
 Knowledge can be downloaded. Wisdom is earned. AI will drive the first to zero. Nothing will drive the second to zero.
+
+> **NOTE**
+>
+> What should programmers do:
+>
+> - Care about learning — depth will always matter
+> - Build speed — experiment fast, fail fast
+> - Keep your horizons wide — don't get lost in a single domain while going deep
+> - Stay social, look at the world -> Be a storyteller
+> - Shift from an engineer mindset to a builder mindset

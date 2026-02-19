@@ -24,7 +24,8 @@
     "rss": "RSS Akışı",
     "filterByTag": "Etikete göre filtrele",
     "onThisPage": "Bu sayfada",
-    "minRead": "dk okuma"
+    "minRead": "dk okuma",
+    "references": "Kaynaklar"
   },
   "tags": {
     "title": "Etiketler",

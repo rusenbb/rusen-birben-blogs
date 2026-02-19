@@ -7,6 +7,7 @@ import { PrefetchLink } from '@/components/PrefetchLink';
 import { FaArrowLeft, FaClock, FaCalendar } from 'react-icons/fa';
 import { SeriesMeta, SeriesNav } from '@/components/Series';
 import { PostTranslationSetter } from '@/components/PostTranslationSetter';
+import { PostContent } from '@/components/PostContent';
 import { generateMetadata as generateSEOMetadata, generateArticleStructuredData } from '@/lib/seo';
 import styles from './post.module.css';
 
@@ -156,10 +157,7 @@ export default async function BlogPostPage({ params }: Props) {
               )}
             </header>
 
-            <div
-              className={styles.content}
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+            <PostContent html={post.content} className={styles.content} />
 
             {/* Series Navigation */}
             {post.series && seriesPosts.length > 1 && (
@@ -170,6 +168,31 @@ export default async function BlogPostPage({ params }: Props) {
                 locale={params.locale}
                 dict={dict}
               />
+            )}
+
+            {post.references.length > 0 && (
+              <details className={styles.referencesSection}>
+                <summary className={styles.referencesSummary}>
+                  {dict.blog.references} ({post.references.length})
+                </summary>
+                <ol className={styles.referencesList}>
+                  {post.references.map((ref, i) => (
+                    <li key={i} className={styles.referencesItem}>
+                      <a
+                        href={ref.url}
+                        {...(ref.external && { target: '_blank', rel: 'noopener noreferrer' })}
+                      >
+                        {ref.title}
+                      </a>
+                      {ref.series && (
+                        <span className={styles.referencesBadge}>
+                          {ref.series} · #{ref.seriesOrder}
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ol>
+              </details>
             )}
 
             <footer className={styles.footer}>

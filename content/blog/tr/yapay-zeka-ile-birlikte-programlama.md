@@ -10,11 +10,12 @@ translationKey: "programming-with-ai"
 series: "AI and Programming"
 seriesOrder: 2
 ---
+
 # Yapay Zeka Bütün Yazılımları Yazdığı Zaman Biz Ne Yapacağız?
 
 Yapay zeka kodlamada müthiş bir beceri kazandı, bu konuda hepimiz hemfikiriz sanırım. Ve aynı şekilde bu trendin extrapole edildiğinde (geleceğe uzatıldığı zaman) sanal yapay zeka asistanlarını tıpkı gerçek insanlar gibi kullanacağımız açık gibi gözüküyor. Kapitalizmin emrettiği gibi, iş her zaman çıktısı karşısında ucuzlar (e.g. verimlilik artar).
 
-Bu noktada serinin bir önceki blog postunda bahsettiğim gibi birkaç şey göz ardı ediliyor olsa bile, şimdilik biz de onları göz ardı edeceğiz. Kendimi tekrar etmemek adına bu noktaların bahsini geçmeyeceğim, merak ettiyseniz önceki blog postuma gidebilirsiniz.
+Bu noktada serinin bir önceki blog postunda bahsettiğim gibi birkaç şey göz ardı ediliyor olsa bile, şimdilik biz de onları göz ardı edeceğiz. Kendimi tekrar etmemek adına bu noktaların bahsini geçmeyeceğim, merak ettiyseniz önceki blog postuma [s1] gidebilirsiniz.
 
 Bugün daha farklı bir konudan bahsetmek istiyorum. Yapay zeka ile bilgiyi evirip çevirmenin ölümünden bahsetmek istiyorum.
 
@@ -22,58 +23,40 @@ Bugün daha farklı bir konudan bahsetmek istiyorum. Yapay zeka ile bilgiyi evir
 
 ## Bilginin Sonu
 
-Bir senaryo düşünmenizi istiyorum. Yapay zeka gerçekten de kalıcı hafızaya erişmiş, artık her sessionda alzheimer gibi davranmıyor. Gerçek yazılım sistemlerine entegre etmişiz, görevler ve karakterler vermişiz. Beyaz yaka bütün insanların görevlerini almış yapay zekalar. Dijital ortamda bilgiyi evirip çeviren bütün işler, kendini daha ucuz olan yapay zekaya vermiş. Tıpkı ağır işlerin "hepsinin" makinelere verilmiş olması gibi.
+Bir senaryo düşünmenizi istiyorum. Yapay zeka gerçekten de kalıcı hafızaya erişmiş, artık her sessionda alzheimer gibi davranmıyor. Gerçek yazılım sistemlerine entegre etmişiz, görevler ve karakterler vermişiz. Beyaz yaka bütün insanların görevlerini almış yapay zekalar. Dijital ortamda bilgiyi evirip çeviren bütün işler, kendini daha ucuz olan yapay zekaya vermiş. Tıpkı ağır işlerin "hepsinin" makinelere verilmiş olması gibi... ki verilmedi. Makineler fiziksel emeğin hepsini almadı, çünkü bazı işlerde insan hâlâ daha ucuz veya daha adaptif. Ama yazılımda bu iki savunma da çöküyor: yapay zekanın maliyeti sıfıra iniyor, becerisi gittikçe artıyor ve dijital ortamda adaptasyon sorunu yok. Bu defa koşullar gerçekten farklı olabilir.
 
-Bir dakika, ağır işlerin hepsini hâlâ makineler yapmıyor ki?
+"Bilgiyi evirip çevirmek" derken neyi kast ettiğimi biraz açmak istiyorum: kod yazmak, rapor hazırlamak, veri analiz etmek, sözleşme taslağı çıkarmak, sunum tasarlamak, iş için mailleşmek vs. Kast ettiğim şey aslında "dijital ortamda veri işlemek", (sadece **dijital** kelimesinden kaçındım çünkü hâlâ dijitale dökülmemiş ama dökülebilir veri işlemeye dayalı işler de mevcut). Eğer işinizi bilgisayar başında oturup düşünerek tanımlıyorsanız, muhtemelen yapay zeka ile etkileşime geçmeniz gerekecek.
 
+Henüz bütün işlerin yapay zekaya devredildiği bir durumda değiliz, farkındayım. Ama yönün buraya gittiği belli. Değerin gün geçtikçe daha ve daha az kısmı "bilgiyi manipüle etmek" üzerine kurulu oluyor.
 
-Evet, mantığımız bizi A noktasından B noktasına kadar bile götüremedi gibi değil mi :) ?
-
-Peki soralım bakalım, neden? Neden hâlâ insan gücü var? Her şey otomatize edilemez mi? Her şeyi makineler yapamaz mıydı? Neden hâlâ insanlar var?
-
-1. Ekonomik olarak daha avantajlı
-2. Zekâ ve kas gücü birlikte gerekli, makineler belli ortamlar için uygun değil (yeterince adaptif/zeki değiller)
-
-İki argümanın da yazılıma uyarlamasında benzer karşı tez savunulabilir:
-
-~~~
-iyi de yapay zeka teknolojisi dijital kodlama ortamında,
-maliyeti sıfıra iniyor ve becerisi gittikçe artıyor.
-~~~
-
-Haklısınız. Bu argümanlar programcıların kod yazmaya devam etmesi için yeterli değil. "Bu defa farklı" tezi her ne kadar finansta çok tehlikeli bir tez de olsa, kim bilir, belki gerçekten de bu defa farklıdır. Bu defa gerçekten de bizi insan yapan şey, bizden daha iyi bir şekilde bir sistem tarafından tekrar edilebiliyor ise, durum cidden farklı olabilir.
-
-Fakat bu ne anlam ifade ediyor, ve bizim ne yapmamız gerekiyor? Konuyu fazla evirip çevirdiğimin farkındayım, lütfen benimle kalmaya çalışın :)
+Peki bu değişim ne anlam ifade ediyor, ve bizim ne yapmamız gerekiyor?
 
 ## Bilgeliğin Başlangıcı
 
 Yapay zekanın bütün "beyaz yaka" işini yapmasının ne demek olduğunu düşünmenizi istiyorum. Sonrasında robotik ile gelecek olduğu mavi yaka işlerinden bahsetmiyorum bile.
 
-Bilgiyi evirip çevirmek tamamen değersiz bir şey olacak. Bu cümlemi tekrar etmek istiyorum, çünkü bütün bu blog yazımı sadece bu cümleyi anlayarak çözebilirsiniz. 
-
+Bilgiyi evirip çevirmek tamamen değersiz bir şey olacak. Bu cümlemi tekrar etmek istiyorum, çünkü bütün bu blog yazımı sadece bu cümleyi anlayarak çözebilirsiniz.
 
 > Bilgiyi evirip çevirmek tamamen değersiz bir şey olacak.
 
-
 Peki o zaman değerli olan ne olacak? Bazı seçenekler sıralayalım -maddeleri okurken biraz geniş perspektif ile bakmanızı istiyorum-:
 
-1. Hangi bilginin evirilip çevrilmeye değer olduğunu bilmek 
+1. Hangi bilginin evirilip çevrilmeye değer olduğunu bilmek
    - Ne yapmak gerektiğini bilmek, nasıl yapmak gerektiğini bilmekten daha önemli hâle gelir.
 2. En hızlı şekilde bilgiyi evirip çevirmek
    - Herkes aynı rekabet unsuruna sahip olduğu zaman, hız ve hacim belirleyici unsur olur
-3. En çok evirilip çevrilebilecek bilgiyi tutmak 
+3. En çok evirilip çevrilebilecek bilgiyi tutmak
    - Google ile nasıl yarışabilirsin ki? Müşterilerin bile kendileri hakkında bilmedikleri bilgilere sahip olmak, yazılım ücretinin sıfıra indiği bir dünyada ilginç sonuçlar doğurabilir.
 4. Kimsenin taklidine bile sahip olmadığı gerçek anlamda özgün bilgiler elde etmek
    - Belirli bir alanda öyle derinleşilir ki, rekabetçi bir avantaj olacak bir içgörü elde edilir. Herkesin son teknoloji ile kod yazabilen YZ araçları olduğu bir dönemde, "son teknoloji"yi geliştirmek, YZ'ye odaklanmaktan daha mantıklı olabilir.
-5. Gerçek dünya ilişkileri ile evirilip çevirilen bilgileri hayata sunabilmek 
+5. Gerçek dünya ilişkileri ile evirilip çevirilen bilgileri hayata sunabilmek
    - Yapay zeka zeki olabilir, ama etkili mi? Nerd vs social. Teknik başarı ürün başarısı demek değil.
-
 
 Bu maddelerin her birine, "biz inşa etmeyi seven insanları nasıl etkiler" perspektifi üzerinden değinmek istiyorum, tek bir gerçeklik farklı perspektiflerden ele alınabilir. Öyle yapacağım(z):
 
 ### Bilginin Değeri
 
-Neyin inşa edilip neyin edilmemesi gerektiği sorunsalı size çok basit gelebilir, ama aslında çok önemlidir. Yapay zekadan bağımsız olarak bile var olan bir sorundur, ve pek çok firma bu sorunsalı düzgün halledemediği için batmıştır. Neyi inşa etmenin değerli olduğuna yönelik bir ölçüm metodumuz yok. Bir teorimiz de yok. Olsaydı muhtemelen bu teori de geçerliliğini (muhtemelen efektif market hipotezi sebebi ile) kaybederdi. İnsan ilginç bir varlık, ve insanların içinde yaşadığı gerçeklik süreç içerisinde değişiyor, devletler, metalar, şirketler, oyuncular değişiyor. Neyin inşa etmeye değer olduğu her zaman insana içkin ve bağlama özgü bir sorunsal olacak gibi duruyor. Genel bir yapay zeka bile insanların içinde bulunduğu bağlamı insanlarla etkileşime geçmeden anlayamaz. (Biraz da bu maddeyi zor yapan da bu, zeki bir insan da olsanız neyin inşa edilmeye değer olduğunu anlamak için bilgisayardan kafanızı kaldırmanız gerekiyor.) 
+Neyin inşa edilip neyin edilmemesi gerektiği sorunsalı size çok basit gelebilir, ama aslında çok önemlidir. Yapay zekadan bağımsız olarak bile var olan bir sorundur, ve pek çok firma bu sorunsalı düzgün halledemediği için batmıştır. Neyi inşa etmenin değerli olduğuna yönelik bir ölçüm metodumuz yok. Bir teorimiz de yok. Olsaydı muhtemelen bu teori de geçerliliğini (muhtemelen efektif market hipotezi sebebi ile) kaybederdi. İnsan ilginç bir varlık, ve insanların içinde yaşadığı gerçeklik süreç içerisinde değişiyor, devletler, metalar, şirketler, oyuncular değişiyor. Neyin inşa etmeye değer olduğu her zaman insana içkin ve bağlama özgü bir sorunsal olacak gibi duruyor. Genel bir yapay zeka bile insanların içinde bulunduğu bağlamı insanlarla etkileşime geçmeden anlayamaz. (Biraz da bu maddeyi zor yapan da bu, zeki bir insan da olsanız neyin inşa edilmeye değer olduğunu anlamak için bilgisayardan kafanızı kaldırmanız gerekiyor.)
 
 > So anon, touch some grass. And learn what's worthy to build.
 
@@ -99,12 +82,11 @@ Kıssadan hisse olarak bu maddeden şunu alabilirsiniz (önceki maddelere de ass
 
 > Neyin değerli olduğunu ve nasıl hızlı bir şekilde yapılabileceğini öğrendikten sonra yapılması gereken şey, tekrar etmektir. Mükemmel olmaya çalışmadan, geniş bir şekilde tekrar etmek. Her tekrar size yeni bilgi verir, her bilgi bir sonraki tekrarı daha iyi yapar. Başarana kadar. Yeterince uzun süre hayatta kalırsan, başarırsın.
 
-
 ### Nitelik Nicelikten Daha Önemli
 
 Biraz daha şiirsel olan ve neredeyse hepimizin doğru olması için yalvardığı o madde. Yapay zeka her şeyi elimizden alsa da, yaratıcılığı alamaz. Farklılaştırıcı faktörü, yeni son nesil teknolojiyi ve kimsenin bilmediği bilgileri... bilemez. Bu faktörleri inşa etmenin değeri eksponansiyel bir şekilde artacak. Eğer şu ana kadarki üç madde size geniş olmayı tavsiye ettiyse, bu madde derin olmayı tavsiye ediyor. Yaptığınız işi gerçekten sevin, ve kimsenin akıl bile edemeyeceği, denemeye üşeneceği / uğraşmayacağı şeyler deneyin. Çalışın, çabalayın ve insanlığa yeni şeyler katın.
 
-Bunun değerinin yapay zeka ne kadar gelişirse gelişsin azalacağını düşünmüyorum, hatta yapay zeka bir kaldıraç bile olabilir. Yeni teknolojilerin önemini arttıran bir kaldıraç. Bir database daha iyi çalıştığı zaman artık insanlığa çok daha önemli bir katkısı olmuş olacak. Bir video paketleme algoritması daha iyi çalıştığı zaman, artık etkisi çok çok çok daha yüksek olacak. Örnekler arttırılabilir, ama temel fikir aynı. 
+Bunun değerinin yapay zeka ne kadar gelişirse gelişsin azalacağını düşünmüyorum, hatta yapay zeka bir kaldıraç bile olabilir. Yeni teknolojilerin önemini arttıran bir kaldıraç. Bir database daha iyi çalıştığı zaman artık insanlığa çok daha önemli bir katkısı olmuş olacak. Bir video paketleme algoritması daha iyi çalıştığı zaman, artık etkisi çok çok çok daha yüksek olacak. Örnekler arttırılabilir, ama temel fikir aynı.
 
 İnsan emeğinin tamamen çöpe gideceğine yönelik inancım sıfır, hatta mümkünse negatif. Bir insan gerçekten merak ettiği için kendine bir şeyler katıyorsa ve bu katkıyı sonra yeni fikirler bularak insanlık ile paylaşabiliyorsa, kesinlikle ama kesinlikle insanlığın var olduğu her dönemde bunun ödülü olacaktır. Bunu ödüllendirmeyen toplumlar zaten yok olmaya mahkumdur. Bu yüzden yapay zeka var diye bir şeyler öğrenmekten çekinmeyin. Sorduğunuz soruları ve yaptığınız işleri aptalca görmeyin, "zaten AI bunu yapabilir demeyin". Yapamadığı şeyleri yapabildiğiniz yeteneğe eriştiğinizde, sahip olacağınız kaldıracı muhtemelen hayal edemiyorsunuz çünkü.
 
@@ -126,7 +108,6 @@ Günün sonunda yapay zeka kodunuzu yazabilir. Ama hikayenizi anlatamaz / satama
 
 Ve evet, her şey sadece pazarlamadır. Çünkü kimsenin duymadığı bir ağaç, devrilse de ses çıkarmaz. Hangi gerçeklikte olursa olsun.
 
-
 ## Nasıl Bilge Olunur?
 
 Bilgelik bilgi gibi değildir. İndiremezsiniz. Bir prompt yazıp bilge olamazsınız. Bu, yapay zekanın bütün bilgiyi evirip çevirebildiği bir dünyada bilgeliği bu kadar değerli yapan şeyin ta kendisidir.
@@ -139,8 +120,18 @@ Hiçbiri yapay zekaya sorularak elde edilemiyor. Hepsi yaparak, deneyerek, gerç
 
 Bilgelik bir döngüdür: yap -> başarısız ol -> öğren -> tekrar yap. Bu döngünün her turu sizi biraz daha bilge yapar. Yapay zeka bu döngüyü hızlandırabilir (daha hızlı inşa edersiniz, daha çabuk test edersiniz, bilgiye hızlı ulaşırsın, daha hızlı geri bildirim alırsın), ama döngüye girmeyi sizin yerinize yapamaz. Çarkı ancak siz döndürebilirsiniz.
 
-Bu yüzden, yapay zeka her şeyi yazabilir, ama sizi yazamaz. 
+Bu yüzden, yapay zeka her şeyi yazabilir, ama sizi yazamaz.
 
 Kendinizi yazmalısınız, başta berbat bir iş çıkarabilirsiniz, önemli değil. Berbattan öğreneceğiniz şey, mükemmeli hayal ederek öğreneceğiniz şeyden her zaman daha değerli olacak.
 
 Bilgi indirilebilir. Bilgelik kazanılır. Yapay zeka birincisini sıfıra indirecek. İkinciyi sıfıra indirecek bir şey yok.
+
+> **NOTE**
+>
+> Programcılar ne yapmalı:
+>
+> - Öğrenmeyi önemseyin, derinlik her zaman önemli olacak
+> - Hız kazanın, hızlı deneyin, hızlı yanılın
+> - Ufkunuzu geniş tutun, derinleşirken tek bir alan içinde kaybolmayın
+> - Sosyal kalın, dünyaya bakın -> Hikaye anlatıcısı olun
+> - Mühendis kafasından inşa eden birey kafasına girin

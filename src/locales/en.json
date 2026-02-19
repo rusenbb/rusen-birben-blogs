@@ -24,7 +24,8 @@
     "rss": "RSS Feed",
     "filterByTag": "Filter by tag",
     "onThisPage": "On this page",
-    "minRead": "min read"
+    "minRead": "min read",
+    "references": "References"
   },
   "tags": {
     "title": "Tags",
