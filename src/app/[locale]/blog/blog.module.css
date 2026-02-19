@@ -25,6 +25,9 @@
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
   transition: color 0.15s ease;
 }
 
@@ -38,6 +41,9 @@
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
   transition: color 0.15s ease;
 }
 

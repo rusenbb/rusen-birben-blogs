@@ -18,7 +18,9 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: var(--space-sm);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
   transition: color 0.15s ease;
 }
 
