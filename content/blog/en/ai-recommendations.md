@@ -240,7 +240,7 @@ A practical note: CV projects are extremely rewarding because the results are *v
 Here are some resources to make your life easier:
 
 - [Stanford CS231n: Deep Learning for Computer Vision](http://cs231n.stanford.edu/) - THE foundational course
-- [First Principles of Computer Vision (YouTube)](https://www.youtube.com/@firstprinciplesofcomputervision) - excellent channel for classical CV
+- [First Principles of Computer Vision (YouTube)](https://www.youtube.com/channel/UCf0WB91t8Ky6AuYcQV0CcLw) - excellent channel for classical CV
 - [OpenCV Documentation & Tutorials](https://docs.opencv.org/)
 - [Ultralytics (YOLO)](https://docs.ultralytics.com/) - practical object detection
 - [PyImageSearch](https://pyimagesearch.com/) - hands-on tutorials
