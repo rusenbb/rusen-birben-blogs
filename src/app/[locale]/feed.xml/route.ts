@@ -1,10 +1,7 @@
 import { getAllPosts } from '@/lib/blog';
 import { Locale, getDictionary, locales } from '@/lib/i18n';
-import { siteConfig } from '@/lib/seo';
 
-export const dynamic = 'force-static';
-
-const SITE_URL = siteConfig.url;
+const SITE_URL = 'https://rusenbirben.com';
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -45,6 +42,7 @@ export async function GET(request: Request, { params }: { params: { locale: Loca
   return new Response(rss, {
     headers: {
       'Content-Type': 'application/rss+xml; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600, s-maxage=3600',
     },
   });
 }

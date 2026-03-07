@@ -1,10 +1,18 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import rehypeHighlight from 'rehype-highlight';
+import rehypeSlug from 'rehype-slug';
+import rehypeStringify from 'rehype-stringify';
 import { visit } from 'unist-util-visit';
-import { createMarkdownProcessor } from './markdown-plugins';
-import remarkReferences, { type ResolvedReference } from './remark-references';
 import { Locale, locales } from './i18n';
+import 'katex/dist/katex.min.css';
+
 const contentDirectory = path.join(process.cwd(), 'content/blog');
 
 export interface Heading {
@@ -23,11 +31,9 @@ export interface BlogPost {
   series?: string;
   seriesOrder?: number;
   translationKey?: string;  // ← NEW: Links translations across languages
-  ogImage?: string;
   content: string;
   headings: Heading[];
   readingTime: number;
-  references: ResolvedReference[];
 }
 
 export interface BlogPostMeta {
@@ -40,7 +46,6 @@ export interface BlogPostMeta {
   series?: string;
   seriesOrder?: number;
   translationKey?: string;  // ← NEW
-  ogImage?: string;
   readingTime: number;
 }
 
@@ -49,12 +54,18 @@ export interface Series {
   posts: BlogPostMeta[];
 }
 
-// Caches — populated once per build, reused across all pages
-const postsCache = new Map<Locale, BlogPostMeta[]>();
+// Translation mapping cache
 let translationMap: Map<string, Map<Locale, string>> | null = null;
 
 function getLocaleDirectory(locale: Locale): string {
   return path.join(contentDirectory, locale);
+}
+
+function ensureDirectoryExists(locale: Locale) {
+  const dir = getLocaleDirectory(locale);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
 }
 
 function calculateReadingTime(content: string): number {
@@ -70,8 +81,9 @@ export function buildTranslationMap(): Map<string, Map<Locale, string>> {
   translationMap = new Map();
   
   for (const locale of locales) {
+    ensureDirectoryExists(locale);
     const postsDirectory = getLocaleDirectory(locale);
-
+    
     if (!fs.existsSync(postsDirectory)) continue;
     
     const fileNames = fs.readdirSync(postsDirectory);
@@ -128,11 +140,10 @@ export function getPostTranslations(translationKey?: string): Map<Locale, string
 }
 
 export function getAllPosts(locale: Locale): BlogPostMeta[] {
-  const cached = postsCache.get(locale);
-  if (cached) return cached;
-
+  ensureDirectoryExists(locale);
+  
   const postsDirectory = getLocaleDirectory(locale);
-
+  
   if (!fs.existsSync(postsDirectory)) {
     return [];
   }
@@ -155,15 +166,12 @@ export function getAllPosts(locale: Locale): BlogPostMeta[] {
         tags: data.tags,
         series: data.series,
         seriesOrder: data.seriesOrder,
-        translationKey: data.translationKey,
-        ogImage: data.ogImage,
+        translationKey: data.translationKey,  // ← NEW
         readingTime: calculateReadingTime(content),
       };
     });
 
-  const sorted = posts.sort((a, b) => (a.date > b.date ? -1 : 1));
-  postsCache.set(locale, sorted);
-  return sorted;
+  return posts.sort((a, b) => (a.date > b.date ? -1 : 1));
 }
 
 export function getLatestPosts(locale: Locale, count: number): BlogPostMeta[] {
@@ -172,6 +180,8 @@ export function getLatestPosts(locale: Locale, count: number): BlogPostMeta[] {
 }
 
 export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogPost | null> {
+  ensureDirectoryExists(locale);
+  
   // Try .md first, then .mdx
   let fullPath = path.join(getLocaleDirectory(locale), `${slug}.md`);
   if (!fs.existsSync(fullPath)) {
@@ -187,40 +197,35 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogP
 
   // Extract headings for table of contents
   const headings: Heading[] = [];
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function extractText(node: any): string {
-    if (node.type === 'text') return node.value || '';
-    if (node.children) return node.children.map(extractText).join('');
-    return '';
-  }
-
-  const allPosts = getAllPosts(locale);
-  const processor = createMarkdownProcessor([
-    [remarkReferences, { locale, currentSeries: data.series, allPosts }],
-  ]);
-
-  // Heading extractor runs after rehypeSlug has assigned IDs
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  processor.use(() => (tree: any) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    visit(tree, 'element', (node: any) => {
-      if (node.tagName === 'h1' || node.tagName === 'h2' || node.tagName === 'h3') {
-        const level = parseInt(node.tagName[1]);
-        const text = extractText(node);
-        const id = node.properties?.id || '';
-
-        if (text && id) {
-          headings.push({ level, text, id });
+  
+  const processedContent = await unified()
+    .use(remarkParse)
+    .use(remarkMath)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeSlug)
+    .use(() => (tree: any) => {
+      // Extract headings after slug is added (h1, h2, h3)
+      visit(tree, 'element', (node: any) => {
+        if (node.tagName === 'h1' || node.tagName === 'h2' || node.tagName === 'h3') {
+          const level = parseInt(node.tagName[1]);
+          const text = node.children
+            ?.filter((child: any) => child.type === 'text')
+            .map((child: any) => child.value)
+            .join('') || '';
+          const id = node.properties?.id || '';
+          
+          if (text && id) {
+            headings.push({ level, text, id });
+          }
         }
-      }
-    });
-  });
-
-  const processedContent = await processor.process(content);
-
+      });
+    })
+    .use(rehypeKatex)
+    .use(rehypeHighlight)
+    .use(rehypeStringify, { allowDangerousHtml: true })
+    .process(content);
+  
   const contentHtml = processedContent.toString();
-  const references = (processedContent.data.references as ResolvedReference[]) ?? [];
 
   return {
     slug,
@@ -231,12 +236,10 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogP
     tags: data.tags,
     series: data.series,
     seriesOrder: data.seriesOrder,
-    translationKey: data.translationKey,
-    ogImage: data.ogImage,
+    translationKey: data.translationKey,  // ← NEW
     content: contentHtml,
     headings,
     readingTime: calculateReadingTime(content),
-    references,
   };
 }
 
@@ -244,6 +247,7 @@ export function getAllPostSlugs(): { locale: Locale; slug: string }[] {
   const slugs: { locale: Locale; slug: string }[] = [];
 
   for (const locale of locales) {
+    ensureDirectoryExists(locale);
     const postsDirectory = getLocaleDirectory(locale);
 
     if (fs.existsSync(postsDirectory)) {

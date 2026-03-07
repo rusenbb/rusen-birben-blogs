@@ -18,9 +18,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: var(--space-sm);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4em;
+  display: inline-block;
   transition: color 0.15s ease;
 }
 
@@ -195,30 +193,16 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .main {
-    padding: var(--space-md) var(--space-sm) var(--space-lg);
-  }
-}
-
 @media (max-width: 600px) {
   .title {
     font-size: 2rem;
   }
-
+  
   .tagName {
     font-size: 1.1rem;
   }
-
+  
   .postTitle {
     font-size: 1.25rem;
-  }
-
-  .header {
-    margin-bottom: var(--space-lg);
-  }
-
-  .postsHeader {
-    flex-wrap: wrap;
   }
 }

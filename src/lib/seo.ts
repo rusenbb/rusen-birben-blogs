@@ -3,10 +3,10 @@ import { BlogPostMeta } from './blog';
 import { Locale } from './i18n';
 
 const siteConfig = {
-  name: 'Ruşen Birben',
+  name: 'Rusen Birben',
   description: 'Thoughts on software engineering, AI, and technology',
-  url: 'https://rusenbirben.com',
-  author: 'Ruşen Birben',
+  url: 'https://rusen.ai/blog',
+  author: 'Rusen Birben',
   twitterHandle: '@rusenb',
 };
 
@@ -20,8 +20,6 @@ interface GenerateMetadataProps {
   tags?: string[];
   locale: Locale;
   pathname?: string;
-  ogImage?: string;
-  translationKey?: string;
 }
 
 export function generateMetadata({
@@ -34,15 +32,10 @@ export function generateMetadata({
   tags,
   locale,
   pathname = '',
-  ogImage,
-  translationKey,
 }: GenerateMetadataProps): Metadata {
   const url = `${siteConfig.url}/${locale}${pathname}`;
-  const resolvedOgImage = ogImage
-    ? `${siteConfig.url}${ogImage}`
-    : translationKey
-      ? `${siteConfig.url}/og/${translationKey}.jpg`
-      : `${siteConfig.url}/og/default.png`;
+  // Use a static OG image for all pages (can be customized per-page later)
+  const ogImage = `${siteConfig.url}/og/default.png`;
 
   return {
     title: `${title} | ${siteConfig.name}`,
@@ -58,7 +51,7 @@ export function generateMetadata({
       url,
       images: [
         {
-          url: resolvedOgImage,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: title,
@@ -77,7 +70,7 @@ export function generateMetadata({
       creator: siteConfig.twitterHandle,
       title,
       description,
-      images: [resolvedOgImage],
+      images: [ogImage],
     },
     alternates: {
       canonical: url,

@@ -1,8 +1,7 @@
 import { getAllPosts } from '@/lib/blog';
 import { locales, defaultLocale } from '@/lib/i18n';
-import { siteConfig } from '@/lib/seo';
 
-const SITE_URL = siteConfig.url;
+const SITE_URL = 'https://rusenbirben.com';
 
 export async function GET() {
   // Combine posts from all locales, prioritizing default locale

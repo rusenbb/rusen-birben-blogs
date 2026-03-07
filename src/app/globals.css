@@ -30,7 +30,6 @@
   --accent: #2563eb;
   --accent-hover: #1d4ed8;
   --border: #d4d4d4;
-  --border-light: #e5e5e5;
   --border-hover: #a3a3a3;
   --shadow: rgba(0, 0, 0, 0.1);
   
@@ -61,7 +60,6 @@
   --accent: #60a5fa;
   --accent-hover: #93c5fd;
   --border: #404040;
-  --border-light: #333333;
   --border-hover: #525252;
   --shadow: rgba(0, 0, 0, 0.3);
   
@@ -389,35 +387,6 @@ hr {
 }
 
 /* ========================================
-   INLINE REFERENCES
-   ======================================== */
-
-.post-reference {
-  font-size: 0.75em;
-  vertical-align: super;
-  line-height: 0;
-  text-decoration: none !important;
-  color: var(--accent) !important;
-  font-family: var(--font-mono);
-  font-weight: 500;
-  background: none !important;
-}
-
-.post-reference:hover {
-  color: var(--accent-hover) !important;
-}
-
-.broken-reference {
-  font-size: 0.75em;
-  vertical-align: super;
-  line-height: 0;
-  font-family: var(--font-mono);
-  color: var(--text-muted);
-  opacity: 0.5;
-  text-decoration: line-through;
-}
-
-/* ========================================
    KATEX MATH
    ======================================== */
 
@@ -453,21 +422,6 @@ hr {
 /* ========================================
    PRINT STYLES
    ======================================== */
-
-/* Responsive Spacing */
-@media (max-width: 768px) {
-  :root {
-    --space-lg: 2rem;
-    --space-xl: 3rem;
-  }
-}
-
-@media (max-width: 480px) {
-  :root {
-    --space-lg: 1.5rem;
-    --space-xl: 2rem;
-  }
-}
 
 @media print {
   /* Reset background and colors for printing */

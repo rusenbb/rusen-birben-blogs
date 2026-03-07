@@ -3,7 +3,7 @@
     "greeting": "Welcome to",
     "name": "Rusen's Blog",
     "title": "Thoughts & Writings",
-    "bio": "Join me as I write myself for myself.",
+    "bio": "Exploring AI, engineering, philosophy, and everything in between. Join me on this journey of learning and discovery.",
     "location": "Ankara, Turkiye"
   },
   "sections": {
@@ -22,43 +22,13 @@
     "backToTags": "Back to all tags",
     "subtitle": "Thoughts on AI, engineering, and more.",
     "rss": "RSS Feed",
-    "filterByTag": "Filter by tag",
-    "onThisPage": "On this page",
-    "minRead": "min read",
-    "references": "References"
+    "filterByTag": "Filter by tag"
   },
   "tags": {
     "title": "Tags",
     "subtitle": "Browse posts by topic",
     "postsCount": "posts",
     "noTags": "No tags yet..."
-  },
-  "series": {
-    "badge": "Series",
-    "part": "Part",
-    "of": "of",
-    "youAreHere": "You are here",
-    "previous": "Previous",
-    "next": "Next",
-    "title": "Series",
-    "subtitle": "Multi-part explorations",
-    "postsCount": "parts",
-    "noSeries": "No series yet...",
-    "backToSeries": "Back to all series"
-  },
-  "accessibility": {
-    "theme": "Theme",
-    "fontSize": "Font Size",
-    "reduceMotion": "Reduce motion",
-    "settings": "Accessibility settings"
-  },
-  "image": {
-    "failedToLoad": "Failed to load image"
-  },
-  "nav": {
-    "blog": "Blog",
-    "tags": "Tags",
-    "series": "Series"
   },
   "footer": {
     "copyright": "Rusen Birben",

@@ -1,6 +1,5 @@
 import { getPostsByTag, getAllTags } from '@/lib/blog';
 import { Locale, getDictionary, locales } from '@/lib/i18n';
-import { slugifyTag } from '@/lib/utils';
 import styles from '../tags.module.css';
 import Link from 'next/link';
 import { FaArrowLeft, FaTag } from 'react-icons/fa';
@@ -9,9 +8,25 @@ interface Props {
   params: { locale: Locale; tag: string };
 }
 
+// Helper to create URL-safe tag slug (handles Turkish chars)
+function slugifyTag(tag: string): string {
+  const turkishMap: Record<string, string> = {
+    'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u',
+    'Ç': 'C', 'Ğ': 'G', 'I': 'I', 'Ö': 'O', 'Ş': 'S', 'Ü': 'U',
+  };
+  
+  return tag
+    .toLowerCase()
+    .split('')
+    .map(char => turkishMap[char] || char)
+    .join('')
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
+}
+
 export async function generateStaticParams() {
   const params: { locale: Locale; tag: string }[] = [];
-
+  
   for (const locale of locales) {
     const tags = getAllTags(locale);
     for (const { tag } of tags) {
@@ -21,15 +36,16 @@ export async function generateStaticParams() {
       });
     }
   }
-
+  
   return params;
 }
 
 export async function generateMetadata({ params }: Props) {
   const dict = getDictionary(params.locale);
+  // Find the original tag name from the slug
   const allTags = getAllTags(params.locale);
   const originalTag = allTags.find(({ tag }) => slugifyTag(tag) === params.tag)?.tag || params.tag;
-
+  
   return {
     title: `${dict.sections.postsTagged} "${originalTag}" | ${dict.hero.name}`,
     description: `${dict.sections.postsTagged} ${originalTag}`,
@@ -38,6 +54,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default function TagPage({ params }: Props) {
   const dict = getDictionary(params.locale);
+  // Find the original tag name from the slug
   const allTags = getAllTags(params.locale);
   const tag = allTags.find(({ tag }) => slugifyTag(tag) === params.tag)?.tag || params.tag;
   const posts = getPostsByTag(params.locale, tag);

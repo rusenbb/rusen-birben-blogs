@@ -3,7 +3,7 @@
     "greeting": "Hoşgeldiniz",
     "name": "Rusen'in Blogu",
     "title": "Düşünceler & Yazılar",
-    "bio": "Kendime ve kendimi yazarken bana eşlik edin.",
+    "bio": "Yapay zeka, mühendislik, felsefe ve daha fazlasını keşfediyorum. Bu öğrenme ve keşif yolculuğunda bana katılmaya davetlisiniz.",
     "location": "Ankara, Türkiye"
   },
   "sections": {
@@ -22,10 +22,7 @@
     "backToTags": "Tüm etiketlere dön",
     "subtitle": "Yapay zeka, mühendislik ve daha fazlası üzerine düşünceler.",
     "rss": "RSS Akışı",
-    "filterByTag": "Etikete göre filtrele",
-    "onThisPage": "Bu sayfada",
-    "minRead": "dk okuma",
-    "references": "Kaynaklar"
+    "filterByTag": "Etikete göre filtrele"
   },
   "tags": {
     "title": "Etiketler",
@@ -33,35 +30,8 @@
     "postsCount": "yazı",
     "noTags": "Henüz etiket yok..."
   },
-  "series": {
-    "badge": "Seri",
-    "part": "Bölüm",
-    "of": "/",
-    "youAreHere": "Buradasınız",
-    "previous": "Önceki",
-    "next": "Sonraki",
-    "title": "Seriler",
-    "subtitle": "Çok bölümlü yazı serileri",
-    "postsCount": "bölüm",
-    "noSeries": "Henüz seri yok...",
-    "backToSeries": "Tüm serilere dön"
-  },
-  "accessibility": {
-    "theme": "Tema",
-    "fontSize": "Yazı Boyutu",
-    "reduceMotion": "Hareketi azalt",
-    "settings": "Erişilebilirlik ayarları"
-  },
-  "image": {
-    "failedToLoad": "Görsel yüklenemedi"
-  },
-  "nav": {
-    "blog": "Blog",
-    "tags": "Etiketler",
-    "series": "Seriler"
-  },
   "footer": {
-    "copyright": "Ruşen Birben",
+    "copyright": "Rusen Birben",
     "visitPortfolio": "Portfolyomu ziyaret et"
   }
 }

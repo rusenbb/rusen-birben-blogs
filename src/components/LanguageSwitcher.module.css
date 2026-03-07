@@ -1,17 +1,15 @@
 .switcher {
   display: flex;
-  align-items: center;
-  gap: 0.15rem;
+  gap: 0.5rem;
 }
 
 .option {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.2rem 0.3rem;
-  text-decoration: none;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0;
   transition: color 0.15s ease;
 }
 
@@ -20,8 +18,8 @@
 }
 
 .option::after {
-  content: '·';
-  margin-left: 0.3rem;
+  content: '/';
+  margin-left: 0.5rem;
   color: var(--border);
 }
 
@@ -31,5 +29,5 @@
 
 .active {
   color: var(--text-primary);
-  font-weight: 500;
+  border-bottom: 1px solid var(--text-primary);
 }
