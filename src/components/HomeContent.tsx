@@ -1,13 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
 import { FaArrowRight, FaClock, FaEnvelope, FaGithub, FaLinkedin, FaRss } from 'react-icons/fa';
 import { BlogPostMeta, Series } from '@/lib/blog';
 import { Dictionary, Locale } from '@/lib/i18n';
 import { paginateItems } from '@/lib/pagination';
 import { Pagination } from './Pagination';
 import { PrefetchLink } from './PrefetchLink';
+import { usePersistentPage } from './usePersistentPage';
 import styles from '@/app/[locale]/page.module.css';
 
 interface TagCount {
@@ -42,8 +42,8 @@ function slugifyTag(tag: string): string {
 }
 
 export function HomeContent({ locale, dict, allPosts, allSeries, allTags }: HomeContentProps) {
-  const [blogPage, setBlogPage] = useState(1);
-  const [seriesPage, setSeriesPage] = useState(1);
+  const [blogPage, setBlogPage] = usePersistentPage('pagination:home:blog');
+  const [seriesPage, setSeriesPage] = usePersistentPage('pagination:home:series');
 
   const blogPagination = paginateItems(allPosts, blogPage, HOME_BLOGS_PER_PAGE);
   const seriesPagination = paginateItems(allSeries, seriesPage, HOME_SERIES_PER_PAGE);

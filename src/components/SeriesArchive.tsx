@@ -1,13 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { Series } from '@/lib/blog';
 import { Dictionary, Locale } from '@/lib/i18n';
 import { paginateItems } from '@/lib/pagination';
 import { Pagination } from './Pagination';
 import { PrefetchLink } from './PrefetchLink';
+import { usePersistentPage } from './usePersistentPage';
 import styles from '@/app/[locale]/series/series.module.css';
 
 interface SeriesArchiveProps {
@@ -23,7 +23,7 @@ export function SeriesArchive({
   allSeries,
   seriesPerPage,
 }: SeriesArchiveProps) {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = usePersistentPage('pagination:archive:series');
   const pagination = paginateItems(allSeries, currentPage, seriesPerPage);
 
   return (

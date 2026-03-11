@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Inter, IBM_Plex_Mono } from 'next/font/google';
-import '../globals.css';
 import { Locale, locales, getDictionary } from '@/lib/i18n';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { AccessibilitySettings } from '@/components/AccessibilitySettings';
+import { LocaleEffects } from '@/components/LocaleEffects';
 import { TranslationProvider } from '@/components/TranslationProvider';
 import { ViewTransition } from '@/components/ViewTransition';
 import { generateMetadata as generateSEOMetadata, generateWebsiteStructuredData } from '@/lib/seo';
@@ -52,24 +52,23 @@ export default function LocaleLayout({
   const structuredData = generateWebsiteStructuredData();
   
   return (
-    <html lang={params.locale} suppressHydrationWarning>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-      </head>
-      <body className={`${playfair.variable} ${inter.variable} ${ibmPlexMono.variable}`}>
-        <TranslationProvider>
-          <ViewTransition>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <TranslationProvider>
+        <LocaleEffects locale={params.locale} />
+        <ViewTransition>
+          <div className={`${playfair.variable} ${inter.variable} ${ibmPlexMono.variable}`}>
             <div className={styles.controlsContainer}>
               <LanguageSwitcher currentLocale={params.locale} />
               <AccessibilitySettings />
             </div>
             {children}
-          </ViewTransition>
-        </TranslationProvider>
-      </body>
-    </html>
+          </div>
+        </ViewTransition>
+      </TranslationProvider>
+    </>
   );
 }

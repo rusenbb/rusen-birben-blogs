@@ -1,12 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
 import { FaArrowLeft, FaRss } from 'react-icons/fa';
 import { BlogPostMeta } from '@/lib/blog';
 import { Dictionary, Locale } from '@/lib/i18n';
 import { paginateItems } from '@/lib/pagination';
 import { Pagination } from './Pagination';
+import { usePersistentPage } from './usePersistentPage';
 import styles from '@/app/[locale]/blog/blog.module.css';
 
 interface TagCount {
@@ -44,7 +44,7 @@ export function BlogArchive({
   allPosts,
   postsPerPage,
 }: BlogArchiveProps) {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = usePersistentPage('pagination:archive:blog');
   const pagination = paginateItems(allPosts, currentPage, postsPerPage);
 
   return (
