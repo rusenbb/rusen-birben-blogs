@@ -1,110 +1,117 @@
 import Link from 'next/link';
 import styles from './Pagination.module.css';
 
-interface PaginationProps {
-  basePath: string;
+interface PaginationLabels {
+  previous: string;
+  next: string;
+  page: string;
+  navigation: string;
+}
+
+interface SharedPaginationProps {
   currentPage: number;
   totalPages: number;
-  pageParam?: string;
-  anchor?: string;
-  otherParams?: Record<string, string | number | undefined>;
-  labels: {
-    previous: string;
-    next: string;
-    page: string;
-    navigation: string;
-  };
+  labels: PaginationLabels;
 }
 
-function buildPageHref(
-  basePath: string,
-  targetPage: number,
-  pageParam: string,
-  anchor?: string,
-  otherParams?: Record<string, string | number | undefined>
-) {
-  const params = new URLSearchParams();
-
-  Object.entries(otherParams || {}).forEach(([key, value]) => {
-    if (value !== undefined && value !== '') {
-      params.set(key, String(value));
-    }
-  });
-
-  if (targetPage > 1) {
-    params.set(pageParam, String(targetPage));
-  } else {
-    params.delete(pageParam);
-  }
-
-  const query = params.toString();
-  return `${basePath}${query ? `?${query}` : ''}${anchor || ''}`;
+interface LinkPaginationProps extends SharedPaginationProps {
+  getHref: (pageNumber: number) => string;
+  onPageChange?: never;
 }
 
-export function Pagination({
-  basePath,
-  currentPage,
-  totalPages,
-  pageParam = 'page',
-  anchor,
-  otherParams,
-  labels,
-}: PaginationProps) {
+interface ButtonPaginationProps extends SharedPaginationProps {
+  onPageChange: (pageNumber: number) => void;
+  getHref?: never;
+}
+
+type PaginationProps = LinkPaginationProps | ButtonPaginationProps;
+
+function hasHrefBuilder(props: PaginationProps): props is LinkPaginationProps {
+  return typeof props.getHref === 'function';
+}
+
+export function Pagination(props: PaginationProps) {
+  const { currentPage, totalPages, labels } = props;
+
   if (totalPages <= 1) {
     return null;
   }
 
   const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
-  const prevHref = currentPage > 1
-    ? buildPageHref(basePath, currentPage - 1, pageParam, anchor, otherParams)
-    : null;
-  const nextHref = currentPage < totalPages
-    ? buildPageHref(basePath, currentPage + 1, pageParam, anchor, otherParams)
-    : null;
+  const hasPrev = currentPage > 1;
+  const hasNext = currentPage < totalPages;
+
+  const renderPageControl = (pageNumber: number) => {
+    const isCurrent = pageNumber === currentPage;
+    const className = `${styles.pageLink} ${isCurrent ? styles.current : ''}`.trim();
+    const ariaLabel = `${labels.page} ${pageNumber}`;
+
+    if (hasHrefBuilder(props)) {
+      return isCurrent ? (
+        <span key={pageNumber} className={className} aria-current="page" aria-label={ariaLabel}>
+          {pageNumber}
+        </span>
+      ) : (
+        <Link key={pageNumber} href={props.getHref(pageNumber)} className={styles.pageLink} aria-label={ariaLabel}>
+          {pageNumber}
+        </Link>
+      );
+    }
+
+    return (
+      <button
+        key={pageNumber}
+        type="button"
+        className={className}
+        onClick={() => props.onPageChange(pageNumber)}
+        aria-current={isCurrent ? 'page' : undefined}
+        aria-label={ariaLabel}
+      >
+        {pageNumber}
+      </button>
+    );
+  };
+
+  const renderEdgeControl = (direction: 'previous' | 'next') => {
+    const isPrevious = direction === 'previous';
+    const label = isPrevious ? labels.previous : labels.next;
+    const targetPage = isPrevious ? currentPage - 1 : currentPage + 1;
+    const isDisabled = isPrevious ? !hasPrev : !hasNext;
+    const className = `${styles.arrowLink} ${isDisabled ? styles.disabled : ''}`.trim();
+
+    if (hasHrefBuilder(props)) {
+      return isDisabled ? (
+        <span className={className} aria-hidden="true">
+          {label}
+        </span>
+      ) : (
+        <Link href={props.getHref(targetPage)} className={styles.arrowLink}>
+          {label}
+        </Link>
+      );
+    }
+
+    return (
+      <button
+        type="button"
+        className={className}
+        onClick={() => props.onPageChange(targetPage)}
+        disabled={isDisabled}
+      >
+        {label}
+      </button>
+    );
+  };
 
   return (
     <nav className={styles.pagination} aria-label={labels.navigation}>
-      {prevHref ? (
-        <Link href={prevHref} className={styles.arrowLink}>
-          {labels.previous}
-        </Link>
-      ) : (
-        <span className={`${styles.arrowLink} ${styles.disabled}`} aria-hidden="true">
-          {labels.previous}
-        </span>
-      )}
+      {renderEdgeControl('previous')}
 
       <div className={styles.pages}>
-        {pageNumbers.map((pageNumber) => {
-          const href = buildPageHref(basePath, pageNumber, pageParam, anchor, otherParams);
-          const isCurrent = pageNumber === currentPage;
-
-          return isCurrent ? (
-            <span
-              key={pageNumber}
-              className={`${styles.pageLink} ${styles.current}`}
-              aria-current="page"
-              aria-label={`${labels.page} ${pageNumber}`}
-            >
-              {pageNumber}
-            </span>
-          ) : (
-            <Link key={pageNumber} href={href} className={styles.pageLink} aria-label={`${labels.page} ${pageNumber}`}>
-              {pageNumber}
-            </Link>
-          );
-        })}
+        {pageNumbers.map((pageNumber) => renderPageControl(pageNumber))}
       </div>
 
-      {nextHref ? (
-        <Link href={nextHref} className={styles.arrowLink}>
-          {labels.next}
-        </Link>
-      ) : (
-        <span className={`${styles.arrowLink} ${styles.disabled}`} aria-hidden="true">
-          {labels.next}
-        </span>
-      )}
+      {renderEdgeControl('next')}
     </nav>
   );
 }
