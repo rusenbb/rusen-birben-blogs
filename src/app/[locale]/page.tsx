@@ -1,13 +1,22 @@
 import styles from './page.module.css';
 import Link from 'next/link';
 import { PrefetchLink } from '@/components/PrefetchLink';
+import { Pagination } from '@/components/Pagination';
 import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight, FaRss, FaClock } from 'react-icons/fa';
 import { Locale, getDictionary } from '@/lib/i18n';
-import { getAllPosts, getAllTags } from '@/lib/blog';
+import { getAllPosts, getAllSeries, getAllTags } from '@/lib/blog';
+import { paginateItems, parsePageParam } from '@/lib/pagination';
 
 interface Props {
   params: { locale: Locale };
+  searchParams?: {
+    blogPage?: string | string[];
+    seriesPage?: string | string[];
+  };
 }
+
+const HOME_BLOGS_PER_PAGE = 10;
+const HOME_SERIES_PER_PAGE = 5;
 
 // Helper to create URL-safe tag slug (handles Turkish chars)
 function slugifyTag(tag: string): string {
@@ -25,10 +34,15 @@ function slugifyTag(tag: string): string {
     .replace(/[^a-z0-9-]/g, '');
 }
 
-export default function Home({ params }: Props) {
+export default function Home({ params, searchParams }: Props) {
   const dict = getDictionary(params.locale);
   const allPosts = getAllPosts(params.locale);
   const allTags = getAllTags(params.locale);
+  const allSeries = getAllSeries(params.locale);
+  const blogPage = parsePageParam(searchParams?.blogPage);
+  const seriesPage = parsePageParam(searchParams?.seriesPage);
+  const blogPagination = paginateItems(allPosts, blogPage, HOME_BLOGS_PER_PAGE);
+  const seriesPagination = paginateItems(allSeries, seriesPage, HOME_SERIES_PER_PAGE);
 
   return (
     <main className={styles.main}>
@@ -80,34 +94,96 @@ export default function Home({ params }: Props) {
         </section>
       )}
 
+      {/* Series Section */}
+      <section className={styles.section} id="series">
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>{dict.sections.series}</h2>
+          <Link href={`/${params.locale}/series`} className={styles.viewAllLink}>
+            {dict.sections.viewAll} →
+          </Link>
+        </div>
+        {allSeries.length > 0 ? (
+          <>
+            <div className={styles.seriesList}>
+              {seriesPagination.items.map((series) => (
+                <article key={series.name} className={styles.seriesCard}>
+                  <div className={styles.seriesCardTop}>
+                    <span className={styles.seriesCount}>
+                      {series.posts.length} {dict.series.partsCount}
+                    </span>
+                  </div>
+                  <h3 className={styles.seriesName}>{series.name}</h3>
+                  <p className={styles.seriesPreview}>
+                    {series.posts.slice(0, 2).map((post) => post.title).join(' · ')}
+                  </p>
+                  <PrefetchLink
+                    href={`/${params.locale}/blog/${series.posts[0].slug}`}
+                    className={styles.seriesLink}
+                  >
+                    {dict.series.startReading} <FaArrowRight />
+                  </PrefetchLink>
+                </article>
+              ))}
+            </div>
+            <Pagination
+              basePath={`/${params.locale}`}
+              currentPage={seriesPagination.currentPage}
+              totalPages={seriesPagination.totalPages}
+              pageParam="seriesPage"
+              anchor="#series"
+              otherParams={blogPagination.currentPage > 1 ? { blogPage: blogPagination.currentPage } : undefined}
+              labels={dict.pagination}
+            />
+          </>
+        ) : (
+          <div className={styles.blogEmpty}>
+            <p>{dict.series.empty}</p>
+          </div>
+        )}
+      </section>
+
       {/* Blog Section */}
       <section className={styles.section} id="blog">
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>{dict.sections.blog}</h2>
+          <Link href={`/${params.locale}/blog`} className={styles.viewAllLink}>
+            {dict.sections.viewAll} →
+          </Link>
         </div>
         {allPosts.length > 0 ? (
-          <div className={styles.blogGrid}>
-            {allPosts.map((post) => (
-              <PrefetchLink key={post.slug} href={`/${params.locale}/blog/${post.slug}`} className={styles.blogCard}>
-                <div className={styles.blogMeta}>
-                  <span className={styles.blogDate}>{post.date}</span>
-                      <span className={styles.blogReadingTime}>
-                        <FaClock style={{ fontSize: '0.7em' }} />
-                        {post.readingTime} min
-                      </span>
-                  {post.tags && post.tags.length > 0 && (
-                    <div className={styles.blogTags}>
-                      {post.tags.map((tag) => (
-                        <span key={tag} className={styles.tag}>{tag}</span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-                <h3 className={styles.blogTitle}>{post.title}</h3>
-                <p className={styles.blogDescription}>{post.description}</p>
-              </PrefetchLink>
-            ))}
-          </div>
+          <>
+            <div className={styles.blogGrid}>
+              {blogPagination.items.map((post) => (
+                <PrefetchLink key={post.slug} href={`/${params.locale}/blog/${post.slug}`} className={styles.blogCard}>
+                  <div className={styles.blogMeta}>
+                    <span className={styles.blogDate}>{post.date}</span>
+                    <span className={styles.blogReadingTime}>
+                      <FaClock style={{ fontSize: '0.7em' }} />
+                      {post.readingTime} min
+                    </span>
+                    {post.tags && post.tags.length > 0 && (
+                      <div className={styles.blogTags}>
+                        {post.tags.map((tag) => (
+                          <span key={tag} className={styles.tag}>{tag}</span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  <h3 className={styles.blogTitle}>{post.title}</h3>
+                  <p className={styles.blogDescription}>{post.description}</p>
+                </PrefetchLink>
+              ))}
+            </div>
+            <Pagination
+              basePath={`/${params.locale}`}
+              currentPage={blogPagination.currentPage}
+              totalPages={blogPagination.totalPages}
+              pageParam="blogPage"
+              anchor="#blog"
+              otherParams={seriesPagination.currentPage > 1 ? { seriesPage: seriesPagination.currentPage } : undefined}
+              labels={dict.pagination}
+            />
+          </>
         ) : (
           <div className={styles.blogEmpty}>
             <p>{dict.blog.empty}</p>

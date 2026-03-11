@@ -1,9 +1,20 @@
 .container {
+  --series-accent: #7b3f33;
+  --series-accent-strong: #5f2f26;
+  --series-accent-soft: rgba(123, 63, 51, 0.12);
+  --series-accent-border: rgba(123, 63, 51, 0.3);
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: 0.75rem;
   padding: 1.5rem;
   margin: 2rem 0;
+}
+
+:global([data-theme="dark"]) .container {
+  --series-accent: #d5a796;
+  --series-accent-strong: #f1d0c4;
+  --series-accent-soft: rgba(213, 167, 150, 0.16);
+  --series-accent-border: rgba(213, 167, 150, 0.38);
 }
 
 .header {
@@ -18,8 +29,9 @@
   display: inline-flex;
   align-items: center;
   padding: 0.25rem 0.75rem;
-  background: var(--accent);
-  color: white;
+  background: var(--series-accent-soft);
+  color: var(--series-accent-strong);
+  border: 1px solid var(--series-accent-border);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -51,7 +63,7 @@
 
 .progressFill {
   height: 100%;
-  background: var(--accent);
+  background: linear-gradient(90deg, var(--series-accent) 0%, var(--series-accent-strong) 100%);
   border-radius: 2px;
   transition: width 0.3s ease;
 }
@@ -80,8 +92,8 @@
 }
 
 .item.current {
-  background: var(--bg-primary);
-  border: 1px solid var(--accent);
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--series-accent-soft) 100%);
+  border: 1px solid var(--series-accent-border);
   color: var(--text-primary);
 }
 
@@ -104,14 +116,15 @@
 }
 
 .item.completed .number {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--series-accent);
+  border-color: var(--series-accent);
   color: white;
 }
 
 .item.current .number {
-  border-color: var(--accent);
-  color: var(--accent);
+  background: var(--series-accent-soft);
+  border-color: var(--series-accent);
+  color: var(--series-accent-strong);
 }
 
 .number svg {
@@ -127,11 +140,11 @@
 
 .currentIndicator {
   font-size: 0.75rem;
-  color: var(--accent);
   font-weight: 500;
   padding: 0.25rem 0.5rem;
-  background: var(--accent);
-  color: white;
+  background: var(--series-accent-soft);
+  color: var(--series-accent-strong);
+  border: 1px solid var(--series-accent-border);
   border-radius: 0.25rem;
 }
 
@@ -157,7 +170,7 @@
 }
 
 .navButton:hover {
-  border-color: var(--accent);
+  border-color: var(--series-accent-border);
   box-shadow: 0 2px 8px var(--shadow);
 }
 

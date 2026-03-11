@@ -30,6 +30,7 @@
   --accent: #2563eb;
   --accent-hover: #1d4ed8;
   --border: #d4d4d4;
+  --border-light: #e3dfda;
   --border-hover: #a3a3a3;
   --shadow: rgba(0, 0, 0, 0.1);
   
@@ -60,6 +61,7 @@
   --accent: #60a5fa;
   --accent-hover: #93c5fd;
   --border: #404040;
+  --border-light: #363636;
   --border-hover: #525252;
   --shadow: rgba(0, 0, 0, 0.3);
   

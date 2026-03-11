@@ -8,6 +8,7 @@
   },
   "sections": {
     "blog": "Son Yazılar",
+    "series": "Seriler",
     "viewAll": "Tümünü gör",
     "tags": "Etiketler",
     "allTags": "Tüm Etiketler",
@@ -29,6 +30,20 @@
     "subtitle": "Konuya göre yazılara göz atın",
     "postsCount": "yazı",
     "noTags": "Henüz etiket yok..."
+  },
+  "series": {
+    "title": "Seriler",
+    "subtitle": "Birbirine bağlı yazıları daha uzun akışlar halinde takip edin.",
+    "empty": "Henüz seri yok...",
+    "partsCount": "bolum",
+    "startReading": "Okumaya başla",
+    "backToSeries": "Tum serilere don"
+  },
+  "pagination": {
+    "previous": "Onceki",
+    "next": "Sonraki",
+    "page": "Sayfa",
+    "navigation": "Sayfalama"
   },
   "footer": {
     "copyright": "Rusen Birben",

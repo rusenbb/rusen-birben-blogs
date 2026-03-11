@@ -8,6 +8,7 @@
   },
   "sections": {
     "blog": "Latest Posts",
+    "series": "Series",
     "viewAll": "View all",
     "tags": "Tags",
     "allTags": "All Tags",
@@ -29,6 +30,20 @@
     "subtitle": "Browse posts by topic",
     "postsCount": "posts",
     "noTags": "No tags yet..."
+  },
+  "series": {
+    "title": "Series",
+    "subtitle": "Follow connected posts grouped into longer arcs.",
+    "empty": "No series yet...",
+    "partsCount": "parts",
+    "startReading": "Start reading",
+    "backToSeries": "Back to all series"
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page",
+    "navigation": "Pagination"
   },
   "footer": {
     "copyright": "Rusen Birben",

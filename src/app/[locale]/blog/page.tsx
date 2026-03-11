@@ -2,11 +2,18 @@ import { getAllPosts, getAllTags } from '@/lib/blog';
 import { Locale, getDictionary } from '@/lib/i18n';
 import styles from './blog.module.css';
 import Link from 'next/link';
-import { FaArrowLeft, FaPen, FaRss } from 'react-icons/fa';
+import { FaArrowLeft, FaRss } from 'react-icons/fa';
+import { Pagination } from '@/components/Pagination';
+import { paginateItems, parsePageParam } from '@/lib/pagination';
 
 interface Props {
   params: { locale: Locale };
+  searchParams?: {
+    page?: string | string[];
+  };
 }
+
+const BLOGS_PER_PAGE = 20;
 
 // Helper to create URL-safe tag slug (handles Turkish chars)
 function slugifyTag(tag: string): string {
@@ -27,15 +34,17 @@ function slugifyTag(tag: string): string {
 export async function generateMetadata({ params }: Props) {
   const dict = getDictionary(params.locale);
   return {
-    title: `Blog | ${dict.hero.name}`,
+    title: `${dict.sections.blog} | ${dict.hero.name}`,
     description: dict.blog.subtitle,
   };
 }
 
-export default function BlogPage({ params }: Props) {
+export default function BlogPage({ params, searchParams }: Props) {
   const dict = getDictionary(params.locale);
   const posts = getAllPosts(params.locale);
   const tags = getAllTags(params.locale);
+  const page = parsePageParam(searchParams?.page);
+  const pagination = paginateItems(posts, page, BLOGS_PER_PAGE);
 
   return (
     <main className={styles.main}>
@@ -50,7 +59,7 @@ export default function BlogPage({ params }: Props) {
             <span>{dict.blog.rss}</span>
           </Link>
         </div>
-        <h1 className={styles.title}>Blog</h1>
+        <h1 className={styles.title}>{dict.sections.blog}</h1>
         <p className={styles.subtitle}>{dict.blog.subtitle}</p>
       </div>
 
@@ -73,28 +82,34 @@ export default function BlogPage({ params }: Props) {
       )}
 
       {posts.length > 0 ? (
-        <div className={styles.postsGrid}>
-          {posts.map((post) => (
-            <Link key={post.slug} href={`/${params.locale}/blog/${post.slug}`} className={styles.postCard}>
-              <div className={styles.postHeader}>
-                <time className={styles.postDate}>{post.date}</time>
-                {post.tags && post.tags.length > 0 && (
-                  <div className={styles.postTags}>
-                    {post.tags.map((tag) => (
-                      <span key={tag} className={styles.tag}>{tag}</span>
-                    ))}
+          <>
+            <div className={styles.postsList}>
+              {pagination.items.map((post) => (
+                <Link key={post.slug} href={`/${params.locale}/blog/${post.slug}`} className={styles.postCard}>
+                  <div className={styles.postMeta}>
+                    <time className={styles.postDate}>{post.date}</time>
+                    {post.tags && post.tags.length > 0 && (
+                      <div className={styles.postTags}>
+                        {post.tags.map((tag) => (
+                          <span key={tag} className={styles.tag}>{tag}</span>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-              <h2 className={styles.postTitle}>{post.title}</h2>
-              <p className={styles.postDescription}>{post.description}</p>
-              <span className={styles.readMore}>{dict.blog.readMore} &rarr;</span>
-            </Link>
-          ))}
-        </div>
+                  <h2 className={styles.postTitle}>{post.title}</h2>
+                  <p className={styles.postDescription}>{post.description}</p>
+                </Link>
+              ))}
+            </div>
+          <Pagination
+            basePath={`/${params.locale}/blog`}
+            currentPage={pagination.currentPage}
+            totalPages={pagination.totalPages}
+            labels={dict.pagination}
+          />
+        </>
       ) : (
         <div className={styles.empty}>
-          <FaPen className={styles.emptyIcon} />
           <p>{dict.blog.empty}</p>
         </div>
       )}
