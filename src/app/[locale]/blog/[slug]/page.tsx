@@ -46,8 +46,8 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   // Get series posts if this post is part of a series
-  const seriesPosts = post.series 
-    ? getPostsBySeries(params.locale, post.series)
+  const seriesPosts = post.seriesId
+    ? getPostsBySeries(params.locale, post.seriesId)
     : [];
 
   // Calculate translation URL for the other locale
@@ -147,12 +147,20 @@ export default async function BlogPostPage({ params }: Props) {
             </header>
 
             {/* Series Navigation */}
-            {post.series && seriesPosts.length > 1 && (
+            {post.seriesId && post.series && seriesPosts.length > 1 && (
               <Series
                 seriesName={post.series}
                 posts={seriesPosts}
                 currentSlug={post.slug}
                 locale={params.locale}
+                labels={{
+                  badge: dict.series.badge,
+                  progressPattern: dict.series.progressPattern,
+                  currentIndicator: dict.series.currentIndicator,
+                  previous: dict.series.previous,
+                  next: dict.series.next,
+                  postsAriaLabel: dict.series.postsAriaLabel,
+                }}
               />
             )}
 

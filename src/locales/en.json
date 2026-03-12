@@ -33,11 +33,17 @@
   },
   "series": {
     "title": "Series",
+    "badge": "Series",
     "subtitle": "Follow connected posts grouped into longer arcs.",
     "empty": "No series yet...",
     "partsCount": "parts",
     "startReading": "Start reading",
-    "backToSeries": "Back to all series"
+    "backToSeries": "Back to all series",
+    "progressPattern": "Part {current} of {total}",
+    "currentIndicator": "You are here",
+    "previous": "Previous",
+    "next": "Next",
+    "postsAriaLabel": "Series posts"
   },
   "pagination": {
     "previous": "Previous",

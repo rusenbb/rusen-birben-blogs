@@ -14,6 +14,7 @@ import { Locale, locales } from './i18n';
 import 'katex/dist/katex.min.css';
 
 const contentDirectory = path.join(process.cwd(), 'content/blog');
+const seriesRegistryPath = path.join(process.cwd(), 'content/series.json');
 
 export interface Heading {
   level: number;
@@ -28,6 +29,7 @@ export interface BlogPost {
   date: string;
   description: string;
   tags?: string[];
+  seriesId?: string;
   series?: string;
   seriesOrder?: number;
   translationKey?: string;  // ← NEW: Links translations across languages
@@ -43,6 +45,7 @@ export interface BlogPostMeta {
   date: string;
   description: string;
   tags?: string[];
+  seriesId?: string;
   series?: string;
   seriesOrder?: number;
   translationKey?: string;  // ← NEW
@@ -50,12 +53,20 @@ export interface BlogPostMeta {
 }
 
 export interface Series {
+  id: string;
   name: string;
   posts: BlogPostMeta[];
 }
 
+interface SeriesRegistryEntry {
+  title: Record<Locale, string>;
+}
+
+type SeriesRegistry = Record<string, SeriesRegistryEntry>;
+
 // Translation mapping cache
 let translationMap: Map<string, Map<Locale, string>> | null = null;
+let seriesRegistryCache: SeriesRegistry | null = null;
 
 function getLocaleDirectory(locale: Locale): string {
   return path.join(contentDirectory, locale);
@@ -72,6 +83,29 @@ function calculateReadingTime(content: string): number {
   const wordsPerMinute = 200;
   const words = content.trim().split(/\s+/).length;
   return Math.ceil(words / wordsPerMinute);
+}
+
+function getSeriesRegistry(): SeriesRegistry {
+  if (seriesRegistryCache) {
+    return seriesRegistryCache;
+  }
+
+  if (!fs.existsSync(seriesRegistryPath)) {
+    seriesRegistryCache = {};
+    return seriesRegistryCache;
+  }
+
+  seriesRegistryCache = JSON.parse(fs.readFileSync(seriesRegistryPath, 'utf8')) as SeriesRegistry;
+  return seriesRegistryCache;
+}
+
+export function getSeriesTitle(seriesId: string | undefined, locale: Locale): string | undefined {
+  if (!seriesId) {
+    return undefined;
+  }
+
+  const seriesEntry = getSeriesRegistry()[seriesId];
+  return seriesEntry?.title?.[locale] || seriesId;
 }
 
 // Build a map of translationKey -> {locale -> slug}
@@ -164,7 +198,8 @@ export function getAllPosts(locale: Locale): BlogPostMeta[] {
         date: data.date,
         description: data.description,
         tags: data.tags,
-        series: data.series,
+        seriesId: data.seriesId,
+        series: getSeriesTitle(data.seriesId, locale),
         seriesOrder: data.seriesOrder,
         translationKey: data.translationKey,  // ← NEW
         readingTime: calculateReadingTime(content),
@@ -234,7 +269,8 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogP
     date: data.date,
     description: data.description,
     tags: data.tags,
-    series: data.series,
+    seriesId: data.seriesId,
+    series: getSeriesTitle(data.seriesId, locale),
     seriesOrder: data.seriesOrder,
     translationKey: data.translationKey,  // ← NEW
     content: contentHtml,
@@ -307,32 +343,36 @@ export function getAllSeries(locale: Locale): Series[] {
   const seriesMap = new Map<string, BlogPostMeta[]>();
 
   for (const post of posts) {
-    if (post.series) {
-      const existing = seriesMap.get(post.series) || [];
+    if (post.seriesId) {
+      const existing = seriesMap.get(post.seriesId) || [];
       existing.push(post);
-      seriesMap.set(post.series, existing);
+      seriesMap.set(post.seriesId, existing);
     }
   }
 
   // Sort posts within each series by seriesOrder
-  seriesMap.forEach((seriesPosts, name) => {
+  seriesMap.forEach((seriesPosts, id) => {
     seriesPosts.sort((a, b) => (a.seriesOrder || 0) - (b.seriesOrder || 0));
-    seriesMap.set(name, seriesPosts);
+    seriesMap.set(id, seriesPosts);
   });
 
   return Array.from(seriesMap.entries())
-    .map(([name, posts]) => ({ name, posts }))
+    .map(([id, posts]) => ({
+      id,
+      name: getSeriesTitle(id, locale) || id,
+      posts,
+    }))
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 
-export function getPostsBySeries(locale: Locale, seriesName: string): BlogPostMeta[] {
+export function getPostsBySeries(locale: Locale, seriesId: string): BlogPostMeta[] {
   const posts = getAllPosts(locale);
   return posts
-    .filter((post) => post.series === seriesName)
+    .filter((post) => post.seriesId === seriesId)
     .sort((a, b) => (a.seriesOrder || 0) - (b.seriesOrder || 0));
 }
 
 export function getAllSeriesSlugs(locale: Locale): string[] {
   const series = getAllSeries(locale);
-  return series.map((s) => s.name);
+  return series.map((s) => s.id);
 }

@@ -4,7 +4,7 @@ date: "2026-02-04"
 description: "Yapay zeka destekli programlama araçlarının gelişimi ile birlikte yazılımcılarda yoğun bir gelecek kaygısı yaşanıyor, bu blogda YZ ile programlamanın gelecekte nasıl evrilebileceği üzerine senaryoları ele alacağım."
 tags: ["yapay zeka", "programlama", "yetenek", "dönüşüm", "insan"]
 translationKey: "ai-future-programming"
-series: "AI and Programming"
+seriesId: "ai-programming"
 seriesOrder: 1
 ---
 

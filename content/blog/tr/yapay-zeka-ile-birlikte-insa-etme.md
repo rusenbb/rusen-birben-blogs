@@ -7,7 +7,7 @@ tags:
   - "programlama"
   - "degisim"
 translationKey: "building-in-the-age-of-ai"
-series: "AI and Programming"
+seriesId: "ai-programming"
 seriesOrder: 2
 ---
 

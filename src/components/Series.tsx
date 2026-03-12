@@ -8,9 +8,23 @@ interface SeriesProps {
   posts: BlogPostMeta[];
   currentSlug: string;
   locale: Locale;
+  labels: {
+    badge: string;
+    progressPattern: string;
+    currentIndicator: string;
+    previous: string;
+    next: string;
+    postsAriaLabel: string;
+  };
 }
 
-export function Series({ seriesName, posts, currentSlug, locale }: SeriesProps) {
+function formatSeriesProgress(template: string, current: number, total: number) {
+  return template
+    .replace('{current}', String(current))
+    .replace('{total}', String(total));
+}
+
+export function Series({ seriesName, posts, currentSlug, locale, labels }: SeriesProps) {
   const currentIndex = posts.findIndex((post) => post.slug === currentSlug);
   const currentPost = posts[currentIndex];
   const prevPost = currentIndex > 0 ? posts[currentIndex - 1] : null;
@@ -19,10 +33,10 @@ export function Series({ seriesName, posts, currentSlug, locale }: SeriesProps) 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <span className={styles.badge}>Series</span>
+        <span className={styles.badge}>{labels.badge}</span>
         <h3 className={styles.title}>{seriesName}</h3>
         <span className={styles.progress}>
-          Part {currentIndex + 1} of {posts.length}
+          {formatSeriesProgress(labels.progressPattern, currentIndex + 1, posts.length)}
         </span>
       </div>
 
@@ -35,7 +49,7 @@ export function Series({ seriesName, posts, currentSlug, locale }: SeriesProps) 
       </div>
 
       {/* Series list */}
-      <nav className={styles.list} aria-label="Series posts">
+      <nav className={styles.list} aria-label={labels.postsAriaLabel}>
         {posts.map((post, index) => {
           const isCurrent = post.slug === currentSlug;
           const isCompleted = index < currentIndex;
@@ -57,7 +71,7 @@ export function Series({ seriesName, posts, currentSlug, locale }: SeriesProps) 
                 )}
               </span>
               <span className={styles.itemTitle}>{post.title}</span>
-              {isCurrent && <span className={styles.currentIndicator}>You are here</span>}
+              {isCurrent && <span className={styles.currentIndicator}>{labels.currentIndicator}</span>}
             </PrefetchLink>
           );
         })}
@@ -74,7 +88,7 @@ export function Series({ seriesName, posts, currentSlug, locale }: SeriesProps) 
               <polyline points="15 18 9 12 15 6" />
             </svg>
             <span>
-              <span className={styles.navLabel}>Previous</span>
+              <span className={styles.navLabel}>{labels.previous}</span>
               <span className={styles.navTitle}>{prevPost.title}</span>
             </span>
           </PrefetchLink>
@@ -88,7 +102,7 @@ export function Series({ seriesName, posts, currentSlug, locale }: SeriesProps) 
             className={`${styles.navButton} ${styles.next}`}
           >
             <span>
-              <span className={styles.navLabel}>Next</span>
+              <span className={styles.navLabel}>{labels.next}</span>
               <span className={styles.navTitle}>{nextPost.title}</span>
             </span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

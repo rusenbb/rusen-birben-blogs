@@ -33,14 +33,20 @@
   },
   "series": {
     "title": "Seriler",
+    "badge": "Seri",
     "subtitle": "Birbirine bağlı yazıları daha uzun akışlar halinde takip edin.",
     "empty": "Henüz seri yok...",
-    "partsCount": "bolum",
+    "partsCount": "bölüm",
     "startReading": "Okumaya başla",
-    "backToSeries": "Tum serilere don"
+    "backToSeries": "Tüm serilere dön",
+    "progressPattern": "Bölüm {current} / {total}",
+    "currentIndicator": "Buradasın",
+    "previous": "Önceki",
+    "next": "Sonraki",
+    "postsAriaLabel": "Seri yazıları"
   },
   "pagination": {
-    "previous": "Onceki",
+    "previous": "Önceki",
     "next": "Sonraki",
     "page": "Sayfa",
     "navigation": "Sayfalama"
