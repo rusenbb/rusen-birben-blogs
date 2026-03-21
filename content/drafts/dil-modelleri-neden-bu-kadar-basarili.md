@@ -5,7 +5,7 @@ description: "Dil modelleri mucizevi gibi gözüken bir başarım oranına sahip
 tags:
   [
     "dil modelleri",
-    "yapayzeka",
+    "yapay zeka",
     "üretken yapay zeka",
     "doğal dil",
     "gerçeklik",

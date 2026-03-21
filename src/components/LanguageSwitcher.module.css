@@ -1,16 +1,22 @@
 .switcher {
   display: flex;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.25rem 0;
-  transition: color 0.15s ease;
+  letter-spacing: 0.08em;
+  min-height: 2.2rem;
+  padding: 0 0.1rem;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
 
 .option:hover {
@@ -19,7 +25,7 @@
 
 .option::after {
   content: '/';
-  margin-left: 0.5rem;
+  margin-left: 0.35rem;
   color: var(--border);
 }
 
@@ -29,5 +35,15 @@
 
 .active {
   color: var(--text-primary);
-  border-bottom: 1px solid var(--text-primary);
+  border-bottom-color: var(--text-primary);
+}
+
+@media (max-width: 600px) {
+  .option {
+    min-height: 2.35rem;
+  }
+
+  .option::after {
+    margin-left: 0.25rem;
+  }
 }
