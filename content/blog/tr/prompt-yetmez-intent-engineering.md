@@ -3,7 +3,7 @@ title: "Prompt Yetmez: Niyet Mühendisliği"
 date: "2026-03-12"
 description: "Niyet ile model arasındaki uzaklık sadece prompt ile mi kapanır? Uzun ve riskli süreçlerde niyeti korumak için ne yapmalıyız? Sizi tanıştırmak isterim: Niyet Mühendisliği."
 tags:
-  - "yapayzeka"
+  - "yapay zeka"
   - "programlama"
   - "ajanlar"
   - "prompt"

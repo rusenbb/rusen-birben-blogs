@@ -16,6 +16,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: var(--space-sm);
   margin-bottom: var(--space-lg);
 }
 
@@ -178,17 +179,75 @@
 
 /* Responsive */
 @media (max-width: 600px) {
+  .main {
+    padding-bottom: calc(var(--space-xl) + 1rem);
+  }
+
   .title {
     font-size: 2rem;
   }
   
   .headerTop {
     flex-direction: column;
-    gap: var(--space-sm);
+    gap: var(--space-md);
     align-items: flex-start;
+  }
+
+  .tagFilters {
+    padding-top: var(--space-sm);
+  }
+
+  .filterLabel {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+  }
+
+  .tagChip {
+    padding: 0.45rem 0.8rem;
+  }
+
+  .postsList {
+    gap: 0.9rem;
+  }
+
+  .postCard {
+    padding: 1rem;
+    border: 1px solid var(--border-light);
+    border-radius: 0.85rem;
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  }
+
+  .postCard:hover {
+    padding-left: 1rem;
+  }
+
+  .postMeta {
+    flex-wrap: wrap;
+    gap: 0.45rem 0.65rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+
+  .postTags {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.45rem;
+  }
+
+  .tag {
+    padding: 0.2rem 0.45rem;
+    border: 1px solid var(--border-light);
+    border-radius: 9999px;
+    white-space: nowrap;
   }
   
   .postTitle {
     font-size: 1.25rem;
+  }
+
+  .postDescription {
+    font-size: 0.98rem;
+    line-height: 1.65;
   }
 }
