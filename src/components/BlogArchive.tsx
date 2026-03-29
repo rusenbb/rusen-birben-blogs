@@ -5,6 +5,7 @@ import { FaArrowLeft, FaRss } from 'react-icons/fa';
 import { BlogPostMeta } from '@/lib/blog';
 import { Dictionary, Locale } from '@/lib/i18n';
 import { paginateItems } from '@/lib/pagination';
+import { slugifyTag } from '@/lib/utils';
 import { Pagination } from './Pagination';
 import { usePersistentPage } from './usePersistentPage';
 import styles from '@/app/[locale]/blog/blog.module.css';
@@ -20,21 +21,6 @@ interface BlogArchiveProps {
   tags: TagCount[];
   allPosts: BlogPostMeta[];
   postsPerPage: number;
-}
-
-function slugifyTag(tag: string): string {
-  const turkishMap: Record<string, string> = {
-    'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u',
-    'Ç': 'C', 'Ğ': 'G', 'I': 'I', 'Ö': 'O', 'Ş': 'S', 'Ü': 'U',
-  };
-
-  return tag
-    .toLowerCase()
-    .split('')
-    .map((char) => turkishMap[char] || char)
-    .join('')
-    .replace(/\s+/g, '-')
-    .replace(/[^a-z0-9-]/g, '');
 }
 
 export function BlogArchive({

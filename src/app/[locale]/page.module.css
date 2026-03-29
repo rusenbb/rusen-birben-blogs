@@ -365,48 +365,15 @@
     letter-spacing: 0.04em;
   }
 
-  .blogGrid {
-    gap: 0.9rem;
-  }
-
-  .blogCard {
-    padding: 1rem;
-    border: 1px solid var(--border-light);
-    border-radius: 0.85rem;
-    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-  }
-
-  .blogCard:first-child {
-    padding-top: 1rem;
-  }
-
-  .blogCard:last-child {
-    border-bottom: 1px solid var(--border-light);
-  }
-
-  .blogCard:hover {
-    padding-left: 1rem;
-  }
-
   .blogMeta {
     flex-wrap: wrap;
     gap: 0.45rem 0.65rem;
-    font-size: 0.78rem;
-    letter-spacing: 0.02em;
-    text-transform: none;
+    font-size: 0.72rem;
   }
 
   .blogTags {
-    width: 100%;
     flex-wrap: wrap;
     gap: 0.4rem 0.45rem;
-  }
-
-  .tag {
-    padding: 0.2rem 0.45rem;
-    border: 1px solid var(--border-light);
-    border-radius: 9999px;
-    white-space: nowrap;
   }
 
   .blogTitle {

@@ -89,6 +89,10 @@ html {
   overflow-x: hidden;
 }
 
+html[data-reduced-motion="true"] {
+  scroll-behavior: auto;
+}
+
 /* Reduced Motion */
 [data-reduced-motion="true"] * {
   animation-duration: 0.01ms !important;

@@ -1,0 +1,132 @@
+/* Desktop sidebar */
+.sidebar {
+  flex-shrink: 0;
+  width: 220px;
+  position: sticky;
+  top: var(--space-lg);
+  align-self: flex-start;
+  max-height: calc(100vh - var(--space-xl));
+  overflow-y: auto;
+}
+
+.nav {
+  padding: var(--space-md);
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  border-radius: 0.5rem;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  margin-bottom: 0.5rem;
+}
+
+.level1 {
+  font-weight: 600;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.75rem;
+}
+
+.level1 .link {
+  color: var(--text-primary);
+}
+
+.level3 {
+  padding-left: var(--space-sm);
+}
+
+.link {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: block;
+  line-height: 1.4;
+  transition: color 0.15s ease;
+}
+
+.link:hover {
+  color: var(--text-primary);
+}
+
+/* Active heading state */
+.active > .link {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.active:not(.level1) {
+  border-left: 2px solid var(--text-primary);
+  padding-left: calc(var(--space-xs) - 2px);
+}
+
+.active.level3 {
+  padding-left: calc(var(--space-sm) - 2px);
+}
+
+/* Mobile TOC */
+.mobile {
+  display: none;
+}
+
+.mobileToggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-sm) 0;
+  border: none;
+  border-bottom: 1px solid var(--border-light);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.mobileToggle:hover {
+  color: var(--text-primary);
+}
+
+.chevron {
+  transition: transform 0.2s ease;
+  font-size: 1.1em;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.mobileNav {
+  padding: var(--space-sm) 0 var(--space-md);
+  border-bottom: 1px solid var(--border-light);
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+    margin-bottom: var(--space-md);
+  }
+}

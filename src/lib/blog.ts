@@ -85,6 +85,12 @@ function calculateReadingTime(content: string): number {
   return Math.ceil(words / wordsPerMinute);
 }
 
+function extractTextFromNode(node: any): string {
+  if (node.type === 'text') return node.value || '';
+  if (node.children) return node.children.map(extractTextFromNode).join('');
+  return '';
+}
+
 function getSeriesRegistry(): SeriesRegistry {
   if (seriesRegistryCache) {
     return seriesRegistryCache;
@@ -243,10 +249,7 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<BlogP
       visit(tree, 'element', (node: any) => {
         if (node.tagName === 'h1' || node.tagName === 'h2' || node.tagName === 'h3') {
           const level = parseInt(node.tagName[1]);
-          const text = node.children
-            ?.filter((child: any) => child.type === 'text')
-            .map((child: any) => child.value)
-            .join('') || '';
+          const text = extractTextFromNode(node);
           const id = node.properties?.id || '';
           
           if (text && id) {
